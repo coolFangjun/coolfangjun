@@ -168,7 +168,7 @@
 <li>readonly — readwrite</li>
 <li>copy</li>
 </ul>
-<figure class="highlight"><figcaption><span>c</span></figcaption><table><tr><td class="code"><pre><span class="line">@property NSInteger age;&#10;@property (retain, nonatomic) NSString *name;&#10;//&#20462;&#25913;setter&#21644;getter&#26041;&#27861;&#30340;&#21517;&#31216;&#10;@property (retain,nonatomic,setter = setDafaultName:,getter = defaultName) NSString * name;</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">@property NSInteger age;&#10;@property (retain, nonatomic) NSString *name;&#10;//&#20462;&#25913;setter&#21644;getter&#26041;&#27861;&#30340;&#21517;&#31216;&#10;@property (retain,nonatomic,setter = setDafaultName:,getter = defaultName) NSString * name;</span><br></pre></td></tr></table></figure>
 <p>assgin 和weak的区别:<br>weak 直接赋值，使用weak修饰，释放时，会将对象=nil; 在ARC模型<br>assgin 弱引用，缺省值  非ARC模式</p>
 
         
