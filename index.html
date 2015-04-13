@@ -152,26 +152,18 @@
 
       
         
-          <a id="more"></a>
-<h3 id="属性">属性</h3><h3 id="1、Oc属性的注意:">1、Oc属性的注意:</h3><ul>
+          <h3 id="属性">属性</h3><h3 id="1、Oc属性的注意:">1、Oc属性的注意:</h3><ul>
 <li>setter、getter里面，不要使用self.age(死循环，递归)</li>
 </ul>
-<figure class="highlight"><figcaption><span>c</span></figcaption><table><tr><td class="code"><pre><span class="line">&#10; //&#35774;&#32622;&#20154;&#30340;&#24180;&#40836;&#10;[person setAge:22];&#10;NSLog(@&#34;%ld&#34;,[person age]);&#10;//&#20351;&#29992;&#28857;&#35821;&#27861;&#10;person.age = -20;&#10;NSInteger age = person.age;&#10;- (void)setAge:(NSInteger)age&#123;&#10;   self.age = age;&#10;&#125;&#10;//&#36825;&#31181;&#26041;&#24335;&#26159;&#38169;&#35823;&#30340;....</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&#10; //&#35774;&#32622;&#20154;&#30340;&#24180;&#40836;&#10;[person setAge:22];&#10;NSLog(@&#34;%ld&#34;,[person age]);&#10;//&#20351;&#29992;&#28857;&#35821;&#27861;&#10;person.age = -20;&#10;NSInteger age = person.age;&#10;- (void)setAge:(NSInteger)age&#123;&#10;   self.age = age;&#10;&#125;&#10;//&#36825;&#31181;&#26041;&#24335;&#26159;&#38169;&#35823;&#30340;....</span><br></pre></td></tr></table></figure>
 <ul>
 <li>属性的参数</li>
 </ul>
-<p>@property (参数,多个参数用,隔开) 变量类型 变量名;</p>
-<p>参数如下：<br>&gt;</p>
-<ul>
-<li>retain(需要setter方法管理内存，在非ARC) — assgin(直接赋值，缺省值)</li>
-<li>strong(需要setter方法管理内存，在ARC) — weak(直接赋值,一般用来修饰对象)</li>
-<li>nonatomic — actomic</li>
-<li>readonly — readwrite</li>
-<li>copy</li>
-</ul>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">@property NSInteger age;&#10;@property (retain, nonatomic) NSString *name;&#10;//&#20462;&#25913;setter&#21644;getter&#26041;&#27861;&#30340;&#21517;&#31216;&#10;@property (retain,nonatomic,setter = setDafaultName:,getter = defaultName) NSString * name;</span><br></pre></td></tr></table></figure>
-<p>assgin 和weak的区别:<br>weak 直接赋值，使用weak修饰，释放时，会将对象=nil; 在ARC模型<br>assgin 弱引用，缺省值  非ARC模式</p>
-
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/04/13/objective c属性/#more">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -196,9 +188,859 @@
 
 
     
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2013/10/14/using-e5-9c-a8c-e4-b8-ad-e7-9a-84-e5-bc-ba-e5-88-b6-e8-b5-84-e6-ba-90-e6-b8-85-e7-90-86-e7-9a-84-e7-94-a8-e6-b3-95-e4-bd-95-e6-97-b6-e7-94-a8using-e4-bd-95-e6-97-b6-e7-94-a8try/">
+                using在C#中的强制资源清理的用法,何时用using,何时用try
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2013-10-14
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/c/">c#</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>using 在C#中除了引用命名空间和为命名空间创建别名外，它还可以用做强制资源清理，方法如下：</p>
+<p>using (SqlConnection connection = new SqlConnection(connectionString)) {     PrepareCommand(cmd, connection, null, cmdType, cmdText, commandParameters);     object val = cmd.ExecuteScalar();     cmd.Parameters.Clear();     return val; }</p>
+<p>上面代码完全等效于</p>
+<p>SqlConnection connection = new SqlConnection(connectionString); try{     PrepareCommand(cmd, connection, null, cmdType,cmdText, commandParameters);     object val = cmd.ExecuteScalar();     cmd.Parameters.Clear();     return val; } finally{     connection.disponse(); }</p>
+<p>实际上，我们用using()并编译后，编译器生成的也是try{}finally{}代码,生成的代码中需要执行disponse(),因此在using()中创建的对象必需实现Idisponse接可，不然是无法通过编译的。</p>
+<p>既然了解了using()的真相，我们应该知道什么时候用using()了吧。为也再进一步了解我们何时用using，何时用try，我们看看下面两段代码（高手可以跳过啦！！）</p>
+<p>using (SqlConnection connection = new SqlConnection(connectionString)) {     PrepareCommand(cmd, connection, null, cmdType, cmdText, commandParameters);     object val = cmd.ExecuteScalar();     cmd.Parameters.Clear();     return val; }</p>
+<p>这段和上面的第一段代码相同，由于cmd的结果已经被保存到object val里，所以然后释放connection对结果并不会有任何影响。</p>
+<p>再来看看下一再using的代码</p>
+<p>try {     PrepareCommand(cmd, conn, null, cmdType, cmdText, commandParameters);     SqlDataReader rdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);     cmd.Parameters.Clear();     return rdr; } catch {     conn.Close();     throw; }</p>
+<p>这时就不能再用using 自动释放connection了，因为rdr的操作需要打开数据库连接的，如果自动释放connection连接会导致rdr无法操作。何时用using可以用以下规则来确定：</p>
+<p>1、无论代码成功与否都释放对象时；</p>
+<p>2、对象实现Idisponse接口；</p>
+<p>3、只有一个对象需要释放。</p>
+<p><a href="http://www.dudu.me/wp-content/uploads/2013/10/file类的部分与流相关的方法.png" target="_blank" rel="external"><img src="http://www.dudu.me/wp-content/uploads/2013/10/file类的部分与流相关的方法.png" alt="file类的部分与流相关的方法"></a></p>
+<p>见至此结束！希望对一些程序员有望，如用有不正确的地方谢谢您的指点！</p>
+<p>转载来自<a href="http://hi.baidu.com/seapub/item/4511189f50e2bdda7b7f0161" target="_blank" rel="external">http://hi.baidu.com/seapub/item/4511189f50e2bdda7b7f0161</a></p>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2013/10/08/filestream-e7-b1-bb-e7-9a-84-e5-b1-9e-e6-80-a7-e3-80-81-e6-96-b9-e6-b3-95/">
+                filestream类的属性、方法
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2013-10-08
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/c/">c#</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>使用 FileStream 选件类读取，写入，打开和关闭的文件在文件系统和操作其他文件相关的操作系统句柄，包括管道铺设、标准输入和标准输出。可以使用 <a href="http://msdn.microsoft.com/zh-cn/library/system.io.filestream.read.aspx" target="_blank" rel="external">Read</a>、<a href="http://msdn.microsoft.com/zh-cn/library/system.io.filestream.write.aspx" target="_blank" rel="external">Write</a>、<a href="http://msdn.microsoft.com/zh-cn/library/system.io.stream.copyto.aspx" target="_blank" rel="external">CopyTo</a>和 <a href="http://msdn.microsoft.com/zh-cn/library/system.io.filestream.flush.aspx" target="_blank" rel="external">Flush</a> 方法执行同步操作或 <a href="http://msdn.microsoft.com/zh-cn/library/system.io.filestream.readasync.aspx" target="_blank" rel="external">ReadAsync</a>、<a href="http://msdn.microsoft.com/zh-cn/library/system.io.filestream.writeasync.aspx" target="_blank" rel="external">WriteAsync</a>、<a href="http://msdn.microsoft.com/zh-cn/library/system.io.stream.copytoasync.aspx" target="_blank" rel="external">CopyToAsync</a>和 <a href="http://msdn.microsoft.com/zh-cn/library/system.io.filestream.flushasync.aspx" target="_blank" rel="external">FlushAsync</a> 方法执行异步操作。  使用异步方法执行大量资源文件操作，而不必阻止主线程。  此性能注意事项非常重要。Windows 应用商店 app 或耗时的流操作会阻止 UI 线程并将您的应用程序显示的 桌面 app，就象它不起作用。  缓冲输入和输出以获得更好的性能。</p>
+<p><a href="http://www.dudu.me/wp-content/uploads/2013/10/filestream类1.png" target="_blank" rel="external"><img src="http://www.dudu.me/wp-content/uploads/2013/10/filestream类1.png" alt="filestream类"></a></p>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2013/10/08/directory-e7-b1-bb-e7-9a-84-e6-96-b9-e6-b3-95/">
+                Directory类的方法
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2013-10-08
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/c/">c#</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>Directory 类用于典型操作，如复制、移动、重命名、创建和删除目录。<!--?XML:NAMESPACE PREFIX = "[default] http://www.w3.org/1999/xhtml" NS = "http://www.w3.org/1999/xhtml" /-->也可将 Directory 类用于获取和设置与目录的创建、访问及写入操作相关的 <a href="http://msdn.microsoft.com/zh-cn/library/system.datetime.aspx" target="_blank" rel="external">DateTime</a> 信息。 由于所有的 Directory 方法都是静态的，所以如果只想执行一个操作，那么使用 Directory 方法的效率比使用相应的 <a href="http://msdn.microsoft.com/zh-cn/library/system.io.directoryinfo.aspx" target="_blank" rel="external">DirectoryInfo</a> 实例方法可能更高。大多数 Directory 方法要求当前操作的目录的路径。</p>
+<p><a href="http://www.dudu.me/wp-content/uploads/2013/10/QQ截图20131008135756.png" target="_blank" rel="external"><img src="http://www.dudu.me/wp-content/uploads/2013/10/QQ截图20131008135756.png" alt="QQ截图20131008135756"></a></p>
+<p><a href="http://www.dudu.me/wp-content/uploads/2013/10/efff.png" target="_blank" rel="external"><img src="http://www.dudu.me/wp-content/uploads/2013/10/efff.png" alt="efff"></a></p>
+<p><a href="http://www.dudu.me/wp-content/uploads/2013/10/f7.png" target="_blank" rel="external"><img src="http://www.dudu.me/wp-content/uploads/2013/10/f7.png" alt="f7"></a></p>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2013/09/08/c-e5-9d-90-e6-a0-87-e5-8f-98-e6-8d-a2/">
+                c#坐标变换
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2013-09-08
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/c/">c#</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <pre escaped="true">
+
+namespace WindowsFormsApplication5
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+        //坐标的平移
+        private void button1_Click(object sender, EventArgs e)
+        {
+           //定义矩形的四个点的位置
+            Rectangle rt = new Rectangle(new Point(0,0),new Size(50,50));
+            //实例化一个Graphics类
+            Graphics g = CreateGraphics();
+            //填充一个绿色背景的矩形
+            g.FillRectangle(Brushes.Green,rt);
+           //坐标平移函数：将坐标平移到50,80处
+            g.TranslateTransform(50,80);
+            //实例化一个颜色为红色，笔的粗细为1
+            Pen pen = new Pen(Brushes.Red,1);
+           //用笔绘制一个以（50,80）为原点的矩形
+            g.DrawRectangle(pen,rt);
+            //将原点重置.
+            g.ResetTransform();
+            g.FillRectangle(Brushes.Red,rt);
+        }
+       //旋转变换
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Graphics gc = CreateGraphics();
+            Rectangle rte = new Rectangle(new Point(100,20),new Size(120,80));
+            gc.FillRectangle(Brushes.Blue,rte);
+            //将矩形旋转45度
+            gc.RotateTransform(45);
+            gc.FillRectangle(Brushes.Red,rte);
+        }
+        //伸缩变换
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Graphics gcs = CreateGraphics();
+            Rectangle rect = new Rectangle(new Point(30,100),new Size(80,80));
+            gcs.FillRectangle(Brushes.Red,rect);
+           //3f(float类型数据)将矩形的长增加3倍，0.5f(float类型数据)将矩形的宽增加0.5倍
+            gcs.ScaleTransform(3f,0.5f);
+            gcs.FillRectangle(Brushes.Green,rect);
+        }
+    }
+}
+
+</pre>
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2013/09/03/graphics-e7-b1-bb-gdi-e7-bb-98-e5-9b-be/">
+                Graphics类-GDI+绘图
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2013-09-03
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/c/">c#</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <pre escaped="true">
+namespace 绘制GDI
+{
+   public partial class Form1 : Form
+{
+    public Point startPoint=new Point(80,70);
+    public Point endPoint=new Point(310,70);
+    // public bool zz = false;
+    //public SolidBrush brush;
+    public Form1()
+    {
+        InitializeComponent();
+    }
+
+    private void button2_Click(object sender, EventArgs e)
+    {
+        //清除图案
+        Graphics G = CreateGraphics();
+        G.Clear(BackColor);
+        G.Dispose();
+    }
+
+    private void button3_Click(object sender, EventArgs e)
+    {
+        Graphics g = CreateGraphics();//实例化一个Graphics
+        //SolidBrush brush = new SolidBrush(Color.Green);
+        g.FillEllipse(brush,80,70,310,70);//画椭圆
+        g.Dispose();//释放资源
+    }
+    //定义一个private的brush的笔刷
+    private Brush brush = new SolidBrush(Color.Red);
+    private void radioButton1_CheckedChanged(object sender, EventArgs e)
+    {
+        brush = new SolidBrush(Color.Green);//设置为实心
+    }
+
+    private void radioButton2_CheckedChanged(object sender, EventArgs e)
+    {
+        //纹理，使用imageList1.Images[0]填充
+        brush = new TextureBrush(imageList1.Images[0]);
+    }
+
+    private void radioButton3_CheckedChanged(object sender, EventArgs e)
+    {
+        //渐变，从startPoint开始用Red渐变，到endPoint结束Green渐变
+        brush = new LinearGradientBrush(startPoint, endPoint, Color.Red,
+         Color.Green);
+    }
+
+    private void radioButton4_CheckedChanged(object sender, EventArgs e)
+    {
+        //阴影效果
+      brush = new HatchBrush(HatchStyle.ForwardDiagonal,Color.Red,
+          Color.LightBlue);
+    }
+}
+}
+</pre>
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2013/08/31/c-e8-87-aa-e5-ae-9a-e4-b9-89-e4-ba-8b-e4-bb-b6-e7-9a-84-e6-96-b9-e6-b3-95-e5-92-8c-e6-ad-a5-e9-aa-a4/">
+                c#自定义事件的方法和步骤
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2013-08-31
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/c/">c#</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <pre escaped="true" lang="c#">namespace 自定义事件
+{
+    //自定义事件分为以下几步:
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //第六步：主函数调用
+            Dog dog = new Dog();
+            Host host = new Host(dog);
+            DateTime now = new DateTime(2013,8,31,22,39,50);
+            DateTime nigth = new DateTime(2013,8,31,22,40,0);
+            Console.WriteLine("~~~~~~~~~时间开始走啊走啊~~~~~~~~~");
+            while(now &lt;nigth){
+                Console.WriteLine("当前时间:"+now);
+                System.Threading.Thread.Sleep(1000);
+                now = now.AddSeconds(1);
+            }
+            Console.WriteLine("~~~~~~~我是小偷，我来了~~~~~~~~~~~~");
+            dog.OnAlarn();
+        }
+    }
+    class Dog {
+        //第一步：声明关于事件的委托
+        public delegate void AlarnEven(object sender,EventArgs e);
+        //第二步:声明事件
+        public event AlarnEven Alarn;
+        //第三步：编写引发事件的函数
+        public void OnAlarn() {
+            if(this.Alarn!=null){
+                Console.WriteLine("\n狗报警：有小偷进来了.汪汪汪~~~~~~~~~");
+                this.Alarn(this,new EventArgs());
+            }
+        }
+    }
+    class Host { 
+        //第四：编写事件的处理程序
+        void HostAlarn(object sender, EventArgs e) 
+        { Console.WriteLine("主人：抓住小偷啦..!"); }
+        //第五步：注册事件的处理程序
+        public Host(Dog dog) {
+            dog.Alarn += new Dog.AlarnEven(HostAlarn);
+        }
+    }
+
+}</pre>
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2013/08/08/e4-b8-87-e8-83-bd-e6-8a-95-e5-bd-b1-e8-ae-a1-e7-ae-97-e5-99-a8-e9-80-9a-e7-94-a8-e7-89-88/">
+                万能投影计算器-通用版
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2013-08-08
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/软件发布/">软件发布</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p><li>1.本工具基于.NET 2.0开发，请安装framework 2.0以上的组件</li><br>    <li>2.该小工具中的画面尺寸都是指得是英寸</li><br>    <li>3.最小焦距单位为mm,焦距即为投影机的f值</li><br>    <li>4.屏幕高度表示单台投影机投射的Y坐标值</li><br>    <li>5.屏幕宽度表示单台投影机投射的X坐标值</li><br>    <li>6.如果你觉得不错，记得分享唷，当然如果您有很好的意见或者计算方法，记得告诉我！</li><br>    <li>还在为计算投影距离和选取镜头苦恼哇，来试下万能投影计算器</li><br><a href="http://www.dudu.me/projective.exe" target="_blank" rel="external"><img src="http://www.dudu.me/wp-content/uploads/2013/08/QQ截图20130808092620.jpg" alt="万能投影计算器"></a></p>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2013/07/01/e5-9f-ba-e4-ba-8ec-e7-9a-84txt-e6-96-87-e6-9c-ac-e7-bc-96-e8-be-91-e5-b0-8f-e5-b7-a5-e5-85-b7/">
+                基于c#的Txt文本编辑小工具
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2013-07-01
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/c/">c#</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>Txt文本编辑器主要是针对c#的文件处理和编码的处理，需要用到openFileDialog控件来获取一个文件流，用 UTF8Encoding设置为UTF8编码.</p>
+<p>用openFileDialog控件返回的文件路径，通过File来对文件进行打开和写入数据的操作。</p>
+<p><a href="http://www.dudu.me/wp-content/uploads/2013/07/txt.jpg" target="_blank" rel="external"><img src="http://www.dudu.me/wp-content/uploads/2013/07/txt-267x260.jpg" alt="txt"></a>从效果图中可以看到，Form窗体有7个控件:2个label控件，1个textBox，1个groupBox，1个richTextBox，2个button控件，将控件都加入后，我们编写程序:</p>
+<p>首先，将System.IO加入：using System.IO;</p>
+<p>对打开文件进行编写：</p>
+<ul>
+<li>private void button1_Click(object sender, EventArgs e)<br>{<br>try<br>{<br>textBox1.Text = “”;<br>richTextBox1.Text = “”;<br>if (openFileDialog1.ShowDialog() == DialogResult.OK)<br>{<br>FileMode fm = FileMode.OpenOrCreate;<br>string aaa = openFileDialog1.FileName;<br>textBox1.Text = aaa; ;<br>FileStream fs = File.Open(textBox1.Text, fm);<br>UTF8Encoding tmp = new UTF8Encoding(true);<br>byte[] s = new byte[1000];<br>while (fs.Read(s, 0, s.Length) &gt; 0)<br>{<br>richTextBox1.Text += tmp.GetString(s);<br>}<br>fs.Close();<br>}<br>}<br>catch { }</li>
+<li>对修改按钮进行编写:</li>
+<li>private void button2_Click(object sender, EventArgs e)<br>{<br>try<br>{<br>if (richTextBox1.Text.Length &gt; 0)<br>{<br>byte[] info = new UTF8Encoding(true).GetBytes(richTextBox1.Text);<br>FileMode fmode = FileMode.Truncate;<br>FileStream filewrite = File.Open(textBox1.Text, fmode);<br>filewrite.Write(info, 0, info.Length);<br>filewrite.Close();<br>MessageBox.Show(“修改成功”);<br>richTextBox1.Text = “”;<br>textBox1.Text = “”;<br>}<br>}<br>catch { }<br>}<br>如果小工具对你有用，<span style="color: #888888;">[</span></li>
+</ul>
+<h1 id="点击下载">点击下载</h1><p>](<a href="http://www.dudu.me/down/txt.exe" target="_blank" rel="external">http://www.dudu.me/down/txt.exe</a>)</p>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2013/06/30/e5-9c-a8form-e6-97-a0-e8-be-b9-e6-a1-86-e7-9a-84-e6-83-85-e5-86-b5-e4-b8-8b-e7-a7-bb-e5-8a-a8-e7-aa-97-e5-8f-a3-e5-92-8c-e7-a7-bb-e5-8a-a8-e6-8e-a7-e4-bb-b6-e7-9a-84-e6-96-b9-e6-b3-95/">
+                在Form无边框的情况下移动窗口和移动控件的方法
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2013-06-30
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/c/">c#</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>c#经典案例一：在Form无边框的情况下移动窗口的方法<br>首先将Form窗口的FormBorderStyle属性设置为None,让Form窗体的标题栏全部都隐蔽，我们知道将FormBorderStyle属性设置为None后就不能对当前的窗体进行移动，我们手动来写一个小程序，来实现窗口的移动,我们需要用到Mousedown、MouseLeave、MouseUp、MouseMove事件对窗口进行操作，看程序:</p>
+<p>一、首先定义三个变量</p>
+<ol>
+<li>布尔值cool表示当前的鼠标是否按下</li>
+<li>ADDX表示当前窗体的X坐标(相对于屏幕的left方向)</li>
+<li>ADDY表示当前窗体的Y坐标(相对于屏幕的top方向)</li>
+<li>因为Form窗体默认是沿着left和top方向定位.</li>
+</ol>
+<ul>
+<li><p>bool cool = false;<br>int ADDX;<br>int ADDY;<br>二、设置当前窗体的Mousedown事件</p>
+</li>
+<li><p>private void Form1_MouseDown(object sender, MouseEventArgs e)<br>{<br>cool = true;//设置cool为true，激活MouseMove事件<br>ADDX = MousePosition.X;//将当前的光标位置的X值赋值给ADDX<br>ADDY = MousePosition.Y;//将当前的光标位置的Y值赋值给ADDY<br>}<br>三、设置当前窗体的Mousemove事件</p>
+</li>
+<li><p>private void Form1_MouseMove(object sender, MouseEventArgs e)<br>{<br>if(cool){<br>this.Left += MousePosition.X - ADDX;//将当前光标的X值与初始移动前的X值进行求差，获得当前窗体到屏幕最左边的距离<br>this.Top += MousePosition.Y - ADDY;//将当前光标的X值与初始移动前的Y值进行求差，获得当前窗体到屏幕最上边的距离<br>ADDX = MousePosition.X;//将移动后的光标X值赋值给ADDX，为下一次移动赋值<br>ADDY = MousePosition.Y;//将移动后的光标Y值赋值给ADDY，为下一次移动赋值<br>}<br>}<br>四、设置当前窗体的MouseLeave事件</p>
+</li>
+</ul>
+<p>//鼠标离开窗体，对变量进行初始化;</p>
+<ul>
+<li><p>private void Form1_MouseLeave(object sender, EventArgs e)<br>{<br>ADDX = 0;<br>ADDY = 0;<br>cool = false;<br>}<br>五、设置当前窗体的MouseUp事件</p>
+</li>
+<li><p>private void Form1_MouseLeave(object sender, EventArgs e)<br>{<br>cool = false;//释放鼠标<br>}<br>c#经典案例二：移动控件的方法</p>
+</li>
+</ul>
+<p>首先我们创建一个Form窗体，为Form1,再添加一个Form2,在Form1加入一个Button控件和label控件，名字分别为:button1,label1</p>
+<ol>
+<li>我们对Form2窗体进行实例化,以便使用：Form2 ss = new Form2();</li>
+<li>对button1的click事件进行编写:</li>
+<li>private void button1_Click(object sender, EventArgs e)<br>{<br>ss.Show();//显示Form2窗体</li>
+</ol>
+<p>}</p>
+<ol>
+<li>对label1进行click事件编写:</li>
+</ol>
+<ul>
+<li>private void label1_Click(object sender, EventArgs e)<br>{<br>if (this.label1.Parent == this)<br>{<br>ss.Controls.Add(this.label1);<br>label1.Text = “返回原地”;<br>}<br>else {<br>this.Controls.Add(this.label1);<br>label1.Text = “开始移动”;<br>}<br>}</li>
+</ul>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
   </div>
 
   
+  <div class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/">&raquo;</a>
+  </div>
+
 
         </div>
       </div>
@@ -227,14 +1069,14 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">1</span>
+              <span class="site-state-item-count">74</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             
-              <span class="site-state-item-count">1</span>
+              <span class="site-state-item-count">7</span>
               <span class="site-state-item-name">分类</span>
               
           </div>

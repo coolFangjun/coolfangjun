@@ -1,0 +1,1234 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.2"/>
+
+
+    <meta name="description" content="yang fangjun’s blog | oc | objective c | bi" />
+
+
+
+
+    <meta name="keywords" content="Hexo,next" />
+
+
+
+
+
+    <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.2" />
+
+
+
+
+  <title> 嘟嘟blog </title>
+</head>
+
+<body>
+  <div class="container one-column 
+   page-home 
+">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">嘟嘟blog</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+
+  <ul id="menu" class="menu">
+     
+    
+      
+      <li class="menu-item menu-item-home">
+        <a href="/">
+          <i class="menu-item-icon icon-home"></i> <br />
+          首页
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-archives">
+        <a href="/archives">
+          <i class="menu-item-icon icon-archives"></i> <br />
+          归档
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-tags">
+        <a href="/tags">
+          <i class="menu-item-icon icon-tags"></i> <br />
+          标签
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-about">
+        <a href="/about">
+          <i class="menu-item-icon icon-about"></i> <br />
+          关于
+        </a>
+      </li>
+    
+  </ul>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+  <div id="posts" class="posts-expand">
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2012/06/16/php-e6-95-b0-e5-ad-a6-e5-87-bd-e6-95-b0-e5-b0-8f-e7-bb-83-e4-b9-a0/">
+                php数学函数小练习
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2012-06-16
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/学习笔记/">学习笔记</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>  老师布置的作业，在这给分享下：</p>
+<p>1.利用PHP数学函数，解一元二次方程（ax^2+bx+c=0）</p>
+<p>2.一个班有40到50名同学 出去玩分小组, 每个小组可以是4人或者6人,刚好分完（注释：全部4人一组或者全部6人一组，或者有4人一组也有6人一组的都可以）,分几个组可以分完 另外求出这个班一共多少人 把所有的情况求出来<br>以下列出部分结果：<br>总数40，1组4个人的，6组6个人的<br>总数40，4组4个人的，4组6个人的<br>总数42，3组4个人的，5组6个人的<br>总数44，2组4个人的，6组6个人的<br>总数50，5组4个人的，5组6个人的<br>总数50，11组4个人的，1组6个人的</p>
+<p>&lt;?php<br>echo ‘解一元二次方程ax^2+bx+c=0’;<br>echo ‘&lt;br/&gt;’;echo ‘&lt;br/&gt;’;<br>//x=-b+sqrt(b<em>b-4</em>a<em>c)/2</em>a 当b^2-4ac&gt;=0的时候才有值<br>function abc($a,$b,$c){<br> if(pow($b,2)-4<em>$a</em>$c&lt;0){<br>  $x1=’oh,no!这个方程无解啦！’;<br>  echo $x1;<br> }else if(pow($b,2)-4<em>$a</em>$c&gt;0){<br>  $e=pow($b,2)-4<em>$a</em>$c;<br>  $x1=(-$b)+sqrt($e)/(2<em>$a);<br>  $x2=(-$b)-sqrt($e)/(2</em>$a);<br>  echo $a.’x^2’.($b&gt;0?’+’:’’).$b.’x’.’+’.$c.’=0’.’有2个解’.’x1=’.intval($x1).’,’.’x2=’.intval($x2);<br> }else{echo ‘只有一个解 X:’.$x1=-$b;}<br>}<br>abc(2,-8,2);<br>echo ‘&lt;br/&gt;’;echo ‘&lt;br/&gt;’;<br>echo ‘&lt;b style=”color:red;”&gt;以下是组队的小程序:&lt;/b&gt;’.’&lt;br/&gt;’;<br>for($sum=40;$sum&lt;=50;$sum++){<br>   for($x=1;$x&lt;=$sum/4;$x++){<br>    $y=($sum-4*$x)/6;<br>    if(is_int($x)&amp;&amp;is_int($y)){<br>    echo ‘总数:’.$sum.’&amp;nbsp;’;<br>    echo $x.’组4个人的’.’&amp;nbsp;’;<br>    echo $y.’组6个人的’.’&lt;br&gt;’;<br>    }<br>  }<br>}</p>
+<h1 id="点击预览"><a href="http://www.dudu.me/1.php" target="_blank" rel="external">点击预览</a></h1>
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2012/06/08/php-e5-ae-89-e8-a3-85-php-e7-8b-ac-e7-ab-8b-e5-ae-89-e8-a3-85-e8-af-a6-e7-bb-86-e6-96-b9-e6-b3-95/">
+                php安装-php独立安装详细方法
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2012-06-08
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/学习笔记/">学习笔记</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <div><br><br>一、准备好安装文件<br><br>1.apache_2.2.14-win32-x86-no_ssl.msi<br><br>2. mysql-5.5.13-win32.msi<br><br>3.php-5.3.1-Win32-VC6-x86.zip<br><br>4. phpMyAdmin-3.5.0-all-languages.7z<br><br>&nbsp;<br><br>以上文件也可以到官方网站去下载：<br><br>php<span style="font-family: 宋体;">官网：</span><a href="http://www.php.net" target="_blank" rel="external">http://www.php.net</a><br><br>mysql官网：<a href="http://www.mysql.com" target="_blank" rel="external">http://www.mysql.com</a><br><br>apache官网：<a href="http://www.apache.org/" target="_blank" rel="external">http://www.apache.org/</a><br><br>phpmyadmin官网 ：<a href="http://www.phpmyadmin.com/" target="_blank" rel="external">http://www.phpmyadmin.com/</a><br><br>&nbsp;<br><br>二、关闭占用<span style="font-family: 'Times New Roman';">80</span><span style="font-family: 宋体;">端口的软件（如其他</span><span style="font-family: 'Times New Roman';">web</span><span style="font-family: 宋体;">服务器、迅雷、</span><span style="font-family: 'Times New Roman';">QQ</span><span style="font-family: 宋体;">等），不然可能会导致启动失败。</span><br><br>&nbsp;<br><br>三、建立安装目录<br><br>&nbsp;<br><br>1.<span style="font-family: 宋体;">为了统一管理，我们可以把这些软件全部安装在</span><span style="font-family: 'Times New Roman';">D</span><span style="font-family: 宋体;">盘的同一个文件夹下面，假设文件夹名称为</span><span style="font-family: 'Times New Roman';">amp</span><br><br>&nbsp;<br><br>2.<span style="font-family: 宋体;">在</span><span style="font-family: 'Times New Roman';">amp</span><span style="font-family: 宋体;">文件夹里分别创建好</span><span style="font-family: 'Times New Roman';">php</span><span style="font-family: 宋体;">、</span><span style="font-family: 'Times New Roman';">apache</span><span style="font-family: 宋体;">、</span><span style="font-family: 'Times New Roman';">mysql</span><span style="font-family: 宋体;">文件夹</span><span style="font-family: 'Times New Roman';">,</span><span style="font-family: 宋体;">如图：</span><br><br><img src="http://www.dudu.me/images/图片1.png" alt=""><br>四、安装<span style="font-family: 'Times New Roman';">apache</span><br><br>&nbsp;<br><br>1.<span style="font-family: 宋体;">双击</span><span style="font-family: 'Times New Roman';">apache</span><span style="font-family: 宋体;">安装文件</span><span style="font-family: 'Times New Roman';">,</span><span style="font-family: 宋体;">出现如图：</span><br><br><img src="http://www.dudu.me/images/图片2.png" alt=""><br><br>&nbsp;<br><br>2.<span style="font-family: 宋体;">点击</span><span style="font-family: 'Times New Roman';">next,</span><span style="font-family: 宋体;">如图：</span><br><br><img src="http://www.dudu.me/images/图片3.png" alt=""><br><br>&nbsp;<br><br>3.<span style="font-family: 宋体;">选择</span><span style="font-family: 'Times New Roman';">I accept</span><span style="font-family: 宋体;">，点击</span><span style="font-family: 'Times New Roman';">next,</span><span style="font-family: 宋体;">出现介绍页面，再点击</span><span style="font-family: 'Times New Roman';">next</span><span style="font-family: 宋体;">如图：</span><br><br><img src="http://www.dudu.me/images/图片4.png" alt=""><br><br>&nbsp;<br><br>4.<span style="font-family: 宋体;">这一步使用默认选项就行了，默认作为一个服务从</span><span style="font-family: 'Times New Roman';">80</span><span style="font-family: 宋体;">端口启动。点击</span><span style="font-family: 'Times New Roman';">next</span><br><br><img src="http://www.dudu.me/images/图片5.png" alt=""><br><br>&nbsp;<br><br>5.<span style="font-family: 宋体;">如果要自定义目录，这里我们可以选择下面那个选项（</span><span style="font-family: 'Times New Roman';">custom</span><span style="font-family: 宋体;">），点击</span><span style="font-family: 'Times New Roman';">next</span><span style="font-family: 宋体;">，出现选择组件和目录步骤，点击</span><span style="font-family: 'Times New Roman';">chang</span><span style="font-family: 宋体;">按钮选择我们准备好的安装目录（</span><span style="font-family: 'Times New Roman';">D:/amp/apache</span><span style="font-family: 宋体;">）</span><br><br><img src="http://www.dudu.me/images/图片6.png" alt=""><br><br>&nbsp;<br><br>6.<span style="font-family: 宋体;">点击</span><span style="font-family: 'Times New Roman';">next,</span><span style="font-family: 宋体;">再点击</span><span style="font-family: 'Times New Roman';">install</span><span style="font-family: 宋体;">按钮完成安装。安装完成之后右下角任务栏会多一个任务图标</span><span style="font-family: 'Times New Roman';">,</span><span style="font-family: 宋体;">小三角形是绿色的代表</span><span style="font-family: 'Times New Roman';">apache</span><span style="font-family: 宋体;">启动成功了。</span><br><br><img src="http://www.dudu.me/images/图片7.png" alt=""><br><br>&nbsp;<br><br>7.<span style="font-family: 宋体;">打开浏览器输入</span><a href="http://127.0.0.1" target="_blank" rel="external">http://127.0.0.1</a> 或者<a href="http://localhost" target="_blank" rel="external">http://localhost</a> 进行访问。如果看到<span style="font-family: 'Times New Roman';">it works</span><span style="font-family: 宋体;">就说明</span><span style="font-family: 'Times New Roman';">apache</span><span style="font-family: 宋体;">服务启动成功。</span><br><br>&nbsp;<br><br>8.<span style="font-family: 宋体;">找到文件夹</span>D:\amp\apache\htdocs 里面有一个<span style="font-family: 'Times New Roman';">index.html </span><span style="font-family: 宋体;">用编辑器打开，就可以看到这个就是我们刚刚访问到的文件。试着改变里面的内容，再去访问</span><a href="http://127.0.0.1" target="_blank" rel="external">http://127.0.0.1</a> 或者<a href="http://localhost" target="_blank" rel="external">http://localhost</a> 看看有什么不同。<br><br>&nbsp;<br><br>9:<span style="font-family: 宋体;">改变</span><span style="font-family: 'Times New Roman';">web</span><span style="font-family: 宋体;">服务器主目录：在</span><span style="font-family: 'Times New Roman';">D:/amp</span><span style="font-family: 宋体;">目录下新建一个</span><span style="font-family: 'Times New Roman';">www</span><span style="font-family: 宋体;">目录作为我们的</span><span style="font-family: 'Times New Roman';">web</span><span style="font-family: 宋体;">主目录。</span><br><br>打开<span style="font-family: 'Times New Roman';">apache</span><span style="font-family: 宋体;">的配置文件（</span><span style="font-family: 'Times New Roman';">D:/amp/apache/conf/httpd.conf</span><span style="font-family: 宋体;">）</span><br><br>177<span style="font-family: 宋体;">行：将 </span>DocumentRoot “D:/amp/apache/htdocs”  改为<br><br>DocumentRoot “D:/amp/www<br><br>204<span style="font-family: 宋体;">行：将</span>&lt;Directory “D:/amp/apache/htdocs”&gt;” 改为：<br><br>&lt;Directory “D:/amp/www”&gt;<br><br>重启<span style="font-family: 'Times New Roman';">apache</span><span style="font-family: 宋体;">，</span><span style="font-family: 'Times New Roman';">web</span><span style="font-family: 宋体;">服务器的主目录就从原来的</span>D:/amp/apache/htdocs变成了D:/amp/www<span style="font-family: 宋体;">了</span><span style="font-family: 'Times New Roman';">,</span><span style="font-family: 宋体;">在</span>D:/amp/www<span style="font-family: 宋体;">目录下新建一个</span><span style="font-family: 'Times New Roman';">index.html</span><span style="font-family: 宋体;">写点测试内容，再访问</span><a href="http://127.0.0.1" target="_blank" rel="external">http://127.0.0.1</a>。<br><br>&nbsp;<br><br>10.<span style="font-family: 宋体;">到此为止</span><span style="font-family: 'Times New Roman';">apache</span><span style="font-family: 宋体;">安装好了，主目录也配置好了，接下来去安装</span><span style="font-family: 'Times New Roman';">PHP</span><br><br>&nbsp;<br><br>&nbsp;<br><br>五、安装<span style="font-family: 'Times New Roman';">PHP</span><br><br>&nbsp;<br><br>1. php<span style="font-family: 宋体;">不需要像</span><span style="font-family: 'Times New Roman';">apache</span><span style="font-family: 宋体;">一样一步步安装。只需要把压缩包解压到我们的</span><span style="font-family: 'Times New Roman';">php</span><span style="font-family: 宋体;">目录（</span><span style="font-family: 'Times New Roman';">D:/amp/php</span><span style="font-family: 宋体;">）就行了。</span><br><br>2. 配置：<br><br>2.1 在<span style="font-family: 'Times New Roman';">php</span><span style="font-family: 宋体;">的安装目录找到</span>php.ini-development、php.ini-production两个文件。随便复制一个文件并改名为<span style="font-family: 'Times New Roman';">php.ini</span><span style="font-family: 宋体;">（作为开发环境我们一般选</span>php.ini-development）。<br><br>2.2 现在<span style="font-family: 'Times New Roman';">php.ini</span><span style="font-family: 宋体;">就是</span><span style="font-family: 'Times New Roman';">php</span><span style="font-family: 宋体;">的配置文件了。</span><br><br>2.3 php.ini809行附近，把; extension_dir = “ext”前面的分号去掉，并改为：extension_dir = “d:/amp/php/ext”<br><br>2.4 在<span style="font-family: 'Times New Roman';">apache</span><span style="font-family: 宋体;">配置文件中</span><span style="font-family: 'Times New Roman';">127</span><span style="font-family: 宋体;">行附近加入如下代码：</span><br><br>LoadModule php5_module D:/amp/php/php5apache2_2.dll<br><br>PHPIniDir “D:/amp/php”<br><br>AddType application/x-httpd-php .php .phtml<br><br>2.4 <span style="font-family: 宋体;">找到</span><span style="font-family: 'Times New Roman';">apache</span><span style="font-family: 宋体;">配置文件中的</span>DirectoryIndex index.html 并改为<br><br>DirectoryIndex index.html index.php<br><br>2.5<span style="font-family: 宋体;">重启</span><span style="font-family: 'Times New Roman';">apache</span><span style="font-family: 宋体;">服务器。</span><br><br>2.6<span style="font-family: 宋体;">写一个</span><span style="font-family: 'Times New Roman';">PHP</span><span style="font-family: 宋体;">（</span><span style="font-family: 'Times New Roman';">index.php</span><span style="font-family: 宋体;">）文件放于</span><span style="font-family: 'Times New Roman';">d:/amp/www</span><span style="font-family: 宋体;">目录测试一下。</span><br><br>&nbsp;<br><br>六、安装<span style="font-family: 'Times New Roman';">mysql</span><br><br>1.<span style="font-family: 宋体;">双击一直点击</span><span style="font-family: 'Times New Roman';">next,</span><span style="font-family: 宋体;">选择</span><span style="font-family: 'Times New Roman';">Typical</span><br><br><img src="http://www.dudu.me/images/图片8.png" alt=""><br>2.<span style="font-family: 宋体;">安装中</span>…安装完成。<br><br>3.<span style="font-family: 宋体;">配置：</span><br><br><img src="http://www.dudu.me/images/图片9.png" alt=""><br><br>&nbsp;<br><br>&nbsp;<br><br>&nbsp;<br><br>&nbsp;<br><br><img src="http://www.dudu.me/images/图片9.png" alt=""><br>选择配置方式<br><br>Detailed Congiguration(<span style="font-family: 宋体;">手动精确配置</span><span style="font-family: 'Times New Roman';">)</span><br><br>Standard Configuration(<span style="font-family: 宋体;">标准配置</span><span style="font-family: 'Times New Roman';">)</span><br><br><img src="http://www.dudu.me/images/图片10.jpg" alt=""><br><br>选择<span style="font-family: 'Times New Roman';">Mysql</span><span style="font-family: 宋体;">服务器类型</span><br><br>Developer Machine(<span style="font-family: 宋体;">开发测试类，占用资源少）</span><br><br>Server Machine(<span style="font-family: 宋体;">服务器类型 占用资源较多）</span><br><br>Dedicated Mysql Server Machine(<span style="font-family: 宋体;">专门的数据库服务器，占有所有可用资源）</span><br><br>这里我们作为开发使用可以选择第一项。<br><img src="http://www.dudu.me/images/图片11.jpg" alt=""><br>选择<span style="font-family: 'Times New Roman';">Mysql</span><span style="font-family: 宋体;">数据库用途</span><br><br>Multifunctional Database(<span style="font-family: 宋体;">通用多功能型）</span><br><br>Transactional Database Only(<span style="font-family: 宋体;">专注于事务处理）</span><br><br>Non-Transactional Database Only(<span style="font-family: 宋体;">非事务处理型）</span><br><br>这里选择第一项。<br><br><img src="http://www.dudu.me/images/图片12.jpg" alt=""><br>选择好<span style="font-family: 'Times New Roman';">msyql</span><span style="font-family: 宋体;">的存放目录</span><br><br><img src="http://www.dudu.me/images/图片13.png" alt=""><br><br>Mysql同时连接的数目<br><br>Decision Support(20<span style="font-family: 宋体;">个左右）</span><br><br>Online Transaction Processing(500<span style="font-family: 宋体;">个左右）</span><br><br>Manual Setting(<span style="font-family: 宋体;">手动设置）</span><br><br>这里选择第一项。<br><img src="http://www.dudu.me/images/图片14.png" alt=""><br>是否启用<span style="font-family: 'Times New Roman';">TCP/IP</span><span style="font-family: 宋体;">连接，如果不启用，就只能在自己机器上访问</span><span style="font-family: 'Times New Roman';">mysql</span><br><br>mysql<span style="font-family: 宋体;">端口设定</span><br><img src="http://www.dudu.me/images/图片15.png" alt=""><br>选择语言编码<br><img src="http://www.dudu.me/images/图片16.png" alt=""><br>选择服务名，勾选环境变量<br><img src="http://www.dudu.me/images/图片17.jpg" alt=""><br>修改 <span style="font-family: 'Times New Roman';">root </span><span style="font-family: 宋体;">用户（超级管理员）的密码</span> (<span style="font-family: 宋体;">开发用别设置太复杂了 </span><span style="font-family: 'Times New Roman';">123456</span><span style="font-family: 宋体;">就行了</span><span style="font-family: 'Times New Roman';">)</span><br><br>Enable root access from remote machines <span style="font-family: 宋体;">是否允许</span><span style="font-family: 'Times New Roman';">root</span><span style="font-family: 宋体;">用户在其它远程的机器上登录</span><br><br>Create An Anonymous Account <span style="font-family: 宋体;">是否创建匿名用户（匿名用户可以连接数据库，但不能操作数据库）</span><br><br>&nbsp;<br><br>3. 在<span style="font-family: 'Times New Roman';">php.ini</span><span style="font-family: 宋体;">中加载</span><span style="font-family: 'Times New Roman';">mysql</span><span style="font-family: 宋体;">模块</span><span style="font-family: 'Times New Roman';">:</span><br><br>;extension=php_mysql.dll<br><br>; extension=php_pdo_mysql.dll<br><br>;extension=php_mbstring.dll<br><br>; extension=php_mysqli.dll<br><br>去掉这几个前面的分号<br><br>php安装的小笔记：<br><br>&nbsp;<br><br>Apache的配置文件：Apache安装目录/conf/httpd.conf<br><br>安装完成之后浏览器输入：<a href="http://127.0.0.1" target="_blank" rel="external">http://127.0.0.1</a> 或者<br><a href="http://localhost" target="_blank" rel="external">http://localhost</a><br>更改web根目录：<br>更改Apache配置文件<br>DocumentRoot “D:/amp/www”<br>&lt;Directory “D:/amp/www”&gt;<br>改完之后保存并且重新启动Apache才能生效<br>PHP的配置文件：<br>PHP的安装目录/php.ini-development 或者 php.ini-<br>production<br><br>创建PHP配置文件：<br>php.ini-development =&gt; php.ini 或者<br>php.ini-production =&gt; php.ini<br>开启PHP扩展：<br>extension=php_gd2.dll<br>extension=php_mbstring.dll<br>extension=php_mysql.dll<br>extension=php_mysqli.dll<br>指定PHP扩展的目录：<br>extension_dir = “D:/amp/php/ext”<br>配置Apache支持PHP：<br>LoadModule php5_module D:/amp/php/php5apache2_2.dll<br>PHPIniDir “D:/amp/php”<br>AddType application/x-httpd-php .php .phtml<br>配置目录缺省首页：<br>DirectoryIndex index.html =&gt; DirectoryIndex index.html<br>index.php<br>上传临时目录设定：<br>upload_tmp_dir = “D:/amp/temp/upload”<br>设置可上传的文件大小：<br>upload_max_filesize = 200M<br>SESSION保存目录：<br>session.save_path = “D:/amp/temp/session”<br>测试mysql连接：<br><br>$conn = mysql_connect(‘127.0.0.1’, ‘root’, ‘123456’);<br>if($conn){<br>echo ‘连接成功’;<br>} else {<br>echo ‘连接失败’;<br>}<br><br>将以上代码保存为connect.php放于web根目录，然后去访问<br>安装PHPmyadmin：<br><br></div>
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2012/06/01/javasrript-e6-96-87-e6-9c-ac-e5-8c-ba-e5-9f-9f-e6-b8-90-e6-b8-90-e6-98-be-e7-a4-ba-e5-92-8c-e6-b8-90-e6-b8-90-e6-b6-88-e5-a4-b1-e7-9a-84-e7-ae-80-e5-8d-95-e6-95-88-e6-9e-9c/">
+                javasrript文本区域渐渐显示和渐渐消失的简单效果
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2012-06-01
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/学习笔记/">学习笔记</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>来个JS的小程序，练练手，我们要实现的效果是文本区域渐渐显示和渐渐消失的简单效果</p>
+<h4 id="来个预览，给大家看看效果先">来个预览，给大家看看效果先</h4><h1 id="点击查看"><a href="http://dudu.me/javascript/4.html" title="javascript" target="_blank" rel="external">点击查看</a></h1><p>&lt;body&gt;<br>&lt;form id=”show-but”&gt;<br>&lt;input  onclick=”show()” type=”button” value=”开启”/&gt;<br>&lt;input  onclick=”hide()” type=”button” value=”关闭”/&gt;<br>&lt;/form&gt;<br>&lt;div id=”show-box” style=”width:300px; height:0px; background:#999; margin-top:50px;”&gt;要显示的内容&lt;/div&gt;<br>&lt;script type=”text/javascript”&gt;</p>
+<p>var width = 300;<br>var height = 300;<br>var offset = 10;<br>var width2=1;<br>var height2 = 1;</p>
+<p>//显示文本区<br>function show(){<br>var show_d= getById(‘show-box’);<br>height2 += offset;<br>width2 += offset;<br>show_d.style.height = height2 + ‘px’;<br>show_d.style.width = width2 + ‘px’;<br>if(height2&lt;=300&amp;&amp;width2&lt;=300){<br>show_d.style.display = ‘’;<br>}else{height2=300;width2=300}<br>window.setTimeout(show, 60);<br>}<br>//关闭文本区<br>function hide(){</p>
+<p>var target = getById(‘show-box’);</p>
+<p>height -= offset;</p>
+<p>target.style.height = height + ‘px’;</p>
+<p>if(height &lt; 5){<br>target.style.display = ‘none’;<br>}</p>
+<p>window.setTimeout(hide, 10);<br>}</p>
+<p>&lt;/script&gt;<br>&lt;/body&gt;</p>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2012/05/31/javascript-e5-ae-9a-e6-97-b6-e5-99-a8-e8-be-93-e5-87-ba-e5-8a-a8-e6-80-81-e6-97-b6-e9-97-b4/">
+                javascript定时器输出动态时间
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2012-05-31
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/学习笔记/">学习笔记</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>首先我们来介绍几个关于定时器的对象和属性：</p>
+<h3 id="1-setInterval（）">1.setInterval（）</h3><p>var a = window.setInterval(‘alert(1)’, 2000);<br>window.clearInterval(a);</p>
+<p>setInterval（a，b）中的a代表要执行的内容，b中代表隔多久执行一次，注意：改对象的执行是循环的，类似于一个for循环，而且是一直循环的。</p>
+<h3 id="2-setTimeout（）">2.setTimeout（）</h3><p>window.setTimeout(‘open(“<a href="http://www.baidu.com" target="_blank" rel="external">http://www.baidu.com</a>“)’, 2000);</p>
+<p>setTimeout（a,b）中的a,b的意义和setInterval（）一样，但是和setInterval（）不同的是，setTimeout（）不会循环执行，意思就是这里的百度只会弹出一次。</p>
+<p>下面我们来一个小例子：</p>
+<p>// 在页面弹出1 2 3 。。 10，隔2秒钟弹出一个值，弹完10之后不就弹了</p>
+<p>&lt;script type=”text/javascript”&gt;</p>
+<p>var al,i=1;<br>al = window.setInterval(function(){<br>alert(i);<br>if(i&gt;=10){<br>window.clearInterval(al);<br>}<br>i++;<br>},2000);</p>
+<p>&lt;/script&gt;</p>
+<h3 id="3-document-getElementById()">3.document.getElementById()</h3><p>document.getElementById()是获取标签的id号，例如：</p>
+<p>&lt;div id=”timer2”&gt;&lt;/div&gt;</p>
+<p>document.getElementById(‘time2’);//获取time2的这个标签对应的id号</p>
+<h3 id="4-etElementsByTagName()">4.etElementsByTagName()</h3><p>document.getElementsByTagName() 方法会使用指定的标签名返回所有的元素（作为一个节点列表），这些元素是您在使用此方法时所处的元素的后代（意思就是获取对应的标签名）例如：</p>
+<p>document.getElementsByTagName(‘a’)获取所有的a标签</p>
+<h3 id="5-_getElementsByName()_获取html中标签的name值_例如：">5. getElementsByName() 获取html中标签的name值 例如：</h3><p>&lt;p name=p1&gt;&lt;/p&gt;</p>
+<p>doxument.getElementsByName(‘p1’); 获取p标签中的name属性 注意：div标签是木有name属性的，甚用！</p>
+<h3 id="6-innerHTML_取得元素中的所有html代码">6.innerHTML 取得元素中的所有html代码</h3><p>例如:</p>
+<p>&lt;h1 align=”center” id=”title”&gt;这是标题1&lt;span&gt;333&lt;/span&gt;&lt;/h1&gt;</p>
+<p>alert(title.innerHTML);//弹出id为title的标签的HTML</p>
+<p>// 定时器：输出动态时间 2012-05-28 21:17:30</p>
+<p>&lt;p id=”timer”&gt;&lt;/p&gt;</p>
+<p>&lt;div id=”timer2”&gt;&lt;/div&gt;</p>
+<p>&lt;script type=”text/javascript”&gt;</p>
+<p>function showTime(id){<br>document.getElementById(id).innerHTML = localeDate();<br>setTimeout(function(){showTime(id)},1000);<br>}<br>showTime(‘timer’);<br>showTime(‘timer2’);</p>
+<p>//获取本地时间 输出2012-05-28 21:17:30 这种的时间格式</p>
+<p>function localeDate(){<br>var d = new Date();<br>var year = d.getFullYear();<br>var month = d.getMonth();<br>var date = d.getDate();<br>var hour = d.getHours();<br>var minute = d.getMinutes();<br>var second = d.getSeconds();<br>return year+’-‘+add0(month+1)+’-‘+add0(date)+’ ‘<br>+add0(hour)+’:’+add0(minute)+”:”+add0(second);<br>}<br>&lt;/script&gt;</p>
+<p><a href="http://www.dudu.me/javascript/7.html" title="javascript" target="_blank" rel="external">点击预览</a></p>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2012/05/28/e9-81-8d-e5-8e-86-e5-af-b9-e8-b1-a1for-in/">
+                遍历对象for in
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2012-05-28
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/学习笔记/">学习笔记</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>&nbsp;</p>
+<p>&lt;script&gt;</p>
+<p>// 遍历对象for in<br>var arr = [1,2,3];<br>for(qqq in arr){<br>alert(arr[qqq]);<br>}</p>
+<p>var peson={name:’zhangshan’,sex:’男’,other:{other:’测试’}};<br>for(var k in peson){<br>if(typeof peson[k] == ‘object’){<br>for(var k2 in peson[k]){<br>alert(k2 + ‘:’ + peson[k][k2]);<br>}<br>}else{<br>alert(k +’:’+peson[k]);<br>}<br>}</p>
+<p>&lt;/script&gt;</p>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2012/05/28/javascript-e5-b7-a5-e5-8e-82-e6-a8-a1-e5-bc-8f-e5-92-8c-e6-9e-84-e9-80-a0-e5-87-bd-e6-95-b0/">
+                javascript工厂模式和构造函数
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2012-05-28
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/学习笔记/">学习笔记</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>工厂模式主要是为创建对象提供过渡接口，以便将创建对象的具体过程屏蔽隔离起来，达到提高灵活性的目的，工厂模式一般用在比较复杂的程序里面，</p>
+<p>&lt;script type=”text/javascript”&gt;<br>// Object<br>var o = new Object();<br>//alert(typeof o);  // object</p>
+<p>o.name = ‘one’;<br>o.height = ‘170’;<br>o.say = function(m){<br>//alert(333);<br>alert(‘大家好，我是：’ + this.name + m);<br>};</p>
+<p>document.write(o.name);<br>//o.say(‘今天天气真好’);<br>//o.say(‘123’);</p>
+<p>// 工厂模式 创建对象<br>function factory(name, height){<br>var peson = new Object();<br>peson.name = name;<br>peson.height = parseInt(height);<br>peson.say = function(){<br>alert(‘hello, my name is ‘ + this.name);<br>}<br>return peson;<br>}</p>
+<p>var zhangsan = factory(‘zhangsan’, 168);<br>//alert(zhangsan.height);<br>//zhangsan.say();<br>var lisi = factory(‘lisi’, 178);<br>//lisi.say();</p>
+<p>var arr = new Array();<br>//alert(arr.constructor); // 获取对象的构造函数<br>var obj = new Object();</p>
+<p>// 这种判断数组的方法是错误的<br>if (typeof obj == ‘object’) {<br>document.write(‘是数组&lt;br/&gt;’);<br>} else{<br>document.write(‘不是数组&lt;br/&gt;’);<br>}</p>
+<p>// 正确的判断数组的方法<br>if(typeof arr==’object’ &amp;&amp; arr.constructor == Array){<br>document.write(‘arr是数组&lt;br/&gt;’);<br>}else{<br>document.write(‘不是数组&lt;br/&gt;’);<br>}</p>
+<p>// 构造函数 - 在对象实例化的时候就调用的函数</p>
+<p>function peson(name, height){<br>this.name = name;<br>this.height = height;<br>this.say = function(){<br>alert(‘hello my name is ‘ + this.name);<br>}<br>// 还可以再构造函数里面去执行一点别的东西<br>}</p>
+<p>var p1 = new peson(‘zhangsan’, 168);<br>//alert(p1.name);<br>//p1.say();</p>
+<p>var p2 = new peson(‘lisi’, 170);<br>//p2.say();</p>
+<p>// json<br>var json = {};<br>//alert(json);<br>var zhangsan = {<br>name : ‘zhangsan’,<br>height:167,<br>say:function(){alert(‘my name is ‘ + this.name);}<br>};<br>//alert(zhangsan.name);<br>//zhangsan.say();</p>
+<p>// json - 存储数据<br>var arr = [‘zhangsan’,’email@qq.com’,’13498778898’];<br>// 数组缺点：下标只能是数字（0-n）</p>
+<p>var peson = {name:’zhangsan’,email:’email@qq.com’,mobile:’13498778898’,ext:{test:’tttt’}};</p>
+<p>// 如果要读取张三的手机<br>arr[2];<br>peson.mobile; // peson[‘mobile’]<br>//alert(peson.ext.test);</p>
+<p>// 遍历对象for in<br>var arr = [1,2,3];<br>for(qqq in arr){<br>//alert(arr[qqq]);<br>}<br>/<em><br>for(var i=0;i&lt;arr.length;i++){<br>alert(arr[i]);<br>}</em>/<br>for(var k in peson){<br>if(typeof peson[k] == ‘object’){<br>for(var k2 in peson[k]){<br>alert(k2 + ‘:’ + peson[k][k2]);<br>}<br>}else{<br>alert(k +’:’+peson[k]);<br>}<br>}</p>
+<p>&lt;/script&gt;</p>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2012/05/24/e5-86-92-e6-b3-a1-e6-b3-95-e6-8e-92-e5-ba-8f/">
+                冒泡法排序
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2012-05-24
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/学习笔记/">学习笔记</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>&lt;script type=text/javascript&gt;</p>
+<p>// 冒泡法排序<br>var arr = [1,4,33,5,88,212,6];</p>
+<p>function asort(arr, type){<br>var l = arr.length;<br>for(var i=0; i&lt;l; i++){<br>for(var j=i+1; j&lt;l; j++){</p>
+<p>if(type == 1){<br>if(arr[i] &gt; arr[j]){<br>var t = arr[i];<br>arr[i] = arr[j];<br>arr[j] = t;<br>}<br>}else{<br>if(arr[i] &lt; arr[j]){<br>var t = arr[i];<br>arr[i] = arr[j];<br>arr[j] = t;<br>}<br>}<br>}<br>}<br>return arr;<br>}<br>alert(asort(arr, 2));</p>
+<p>&lt;/script&gt;</p>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2012/05/24/jacascript-e5-ae-9e-e7-8e-b0-e6-9d-a8-e8-be-89-e4-b8-89-e8-a7-92-e7-9a-84-e8-be-93-e5-87-ba/">
+                jacascript实现杨辉三角的输出
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2012-05-24
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/学习笔记/">学习笔记</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>&lt;script type=”text/javascript”&gt;<br>/*<br>杨辉三角<br>1<br>1  1<br>1  2  1<br>1  3  3  1<br>1  4  6  4  1<br>1  5 10 10  5 1</p>
+<p>分析:<br>1.每一行的第一个和最后一个为1<br>2.除了第一个和最后一个，当前的那个数等于它正上方和左上方的数相加<br>3.类似99乘法表<br>*/<br>// 新建一个数组<br>var n = 20;<br>var arr = [];<br>for(var k=0; k&lt;n; k++){<br>arr[k] = [];<br>}</p>
+<p>for(var i=0; i&lt;n; i++){<br>for(var j=0; j&lt;=i; j++){<br>if(j==0 || i==j){<br>arr[i][j] = 1;<br>}else{<br>arr[i][j] = arr[i-1][j] + arr[i-1][j-1]<br>}<br>document.write(arr[i][j] + ‘&amp;nbsp;’);<br>}<br>document.write(‘&lt;br/&gt;’);<br>}</p>
+<p>&lt;/script&gt;</p>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2012/05/22/javascript-e4-b8-admath-e9-9d-99-e6-80-81-e5-af-b9-e8-b1-a1-e7-9a-84-e4-bd-bf-e7-94-a8/">
+                javascript中Math静态对象的使用
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2012-05-22
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/学习笔记/">学习笔记</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>&lt;script type=”text/javascript”&gt;<br>// Math  静态对象，使用的时候不需要new,直接通过Math.方法()<br>document.write(Math.PI + “&lt;br/&gt;”); // 圆周率</p>
+<p>document.write(Math.SQRT1_2  + “&lt;br/&gt;”); //1/2的平方根</p>
+<p>document.write(Math.SQRT2  + “&lt;br/&gt;”); // 2的平方根</p>
+<p>// 方法：<br>//ceil(数值)  大于等于该数值的最小整数 - 进一取整<br>document.write(Math.ceil(3)  + “&lt;br/&gt;”); // 3<br>document.write(Math.ceil(3.1)  + “&lt;br/&gt;”); // 4<br>document.write(Math.ceil(3.5)  + “&lt;br/&gt;”); // 4<br>document.write(Math.ceil(3.9)  + “&lt;br/&gt;”); // 4<br>document.write(Math.ceil(4.0)  + “&lt;br/&gt;”); // 4</p>
+<p>//floor(数值)  小于等于该数值的最 - 退一取整<br>document.write(Math.floor(3)  + “&lt;br/&gt;”); // 3<br>document.write(Math.floor(3.1)  + “&lt;br/&gt;”); // 3<br>document.write(Math.floor(3.5)  + “&lt;br/&gt;”); // 3<br>document.write(Math.floor(3.9)  + “&lt;br/&gt;”); // 3<br>document.write(Math.floor(4.0)  + “&lt;br/&gt;”); // 4<br>// 类似parseInt();</p>
+<p>//min(数值1,数值2)  最小值<br>document.write(Math.min(3,5,1,-7)  + “&lt;br/&gt;”);</p>
+<p>//max(数值1,数值2)  最大值<br>document.write(Math.max(3,5,1,-7)  + “&lt;br/&gt;”);</p>
+<p>//pow(数值1,数值2)  数值1的数值2次方<br>document.write(Math.pow(2,5)  + “&lt;br/&gt;”);</p>
+<p>//random()  0倒1的随机数<br>document.write(Math.random()  + “&lt;br/&gt;”);<br>// RGB(255,255,255)</p>
+<p>// 怎么产生一个0-255之间的数<br>var r = Math.floor(Math.random() <em> 256);<br>var g = Math.floor(Math.random() </em> 256);<br>var b = Math.floor(Math.random() * 256);<br>document.write(‘&lt;span style=”color:rgb(‘+r+’,’+g+’,’+b+’)”&gt;你好&lt;/span&gt;’);</p>
+<p>var name = ‘张三’;<br>document.write(‘尊敬的用户:’+name+’你好！’);<br>document.write(“&lt;br/&gt;”);</p>
+<p>//round(数值)  最接近该数值的整数 - 四舍五入<br>document.write(Math.round(3.5)  + “&lt;br/&gt;”);<br>document.write(Math.round(3.1)  + “&lt;br/&gt;”);</p>
+<p>//sqrt(数值)  开平方根<br>document.write(Math.sqrt(5)  + “&lt;br/&gt;”);</p>
+<p>//abs()  绝对值<br>document.write(Math.abs(-5)  + “&lt;br/&gt;”);</p>
+<p>function rand(start, end){</p>
+<p>}</p>
+<p>&lt;/script&gt;</p>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2012/05/19/e5-88-a4-e6-96-ad-e9-97-b0-e5-b9-b4-e5-92-8c-e5-b9-b3-e5-b9-b4-e7-9a-84-e5-b0-8f-e7-a8-8b-e5-ba-8f-e5-88-a4-e6-96-ad-e6-97-a5-e6-9c-9f-e6-98-af-e5-90-a6-e5-90-88-e6-b3-95/">
+                判断闰年和平年的小程序|判断日期是否合法
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2012-05-19
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/学习笔记/">学习笔记</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>   来一个小程序练习下，这里主要是2个小的程序<br>1.写一个判断闰年函数，函数名为：isLeapYear(year),传递一个年份year作为参数，如果是闰年返回布尔值的true,否则返回false。</p>
+<p>2.写一个校验日期的函数checkDate(y,m,d),传入3个参数分别为年、月、日。校验出这个日期是否合法，合法返回true，否则返回false<br>提示：需要判断闰年，月份范围，日期范围等，可以使用题目2中写好的闰年判断函数，注意区分好大月和小于还有特殊月。</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<pre escaped="true" lang="javascript">&lt;script type="text/javascript"&gt;
+//闰年
+var f=new Date();
+var year = f.getFullYear();
+isLeapYear(year);
+function isLeapYear(year){
+ if(year%400==0||year%4==0&amp;&amp;year%100!==0){
+ document.write(year+"这是一个&lt;b&gt;闰&lt;/b&gt;年");
+ }else{document.write(year+"这是一个&lt;b&gt;平&lt;/b&gt;年");}
+}
+document.write("&lt;br/&gt;");
+//校验日期
+var y=f.getFullYear();
+var m=f.getMonth()+1;
+var d=f.getDate();
+var h=y%400==0||y%4==0&amp;&amp;y%100!==0&amp;&amp;m&gt;=0&amp;&amp;(d&gt;=0&amp;&amp;d&lt;=31)&amp;&amp;y&gt;=1870;//判断是不是闰年
+var k=y&gt;=1870&amp;&amp;h==0?1:0;//判断是不是平年并且判断输入的年是不是大余1870年（忘记年是从哪年开始的了，就搞了个1870年）
+var z=(m==2&amp;&amp;d&lt;=29)||((m==1||m==3||m==5||m==7||m==8||m==10||m==12)&amp;&amp;d&lt;=31)||((m==4||m==6||m==9||m==11)&amp;&amp;d&lt;=30&amp;&amp;d&gt;=1);//判断闰年的每月的日期
+var p=(m==2&amp;&amp;d&lt;=28)||((m==1||m==3||m==5||m==7||m==8||m==10||m==12)&amp;&amp;d&lt;=31)||((m==4||m==6||m==9||m==11)&amp;&amp;d&lt;=30&amp;&amp;d&gt;=1);//判断平年的每月的日期
+document.write(checkDate(y,m,d));
+function checkDate(y,m,d){
+ if(h)
+ {
+  if(z){
+  return true;
+  }else{return false;}
+ }if(p==true&amp;&amp;k){
+  return true;
+  }else{return false;}
+}
+&lt;/script&gt;</pre>
+<pre escaped="true" lang="javascript"> </pre>
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+  </div>
+
+  
+  <div class="pagination">
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo;</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/4/">&raquo;</a>
+  </div>
+
+
+        </div>
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      <div class="site-overview">
+        <div class="site-author motion-element">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="biny" />
+          <p class="site-author-name">biny</p>
+        </div>
+        <p class="site-description motion-element">yang fangjun’s blog | oc | objective c | bi</p>
+        <div class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">74</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">分类</span>
+              
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">1</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </div>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+      </div>
+
+      
+
+    </div>
+  </div>
+
+
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp; 
+  2015
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">biny</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.content img').each(function () {
+        var $image = $(this);
+        var $imageWrapLink = $image.parent('a');
+
+        if ($imageWrapLink.size() < 1) {
+          $imageWrapLink = $image.wrap('<a href="' + this.getAttribute('src') + '"></a>').parent('a');
+        }
+        $imageWrapLink.addClass('fancybox');
+      });
+    });
+    $('.fancybox').fancybox({
+      helpers: {
+        overlay: {
+          locked: false
+        }
+      }
+    });
+  </script>
+
+
+  <script type="text/javascript">
+  function hasMobileUA () {
+    var nav = window.navigator;
+    var ua = nav.userAgent;
+    var pa = /iPad|iPhone|Android|Opera Mini|BlackBerry|webOS|UCWEB|Blazer|PSP|IEMobile|Symbian/g;
+
+    return pa.test(ua);
+  }
+
+  function isDesktop () {
+    return screen.width > 991 && !hasMobileUA();
+  }
+
+  function isTablet () {
+    return screen.width < 992 && screen.width > 767 && hasMobileUA();
+  }
+
+  function isMobile () {
+    return screen.width < 767 && hasMobileUA();
+  }
+
+  function escapeSelector (selector) {
+    return selector.replace(/[!"$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, "\\$&")
+  }
+</script>
+
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" id="motion.global">
+  $(document).ready(function () {
+    var body = $('body');
+    var isSidebarVisible = false;
+    var sidebarToggle = $('.sidebar-toggle');
+    var sidebarToggleLine1st = $('.sidebar-toggle-line-first')
+    var sidebarToggleLine2nd = $('.sidebar-toggle-line-middle');
+    var sidebarToggleLine3rd = $('.sidebar-toggle-line-last');
+    var sidebar = $('.sidebar');
+
+    var SIDEBAR_WIDTH = '320px';
+    var SIDEBAR_DISPLAY_DURATION = 300;
+
+    var sidebarToogleLineStatusInit = {width: '100%', opacity: 1, left: 0, rotateZ: 0, top: 0};
+
+    var sidebarToggleLine1stStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine1stStatusArrow = {width: '50%', rotateZ: '-45deg', top: '2px'};
+    var sidebarToogleLine1stStatusClose = {width: '100%', rotateZ: '-45deg', top: '5px'};
+
+    var sidebarToggleLine2ndStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine2ndStatusArrow = {width: '90%'};
+    var sidebarToogleLine2ndStatusClose = {opacity: 0};
+
+    var sidebarToggleLine3rdStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine3rdStatusArrow = {width: '50%', rotateZ: '45deg', top: '-2px'};
+    var sidebarToogleLine3rdStatusClose = {width: '100%', rotateZ: '45deg', top: '-5px'};
+
+    LogoAndMenuMotion();
+    sidebatToggleMotion();
+    postsListMotion();
+    backToTopMotion();
+
+
+    $(document)
+      .on('sidebar.isShowing', function () {
+        isDesktop() && body.velocity(
+          {paddingRight: SIDEBAR_WIDTH},
+          SIDEBAR_DISPLAY_DURATION
+        );
+        sidebarContentMotion();
+      })
+      .on('sidebar.isHiding', function () {});
+
+    function LogoAndMenuMotion() {
+      $.Velocity.RunSequence([
+        { e: $('.brand'), p: { opacity: 1 }, o: { duration: 100 } },
+        { e: $('.logo'), p: { opacity: 1, top: 0 }, o: { duration: 50} },
+        
+        { e: $('.logo-line-before i'), p: { translateX: "100%" }, o: { duration: 500, sequenceQueue: false } },
+        { e: $('.logo-line-after i'), p: { translateX: "-100%" }, o: { duration: 500, sequenceQueue: false } },
+        
+        { e: $('.site-title'), p: { opacity: 1, top: 0 }, o: { duration: 200 } }
+      ]);
+      $('.menu-item').velocity('transition.slideDownIn', {display: null});
+    }
+
+
+    function backToTopMotion () {
+      var b2top = $('.back-to-top');
+      b2top.on('click', function () {
+        body.velocity('scroll');
+      });
+    }
+
+    function sidebarShowMotion () {
+
+      sidebarToggleLine1st.velocity(sidebarToogleLine1stStatusClose);
+      sidebarToggleLine2nd.velocity(sidebarToogleLine2ndStatusClose);
+      sidebarToggleLine3rd.velocity(sidebarToogleLine3rdStatusClose);
+
+      sidebar.velocity({width: SIDEBAR_WIDTH}, {
+        display: 'block',
+        duration: SIDEBAR_DISPLAY_DURATION,
+        complete: function () {
+          sidebar.addClass('sidebar-active');
+          sidebar.trigger('sidebar.didShow');
+        }
+      });
+      sidebar.trigger('sidebar.isShowing');
+    }
+
+    function sidebarHideMotion () {
+      isDesktop() && body.velocity({paddingRight: 0});
+      sidebar.velocity('reverse');
+
+      sidebarToggleLine1st.velocity(sidebarToggleLine1stStatusInit);
+      sidebarToggleLine2nd.velocity(sidebarToggleLine2ndStatusInit);
+      sidebarToggleLine3rd.velocity(sidebarToggleLine3rdStatusInit);
+
+      sidebar.removeClass('sidebar-active');
+      sidebar.trigger('sidebar.isHiding');
+    };
+
+    function sidebarContentMotion () {
+      $('.sidebar .motion-element').velocity(
+        'transition.slideRightIn',
+        {stagger: 50, drag: true}
+      );
+    }
+
+    function postsListMotion () {
+      var postMotionOptions = window.postMotionOptions || {stagger: 300, drag: true};
+      $('.post').velocity('transition.slideDownIn', postMotionOptions);
+    }
+
+    function sidebatToggleMotion () {
+      sidebarToggle.on('click', function () {
+        isSidebarVisible ? sidebarHideMotion() : sidebarShowMotion();
+        isSidebarVisible = !isSidebarVisible;
+      });
+
+      sidebarToggle.hover(function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusArrow);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusArrow);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusArrow);
+      }, function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusInit);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusInit);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusInit);
+      });
+    }
+  });
+
+</script>
+
+
+
+
+
+  
+
+  
+
+  
+  
+  
+
+  
+
+
+
+
+  
+</body>
+</html>

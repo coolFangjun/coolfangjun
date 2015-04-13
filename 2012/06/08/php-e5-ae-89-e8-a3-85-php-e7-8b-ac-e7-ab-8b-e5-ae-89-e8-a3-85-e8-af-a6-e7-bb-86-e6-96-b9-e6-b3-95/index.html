@@ -1,0 +1,834 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.2"/>
+
+
+    <meta name="description" content="yang fangjun’s blog | oc | objective c | bi" />
+
+
+
+
+    <meta name="keywords" content="Hexo,next" />
+
+
+
+
+
+    <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.2" />
+
+
+
+
+  <title> php安装-php独立安装详细方法 // 嘟嘟blog </title>
+</head>
+
+<body>
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">嘟嘟blog</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+
+  <ul id="menu" class="menu">
+     
+    
+      
+      <li class="menu-item menu-item-home">
+        <a href="/">
+          <i class="menu-item-icon icon-home"></i> <br />
+          首页
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-archives">
+        <a href="/archives">
+          <i class="menu-item-icon icon-archives"></i> <br />
+          归档
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-tags">
+        <a href="/tags">
+          <i class="menu-item-icon icon-tags"></i> <br />
+          标签
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-about">
+        <a href="/about">
+          <i class="menu-item-icon icon-about"></i> <br />
+          关于
+        </a>
+      </li>
+    
+  </ul>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              php安装-php独立安装详细方法
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2012-06-08
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/学习笔记/">学习笔记</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <div><br><br>一、准备好安装文件<br><br>1.apache_2.2.14-win32-x86-no_ssl.msi<br><br>2. mysql-5.5.13-win32.msi<br><br>3.php-5.3.1-Win32-VC6-x86.zip<br><br>4. phpMyAdmin-3.5.0-all-languages.7z<br><br>&nbsp;<br><br>以上文件也可以到官方网站去下载：<br><br>php<span style="font-family: 宋体;">官网：</span><a href="http://www.php.net" target="_blank" rel="external">http://www.php.net</a><br><br>mysql官网：<a href="http://www.mysql.com" target="_blank" rel="external">http://www.mysql.com</a><br><br>apache官网：<a href="http://www.apache.org/" target="_blank" rel="external">http://www.apache.org/</a><br><br>phpmyadmin官网 ：<a href="http://www.phpmyadmin.com/" target="_blank" rel="external">http://www.phpmyadmin.com/</a><br><br>&nbsp;<br><br>二、关闭占用<span style="font-family: 'Times New Roman';">80</span><span style="font-family: 宋体;">端口的软件（如其他</span><span style="font-family: 'Times New Roman';">web</span><span style="font-family: 宋体;">服务器、迅雷、</span><span style="font-family: 'Times New Roman';">QQ</span><span style="font-family: 宋体;">等），不然可能会导致启动失败。</span><br><br>&nbsp;<br><br>三、建立安装目录<br><br>&nbsp;<br><br>1.<span style="font-family: 宋体;">为了统一管理，我们可以把这些软件全部安装在</span><span style="font-family: 'Times New Roman';">D</span><span style="font-family: 宋体;">盘的同一个文件夹下面，假设文件夹名称为</span><span style="font-family: 'Times New Roman';">amp</span><br><br>&nbsp;<br><br>2.<span style="font-family: 宋体;">在</span><span style="font-family: 'Times New Roman';">amp</span><span style="font-family: 宋体;">文件夹里分别创建好</span><span style="font-family: 'Times New Roman';">php</span><span style="font-family: 宋体;">、</span><span style="font-family: 'Times New Roman';">apache</span><span style="font-family: 宋体;">、</span><span style="font-family: 'Times New Roman';">mysql</span><span style="font-family: 宋体;">文件夹</span><span style="font-family: 'Times New Roman';">,</span><span style="font-family: 宋体;">如图：</span><br><br><img src="http://www.dudu.me/images/图片1.png" alt=""><br>四、安装<span style="font-family: 'Times New Roman';">apache</span><br><br>&nbsp;<br><br>1.<span style="font-family: 宋体;">双击</span><span style="font-family: 'Times New Roman';">apache</span><span style="font-family: 宋体;">安装文件</span><span style="font-family: 'Times New Roman';">,</span><span style="font-family: 宋体;">出现如图：</span><br><br><img src="http://www.dudu.me/images/图片2.png" alt=""><br><br>&nbsp;<br><br>2.<span style="font-family: 宋体;">点击</span><span style="font-family: 'Times New Roman';">next,</span><span style="font-family: 宋体;">如图：</span><br><br><img src="http://www.dudu.me/images/图片3.png" alt=""><br><br>&nbsp;<br><br>3.<span style="font-family: 宋体;">选择</span><span style="font-family: 'Times New Roman';">I accept</span><span style="font-family: 宋体;">，点击</span><span style="font-family: 'Times New Roman';">next,</span><span style="font-family: 宋体;">出现介绍页面，再点击</span><span style="font-family: 'Times New Roman';">next</span><span style="font-family: 宋体;">如图：</span><br><br><img src="http://www.dudu.me/images/图片4.png" alt=""><br><br>&nbsp;<br><br>4.<span style="font-family: 宋体;">这一步使用默认选项就行了，默认作为一个服务从</span><span style="font-family: 'Times New Roman';">80</span><span style="font-family: 宋体;">端口启动。点击</span><span style="font-family: 'Times New Roman';">next</span><br><br><img src="http://www.dudu.me/images/图片5.png" alt=""><br><br>&nbsp;<br><br>5.<span style="font-family: 宋体;">如果要自定义目录，这里我们可以选择下面那个选项（</span><span style="font-family: 'Times New Roman';">custom</span><span style="font-family: 宋体;">），点击</span><span style="font-family: 'Times New Roman';">next</span><span style="font-family: 宋体;">，出现选择组件和目录步骤，点击</span><span style="font-family: 'Times New Roman';">chang</span><span style="font-family: 宋体;">按钮选择我们准备好的安装目录（</span><span style="font-family: 'Times New Roman';">D:/amp/apache</span><span style="font-family: 宋体;">）</span><br><br><img src="http://www.dudu.me/images/图片6.png" alt=""><br><br>&nbsp;<br><br>6.<span style="font-family: 宋体;">点击</span><span style="font-family: 'Times New Roman';">next,</span><span style="font-family: 宋体;">再点击</span><span style="font-family: 'Times New Roman';">install</span><span style="font-family: 宋体;">按钮完成安装。安装完成之后右下角任务栏会多一个任务图标</span><span style="font-family: 'Times New Roman';">,</span><span style="font-family: 宋体;">小三角形是绿色的代表</span><span style="font-family: 'Times New Roman';">apache</span><span style="font-family: 宋体;">启动成功了。</span><br><br><img src="http://www.dudu.me/images/图片7.png" alt=""><br><br>&nbsp;<br><br>7.<span style="font-family: 宋体;">打开浏览器输入</span><a href="http://127.0.0.1" target="_blank" rel="external">http://127.0.0.1</a> 或者<a href="http://localhost" target="_blank" rel="external">http://localhost</a> 进行访问。如果看到<span style="font-family: 'Times New Roman';">it works</span><span style="font-family: 宋体;">就说明</span><span style="font-family: 'Times New Roman';">apache</span><span style="font-family: 宋体;">服务启动成功。</span><br><br>&nbsp;<br><br>8.<span style="font-family: 宋体;">找到文件夹</span>D:\amp\apache\htdocs 里面有一个<span style="font-family: 'Times New Roman';">index.html </span><span style="font-family: 宋体;">用编辑器打开，就可以看到这个就是我们刚刚访问到的文件。试着改变里面的内容，再去访问</span><a href="http://127.0.0.1" target="_blank" rel="external">http://127.0.0.1</a> 或者<a href="http://localhost" target="_blank" rel="external">http://localhost</a> 看看有什么不同。<br><br>&nbsp;<br><br>9:<span style="font-family: 宋体;">改变</span><span style="font-family: 'Times New Roman';">web</span><span style="font-family: 宋体;">服务器主目录：在</span><span style="font-family: 'Times New Roman';">D:/amp</span><span style="font-family: 宋体;">目录下新建一个</span><span style="font-family: 'Times New Roman';">www</span><span style="font-family: 宋体;">目录作为我们的</span><span style="font-family: 'Times New Roman';">web</span><span style="font-family: 宋体;">主目录。</span><br><br>打开<span style="font-family: 'Times New Roman';">apache</span><span style="font-family: 宋体;">的配置文件（</span><span style="font-family: 'Times New Roman';">D:/amp/apache/conf/httpd.conf</span><span style="font-family: 宋体;">）</span><br><br>177<span style="font-family: 宋体;">行：将 </span>DocumentRoot “D:/amp/apache/htdocs”  改为<br><br>DocumentRoot “D:/amp/www<br><br>204<span style="font-family: 宋体;">行：将</span>&lt;Directory “D:/amp/apache/htdocs”&gt;” 改为：<br><br>&lt;Directory “D:/amp/www”&gt;<br><br>重启<span style="font-family: 'Times New Roman';">apache</span><span style="font-family: 宋体;">，</span><span style="font-family: 'Times New Roman';">web</span><span style="font-family: 宋体;">服务器的主目录就从原来的</span>D:/amp/apache/htdocs变成了D:/amp/www<span style="font-family: 宋体;">了</span><span style="font-family: 'Times New Roman';">,</span><span style="font-family: 宋体;">在</span>D:/amp/www<span style="font-family: 宋体;">目录下新建一个</span><span style="font-family: 'Times New Roman';">index.html</span><span style="font-family: 宋体;">写点测试内容，再访问</span><a href="http://127.0.0.1" target="_blank" rel="external">http://127.0.0.1</a>。<br><br>&nbsp;<br><br>10.<span style="font-family: 宋体;">到此为止</span><span style="font-family: 'Times New Roman';">apache</span><span style="font-family: 宋体;">安装好了，主目录也配置好了，接下来去安装</span><span style="font-family: 'Times New Roman';">PHP</span><br><br>&nbsp;<br><br>&nbsp;<br><br>五、安装<span style="font-family: 'Times New Roman';">PHP</span><br><br>&nbsp;<br><br>1. php<span style="font-family: 宋体;">不需要像</span><span style="font-family: 'Times New Roman';">apache</span><span style="font-family: 宋体;">一样一步步安装。只需要把压缩包解压到我们的</span><span style="font-family: 'Times New Roman';">php</span><span style="font-family: 宋体;">目录（</span><span style="font-family: 'Times New Roman';">D:/amp/php</span><span style="font-family: 宋体;">）就行了。</span><br><br>2. 配置：<br><br>2.1 在<span style="font-family: 'Times New Roman';">php</span><span style="font-family: 宋体;">的安装目录找到</span>php.ini-development、php.ini-production两个文件。随便复制一个文件并改名为<span style="font-family: 'Times New Roman';">php.ini</span><span style="font-family: 宋体;">（作为开发环境我们一般选</span>php.ini-development）。<br><br>2.2 现在<span style="font-family: 'Times New Roman';">php.ini</span><span style="font-family: 宋体;">就是</span><span style="font-family: 'Times New Roman';">php</span><span style="font-family: 宋体;">的配置文件了。</span><br><br>2.3 php.ini809行附近，把; extension_dir = “ext”前面的分号去掉，并改为：extension_dir = “d:/amp/php/ext”<br><br>2.4 在<span style="font-family: 'Times New Roman';">apache</span><span style="font-family: 宋体;">配置文件中</span><span style="font-family: 'Times New Roman';">127</span><span style="font-family: 宋体;">行附近加入如下代码：</span><br><br>LoadModule php5_module D:/amp/php/php5apache2_2.dll<br><br>PHPIniDir “D:/amp/php”<br><br>AddType application/x-httpd-php .php .phtml<br><br>2.4 <span style="font-family: 宋体;">找到</span><span style="font-family: 'Times New Roman';">apache</span><span style="font-family: 宋体;">配置文件中的</span>DirectoryIndex index.html 并改为<br><br>DirectoryIndex index.html index.php<br><br>2.5<span style="font-family: 宋体;">重启</span><span style="font-family: 'Times New Roman';">apache</span><span style="font-family: 宋体;">服务器。</span><br><br>2.6<span style="font-family: 宋体;">写一个</span><span style="font-family: 'Times New Roman';">PHP</span><span style="font-family: 宋体;">（</span><span style="font-family: 'Times New Roman';">index.php</span><span style="font-family: 宋体;">）文件放于</span><span style="font-family: 'Times New Roman';">d:/amp/www</span><span style="font-family: 宋体;">目录测试一下。</span><br><br>&nbsp;<br><br>六、安装<span style="font-family: 'Times New Roman';">mysql</span><br><br>1.<span style="font-family: 宋体;">双击一直点击</span><span style="font-family: 'Times New Roman';">next,</span><span style="font-family: 宋体;">选择</span><span style="font-family: 'Times New Roman';">Typical</span><br><br><img src="http://www.dudu.me/images/图片8.png" alt=""><br>2.<span style="font-family: 宋体;">安装中</span>…安装完成。<br><br>3.<span style="font-family: 宋体;">配置：</span><br><br><img src="http://www.dudu.me/images/图片9.png" alt=""><br><br>&nbsp;<br><br>&nbsp;<br><br>&nbsp;<br><br>&nbsp;<br><br><img src="http://www.dudu.me/images/图片9.png" alt=""><br>选择配置方式<br><br>Detailed Congiguration(<span style="font-family: 宋体;">手动精确配置</span><span style="font-family: 'Times New Roman';">)</span><br><br>Standard Configuration(<span style="font-family: 宋体;">标准配置</span><span style="font-family: 'Times New Roman';">)</span><br><br><img src="http://www.dudu.me/images/图片10.jpg" alt=""><br><br>选择<span style="font-family: 'Times New Roman';">Mysql</span><span style="font-family: 宋体;">服务器类型</span><br><br>Developer Machine(<span style="font-family: 宋体;">开发测试类，占用资源少）</span><br><br>Server Machine(<span style="font-family: 宋体;">服务器类型 占用资源较多）</span><br><br>Dedicated Mysql Server Machine(<span style="font-family: 宋体;">专门的数据库服务器，占有所有可用资源）</span><br><br>这里我们作为开发使用可以选择第一项。<br><img src="http://www.dudu.me/images/图片11.jpg" alt=""><br>选择<span style="font-family: 'Times New Roman';">Mysql</span><span style="font-family: 宋体;">数据库用途</span><br><br>Multifunctional Database(<span style="font-family: 宋体;">通用多功能型）</span><br><br>Transactional Database Only(<span style="font-family: 宋体;">专注于事务处理）</span><br><br>Non-Transactional Database Only(<span style="font-family: 宋体;">非事务处理型）</span><br><br>这里选择第一项。<br><br><img src="http://www.dudu.me/images/图片12.jpg" alt=""><br>选择好<span style="font-family: 'Times New Roman';">msyql</span><span style="font-family: 宋体;">的存放目录</span><br><br><img src="http://www.dudu.me/images/图片13.png" alt=""><br><br>Mysql同时连接的数目<br><br>Decision Support(20<span style="font-family: 宋体;">个左右）</span><br><br>Online Transaction Processing(500<span style="font-family: 宋体;">个左右）</span><br><br>Manual Setting(<span style="font-family: 宋体;">手动设置）</span><br><br>这里选择第一项。<br><img src="http://www.dudu.me/images/图片14.png" alt=""><br>是否启用<span style="font-family: 'Times New Roman';">TCP/IP</span><span style="font-family: 宋体;">连接，如果不启用，就只能在自己机器上访问</span><span style="font-family: 'Times New Roman';">mysql</span><br><br>mysql<span style="font-family: 宋体;">端口设定</span><br><img src="http://www.dudu.me/images/图片15.png" alt=""><br>选择语言编码<br><img src="http://www.dudu.me/images/图片16.png" alt=""><br>选择服务名，勾选环境变量<br><img src="http://www.dudu.me/images/图片17.jpg" alt=""><br>修改 <span style="font-family: 'Times New Roman';">root </span><span style="font-family: 宋体;">用户（超级管理员）的密码</span> (<span style="font-family: 宋体;">开发用别设置太复杂了 </span><span style="font-family: 'Times New Roman';">123456</span><span style="font-family: 宋体;">就行了</span><span style="font-family: 'Times New Roman';">)</span><br><br>Enable root access from remote machines <span style="font-family: 宋体;">是否允许</span><span style="font-family: 'Times New Roman';">root</span><span style="font-family: 宋体;">用户在其它远程的机器上登录</span><br><br>Create An Anonymous Account <span style="font-family: 宋体;">是否创建匿名用户（匿名用户可以连接数据库，但不能操作数据库）</span><br><br>&nbsp;<br><br>3. 在<span style="font-family: 'Times New Roman';">php.ini</span><span style="font-family: 宋体;">中加载</span><span style="font-family: 'Times New Roman';">mysql</span><span style="font-family: 宋体;">模块</span><span style="font-family: 'Times New Roman';">:</span><br><br>;extension=php_mysql.dll<br><br>; extension=php_pdo_mysql.dll<br><br>;extension=php_mbstring.dll<br><br>; extension=php_mysqli.dll<br><br>去掉这几个前面的分号<br><br>php安装的小笔记：<br><br>&nbsp;<br><br>Apache的配置文件：Apache安装目录/conf/httpd.conf<br><br>安装完成之后浏览器输入：<a href="http://127.0.0.1" target="_blank" rel="external">http://127.0.0.1</a> 或者<br><a href="http://localhost" target="_blank" rel="external">http://localhost</a><br>更改web根目录：<br>更改Apache配置文件<br>DocumentRoot “D:/amp/www”<br>&lt;Directory “D:/amp/www”&gt;<br>改完之后保存并且重新启动Apache才能生效<br>PHP的配置文件：<br>PHP的安装目录/php.ini-development 或者 php.ini-<br>production<br><br>创建PHP配置文件：<br>php.ini-development =&gt; php.ini 或者<br>php.ini-production =&gt; php.ini<br>开启PHP扩展：<br>extension=php_gd2.dll<br>extension=php_mbstring.dll<br>extension=php_mysql.dll<br>extension=php_mysqli.dll<br>指定PHP扩展的目录：<br>extension_dir = “D:/amp/php/ext”<br>配置Apache支持PHP：<br>LoadModule php5_module D:/amp/php/php5apache2_2.dll<br>PHPIniDir “D:/amp/php”<br>AddType application/x-httpd-php .php .phtml<br>配置目录缺省首页：<br>DirectoryIndex index.html =&gt; DirectoryIndex index.html<br>index.php<br>上传临时目录设定：<br>upload_tmp_dir = “D:/amp/temp/upload”<br>设置可上传的文件大小：<br>upload_max_filesize = 200M<br>SESSION保存目录：<br>session.save_path = “D:/amp/temp/session”<br>测试mysql连接：<br><br>$conn = mysql_connect(‘127.0.0.1’, ‘root’, ‘123456’);<br>if($conn){<br>echo ‘连接成功’;<br>} else {<br>echo ‘连接失败’;<br>}<br><br>将以上代码保存为connect.php放于web根目录，然后去访问<br>安装PHPmyadmin：<br><br></div>
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2012/06/16/php-e6-95-b0-e5-ad-a6-e5-87-bd-e6-95-b0-e5-b0-8f-e7-bb-83-e4-b9-a0/">php数学函数小练习</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2012/06/01/javasrript-e6-96-87-e6-9c-ac-e5-8c-ba-e5-9f-9f-e6-b8-90-e6-b8-90-e6-98-be-e7-a4-ba-e5-92-8c-e6-b8-90-e6-b8-90-e6-b6-88-e5-a4-b1-e7-9a-84-e7-ae-80-e5-8d-95-e6-95-88-e6-9e-9c/">javasrript文本区域渐渐显示和渐渐消失的简单效果</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </div>
+  </div>
+
+
+
+    
+      <div class="comments" id="comments">
+        
+      </div>
+    
+  </div>
+
+
+        </div>
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview">
+        <div class="site-author motion-element">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="biny" />
+          <p class="site-author-name">biny</p>
+        </div>
+        <p class="site-description motion-element">yang fangjun’s blog | oc | objective c | bi</p>
+        <div class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">74</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">分类</span>
+              
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">1</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </div>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+      </div>
+
+      
+        <div class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </div>
+      
+
+    </div>
+  </div>
+
+
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp; 
+  2015
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">biny</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.content img').each(function () {
+        var $image = $(this);
+        var $imageWrapLink = $image.parent('a');
+
+        if ($imageWrapLink.size() < 1) {
+          $imageWrapLink = $image.wrap('<a href="' + this.getAttribute('src') + '"></a>').parent('a');
+        }
+        $imageWrapLink.addClass('fancybox');
+      });
+    });
+    $('.fancybox').fancybox({
+      helpers: {
+        overlay: {
+          locked: false
+        }
+      }
+    });
+  </script>
+
+
+  <script type="text/javascript">
+  function hasMobileUA () {
+    var nav = window.navigator;
+    var ua = nav.userAgent;
+    var pa = /iPad|iPhone|Android|Opera Mini|BlackBerry|webOS|UCWEB|Blazer|PSP|IEMobile|Symbian/g;
+
+    return pa.test(ua);
+  }
+
+  function isDesktop () {
+    return screen.width > 991 && !hasMobileUA();
+  }
+
+  function isTablet () {
+    return screen.width < 992 && screen.width > 767 && hasMobileUA();
+  }
+
+  function isMobile () {
+    return screen.width < 767 && hasMobileUA();
+  }
+
+  function escapeSelector (selector) {
+    return selector.replace(/[!"$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, "\\$&")
+  }
+</script>
+
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" id="motion.global">
+  $(document).ready(function () {
+    var body = $('body');
+    var isSidebarVisible = false;
+    var sidebarToggle = $('.sidebar-toggle');
+    var sidebarToggleLine1st = $('.sidebar-toggle-line-first')
+    var sidebarToggleLine2nd = $('.sidebar-toggle-line-middle');
+    var sidebarToggleLine3rd = $('.sidebar-toggle-line-last');
+    var sidebar = $('.sidebar');
+
+    var SIDEBAR_WIDTH = '320px';
+    var SIDEBAR_DISPLAY_DURATION = 300;
+
+    var sidebarToogleLineStatusInit = {width: '100%', opacity: 1, left: 0, rotateZ: 0, top: 0};
+
+    var sidebarToggleLine1stStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine1stStatusArrow = {width: '50%', rotateZ: '-45deg', top: '2px'};
+    var sidebarToogleLine1stStatusClose = {width: '100%', rotateZ: '-45deg', top: '5px'};
+
+    var sidebarToggleLine2ndStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine2ndStatusArrow = {width: '90%'};
+    var sidebarToogleLine2ndStatusClose = {opacity: 0};
+
+    var sidebarToggleLine3rdStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine3rdStatusArrow = {width: '50%', rotateZ: '45deg', top: '-2px'};
+    var sidebarToogleLine3rdStatusClose = {width: '100%', rotateZ: '45deg', top: '-5px'};
+
+    LogoAndMenuMotion();
+    sidebatToggleMotion();
+    postsListMotion();
+    backToTopMotion();
+
+
+    $(document)
+      .on('sidebar.isShowing', function () {
+        isDesktop() && body.velocity(
+          {paddingRight: SIDEBAR_WIDTH},
+          SIDEBAR_DISPLAY_DURATION
+        );
+        sidebarContentMotion();
+      })
+      .on('sidebar.isHiding', function () {});
+
+    function LogoAndMenuMotion() {
+      $.Velocity.RunSequence([
+        { e: $('.brand'), p: { opacity: 1 }, o: { duration: 100 } },
+        { e: $('.logo'), p: { opacity: 1, top: 0 }, o: { duration: 50} },
+        
+        { e: $('.logo-line-before i'), p: { translateX: "100%" }, o: { duration: 500, sequenceQueue: false } },
+        { e: $('.logo-line-after i'), p: { translateX: "-100%" }, o: { duration: 500, sequenceQueue: false } },
+        
+        { e: $('.site-title'), p: { opacity: 1, top: 0 }, o: { duration: 200 } }
+      ]);
+      $('.menu-item').velocity('transition.slideDownIn', {display: null});
+    }
+
+
+    function backToTopMotion () {
+      var b2top = $('.back-to-top');
+      b2top.on('click', function () {
+        body.velocity('scroll');
+      });
+    }
+
+    function sidebarShowMotion () {
+
+      sidebarToggleLine1st.velocity(sidebarToogleLine1stStatusClose);
+      sidebarToggleLine2nd.velocity(sidebarToogleLine2ndStatusClose);
+      sidebarToggleLine3rd.velocity(sidebarToogleLine3rdStatusClose);
+
+      sidebar.velocity({width: SIDEBAR_WIDTH}, {
+        display: 'block',
+        duration: SIDEBAR_DISPLAY_DURATION,
+        complete: function () {
+          sidebar.addClass('sidebar-active');
+          sidebar.trigger('sidebar.didShow');
+        }
+      });
+      sidebar.trigger('sidebar.isShowing');
+    }
+
+    function sidebarHideMotion () {
+      isDesktop() && body.velocity({paddingRight: 0});
+      sidebar.velocity('reverse');
+
+      sidebarToggleLine1st.velocity(sidebarToggleLine1stStatusInit);
+      sidebarToggleLine2nd.velocity(sidebarToggleLine2ndStatusInit);
+      sidebarToggleLine3rd.velocity(sidebarToggleLine3rdStatusInit);
+
+      sidebar.removeClass('sidebar-active');
+      sidebar.trigger('sidebar.isHiding');
+    };
+
+    function sidebarContentMotion () {
+      $('.sidebar .motion-element').velocity(
+        'transition.slideRightIn',
+        {stagger: 50, drag: true}
+      );
+    }
+
+    function postsListMotion () {
+      var postMotionOptions = window.postMotionOptions || {stagger: 300, drag: true};
+      $('.post').velocity('transition.slideDownIn', postMotionOptions);
+    }
+
+    function sidebatToggleMotion () {
+      sidebarToggle.on('click', function () {
+        isSidebarVisible ? sidebarHideMotion() : sidebarShowMotion();
+        isSidebarVisible = !isSidebarVisible;
+      });
+
+      sidebarToggle.hover(function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusArrow);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusArrow);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusArrow);
+      }, function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusInit);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusInit);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusInit);
+      });
+    }
+  });
+
+</script>
+
+
+
+
+
+  
+  
+<script type="text/javascript" id="bootstrap.scrollspy.custom">
+  /* ========================================================================
+  * Bootstrap: scrollspy.js v3.3.2
+  * http://getbootstrap.com/javascript/#scrollspy
+  * ========================================================================
+  * Copyright 2011-2015 Twitter, Inc.
+  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+  * ======================================================================== */
+
+  /**
+   * Custom by iissnan
+   *
+   * - Add a `clear.bs.scrollspy` event.
+   * - Esacpe targets selector.
+   */
+
+
+  +function ($) {
+    'use strict';
+
+    // SCROLLSPY CLASS DEFINITION
+    // ==========================
+
+    function ScrollSpy(element, options) {
+      this.$body          = $(document.body)
+      this.$scrollElement = $(element).is(document.body) ? $(window) : $(element)
+      this.options        = $.extend({}, ScrollSpy.DEFAULTS, options)
+      this.selector       = (this.options.target || '') + ' .nav li > a'
+      this.offsets        = []
+      this.targets        = []
+      this.activeTarget   = null
+      this.scrollHeight   = 0
+
+      this.$scrollElement.on('scroll.bs.scrollspy', $.proxy(this.process, this))
+      this.refresh()
+      this.process()
+    }
+
+    ScrollSpy.VERSION  = '3.3.2'
+
+    ScrollSpy.DEFAULTS = {
+      offset: 10
+    }
+
+    ScrollSpy.prototype.getScrollHeight = function () {
+      return this.$scrollElement[0].scrollHeight || Math.max(this.$body[0].scrollHeight, document.documentElement.scrollHeight)
+    }
+
+    ScrollSpy.prototype.refresh = function () {
+      var that          = this
+      var offsetMethod  = 'offset'
+      var offsetBase    = 0
+
+      this.offsets      = []
+      this.targets      = []
+      this.scrollHeight = this.getScrollHeight()
+
+      if (!$.isWindow(this.$scrollElement[0])) {
+        offsetMethod = 'position'
+        offsetBase   = this.$scrollElement.scrollTop()
+      }
+
+      this.$body
+        .find(this.selector)
+        .map(function () {
+          var $el   = $(this)
+          var href  = $el.data('target') || $el.attr('href')
+          var $href = /^#./.test(href) && $(escapeSelector(href)) // Need to escape selector.
+
+          return ($href
+            && $href.length
+            && $href.is(':visible')
+            && [[$href[offsetMethod]().top + offsetBase, href]]) || null
+        })
+        .sort(function (a, b) { return a[0] - b[0] })
+        .each(function () {
+          that.offsets.push(this[0])
+          that.targets.push(this[1])
+        })
+
+
+    }
+
+    ScrollSpy.prototype.process = function () {
+      var scrollTop    = this.$scrollElement.scrollTop() + this.options.offset
+      var scrollHeight = this.getScrollHeight()
+      var maxScroll    = this.options.offset + scrollHeight - this.$scrollElement.height()
+      var offsets      = this.offsets
+      var targets      = this.targets
+      var activeTarget = this.activeTarget
+      var i
+
+      if (this.scrollHeight != scrollHeight) {
+        this.refresh()
+      }
+
+      if (scrollTop >= maxScroll) {
+        return activeTarget != (i = targets[targets.length - 1]) && this.activate(i)
+      }
+
+      if (activeTarget && scrollTop < offsets[0]) {
+        $(this.selector).trigger('clear.bs.scrollspy')  // Add a custom event.
+        this.activeTarget = null
+        return this.clear()
+      }
+
+      for (i = offsets.length; i--;) {
+        activeTarget != targets[i]
+          && scrollTop >= offsets[i]
+          && (!offsets[i + 1] || scrollTop <= offsets[i + 1])
+          && this.activate(targets[i])
+      }
+    }
+
+    ScrollSpy.prototype.activate = function (target) {
+      this.activeTarget = target
+
+      this.clear()
+
+      var selector = this.selector +
+        '[data-target="' + target + '"],' +
+        this.selector + '[href="' + target + '"]'
+
+      var active = $(selector)
+        .parents('li')
+        .addClass('active')
+
+      if (active.parent('.dropdown-menu').length) {
+        active = active
+          .closest('li.dropdown')
+          .addClass('active')
+      }
+
+      active.trigger('activate.bs.scrollspy')
+    }
+
+    ScrollSpy.prototype.clear = function () {
+      $(this.selector)
+        .parentsUntil(this.options.target, '.active')
+        .removeClass('active')
+    }
+
+
+    // SCROLLSPY PLUGIN DEFINITION
+    // ===========================
+
+    function Plugin(option) {
+      return this.each(function () {
+        var $this   = $(this)
+        var data    = $this.data('bs.scrollspy')
+        var options = typeof option == 'object' && option
+
+        if (!data) $this.data('bs.scrollspy', (data = new ScrollSpy(this, options)))
+        if (typeof option == 'string') data[option]()
+      })
+    }
+
+    var old = $.fn.scrollspy
+
+    $.fn.scrollspy             = Plugin
+    $.fn.scrollspy.Constructor = ScrollSpy
+
+
+    // SCROLLSPY NO CONFLICT
+    // =====================
+
+    $.fn.scrollspy.noConflict = function () {
+      $.fn.scrollspy = old
+      return this
+    }
+
+
+    // SCROLLSPY DATA-API
+    // ==================
+
+    $(window).on('load.bs.scrollspy.data-api', function () {
+      $('[data-spy="scroll"]').each(function () {
+        var $spy = $(this)
+        Plugin.call($spy, $spy.data())
+      })
+    })
+
+  }(jQuery);
+</script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var $sidebarInner = $('.sidebar-inner');
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.didShow', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+          var self = this;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      $(indicator).velocity('stop').velocity({
+        opacity: action === 'show' ? 0.4 : 0
+      }, { duration: 100 });
+    }
+
+  });
+</script>
+
+
+  <script type="text/javascript" id="sidebar.nav">
+    $(document).ready(function () {
+      var html = $('html');
+
+      $('.sidebar-nav li').on('click', function () {
+        var item = $(this);
+        var activeTabClassName = 'sidebar-nav-active';
+        var activePanelClassName = 'sidebar-panel-active';
+        if (item.hasClass(activeTabClassName)) {
+          return;
+        }
+
+        var currentTarget = $('.' + activePanelClassName);
+        var target = $('.' + item.data('target'));
+
+        currentTarget.velocity('transition.slideUpOut', 200, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', 200)
+            .addClass(activePanelClassName);
+        });
+
+        item.siblings().removeClass(activeTabClassName);
+        item.addClass(activeTabClassName);
+      });
+
+      $('.post-toc a').on('click', function (e) {
+        e.preventDefault();
+        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        });
+      });
+
+      // Expand sidebar on post detail page by default, when post has a toc.
+      var $tocContent = $('.post-toc-content');
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0 && isDesktop()) {
+        setTimeout(function () {
+          $('.sidebar-toggle').trigger('click');
+        }, 800);
+      }
+    });
+  </script>
+
+
+
+
+  
+
+  
+  
+  
+
+  
+
+
+
+
+  
+</body>
+</html>

@@ -1,0 +1,1402 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.2"/>
+
+
+    <meta name="description" content="yang fangjun’s blog | oc | objective c | bi" />
+
+
+
+
+    <meta name="keywords" content="Hexo,next" />
+
+
+
+
+
+    <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.2" />
+
+
+
+
+  <title> 嘟嘟blog </title>
+</head>
+
+<body>
+  <div class="container one-column 
+   page-home 
+">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">嘟嘟blog</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+
+  <ul id="menu" class="menu">
+     
+    
+      
+      <li class="menu-item menu-item-home">
+        <a href="/">
+          <i class="menu-item-icon icon-home"></i> <br />
+          首页
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-archives">
+        <a href="/archives">
+          <i class="menu-item-icon icon-archives"></i> <br />
+          归档
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-tags">
+        <a href="/tags">
+          <i class="menu-item-icon icon-tags"></i> <br />
+          标签
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-about">
+        <a href="/about">
+          <i class="menu-item-icon icon-about"></i> <br />
+          关于
+        </a>
+      </li>
+    
+  </ul>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+  <div id="posts" class="posts-expand">
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2013/04/16/string-format-e7-94-a8-e6-b3-95/">
+                String.Format用法 
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2013-04-16
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/学习笔记/">学习笔记</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>1、作为参数</p>
+<p><table id="memberList" border="1" frame="lhs"></table></p>
+<p><tbody></tbody></p>
+<p><tr></tr></p>
+<p><th></th></p>
+<p><th>名称</th></p>
+<p><th>说明</th><br></p>
+<p><tr></tr></p>
+<p><td></td></p>
+<p><td><a href="http://msdn.microsoft.com/zh-cn/library/fht0f5be.aspx" target="_blank" rel="external">Format(String, Object)</a></td></p>
+<p><td>将指定的 <a href="http://msdn.microsoft.com/zh-cn/library/system.string.aspx" target="_blank" rel="external">String</a> 中的格式项替换为指定的 <a href="http://msdn.microsoft.com/zh-cn/library/system.object.aspx" target="_blank" rel="external">Object</a> 实例的值的文本等效项。</td><br></p>
+<p><tr></tr></p>
+<p><td></td></p>
+<p><td><a href="http://msdn.microsoft.com/zh-cn/library/b1csw23d.aspx" target="_blank" rel="external">Format(String, array&lt;&gt;<a href=""></a>[])</a></td></p>
+<p><td>将指定 <a href="http://msdn.microsoft.com/zh-cn/library/system.string.aspx" target="_blank" rel="external">String</a> 中的格式项替换为指定数组中相应 <a href="http://msdn.microsoft.com/zh-cn/library/system.object.aspx" target="_blank" rel="external">Object</a> 实例的值的文本等效项。</td><br></p>
+<p><tr></tr></p>
+<p><td></td></p>
+<p><td><a href="http://msdn.microsoft.com/zh-cn/library/1ksz8yb7.aspx" target="_blank" rel="external">Format(IFormatProvider, String, array&lt;&gt;<a href=""></a>[])</a></td></p>
+<p><td>将指定 <a href="http://msdn.microsoft.com/zh-cn/library/system.string.aspx" target="_blank" rel="external">String</a> 中的格式项替换为指定数组中相应 <a href="http://msdn.microsoft.com/zh-cn/library/system.object.aspx" target="_blank" rel="external">Object</a> 实例的值的文本等效项。指定的参数提供区域性特定的格式设置信息。</td><br></p>
+<p><tr></tr></p>
+<p><td></td></p>
+<p><td><a href="http://msdn.microsoft.com/zh-cn/library/zf3d0ccc.aspx" target="_blank" rel="external">Format(String, Object, Object)</a></td></p>
+<p><td>将指定的 <a href="http://msdn.microsoft.com/zh-cn/library/system.string.aspx" target="_blank" rel="external">String</a> 中的格式项替换为两个指定的 <a href="http://msdn.microsoft.com/zh-cn/library/system.object.aspx" target="_blank" rel="external">Object</a> 实例的值的文本等效项。</td><br></p>
+<p><tr></tr></p>
+<p><td></td></p>
+<p><td><a href="http://msdn.microsoft.com/zh-cn/library/d9t40k6d.aspx" target="_blank" rel="external">Format(String, Object, Object, Object)</a></td></p>
+<p><td>将指定的 <a href="http://msdn.microsoft.com/zh-cn/library/system.string.aspx" target="_blank" rel="external">String</a> 中的格式项替换为三个指定的 <a href="http://msdn.microsoft.com/zh-cn/library/system.object.aspx" target="_blank" rel="external">Object</a> 实例的值的文本等效项。</td><br><br><br><br>多个参数</p>
+<p>int m[]=new int{a,b,c,d};</p>
+<p>string.format(“{0}{1}{2}”,m);</p>
+<p>一个参数</p>
+<p>private const string _extraClause = “ AND C_INTERNSHIPORG_INTERNSHIPID = {0}”;</p>
+<p>//将MyCrypt.Decrypt(Request[“id”])作为_extraClause 的参数 if (Request[“id”] != null &amp;&amp; Request[“id”] != string.Empty) {     mExtraMessage = string.Format(_extraClause, MyCrypt.Decrypt(Request[“id”])); }</p>
+<p>2、格式化数值结果表</p>
+<p><table border="1" cellspacing="0" cellpadding="0"></table></p>
+<p><tbody></tbody></p>
+<p><tr bgcolor="#c0c0c0"></tr></p>
+<td>
+
+<p><span style="font-size: small;"><strong>字符</strong></span></p>
+<p></p></td><p></p>
+<td>
+
+<p><span style="font-size: small;"><strong>说明</strong></span></p>
+<p></p></td><p></p>
+<td>
+
+<p><span style="font-size: small;"><strong>示例</strong></span></p>
+<p></p></td><p></p>
+<td>
+
+<p><span style="font-size: small;"><strong>输出</strong></span></p>
+<p></p></td><br><p></p>
+<p><tr></tr></p>
+<p><td>C</td></p>
+<p><td>货币</td></p>
+<p><td><strong><span>string.Format</span></strong>(“{0:C3}”, 2)</td></p>
+<p><td>＄2.000</td><br></p>
+<p><tr></tr></p>
+<p><td>D</td></p>
+<p><td>十进制</td></p>
+<p><td><span><strong><span>string.Format</span></strong>(“{0:D3}”, 2)</span></td></p>
+<p><td><span>002</span></td><br></p>
+<p><tr></tr></p>
+<p><td><span>E</span></td></p>
+<p><td><span>科学计数法</span></td></p>
+<p><td><span>1.20E+001</span></td></p>
+<p><td><span>1.20E+001</span></td><br></p>
+<p><tr></tr></p>
+<p><td><span>G</span></td></p>
+<p><td><span>常规</span></td></p>
+<p><td><span><strong><span>string.Format</span></strong>(“{0:G}”, 2)</span></td></p>
+<p><td><span>2</span></td><br></p>
+<p><tr></tr></p>
+<p><td><span>N</span></td></p>
+<p><td><span>用分号隔开的数字</span></td></p>
+<p><td><span><strong><span>string.Format</span></strong>(“{0:N}”, 250000)</span></td></p>
+<p><td><span>250,000.00</span></td><br></p>
+<p><tr></tr></p>
+<p><td><span>X</span></td></p>
+<p><td><span>十六进制</span></td></p>
+<p><td><span><strong><span>string.Format</span></strong>(“{0:X000}”, 12)</span></td></p>
+<p><td><span>C</span></td><br></p>
+<p><tr></tr></p>
+<p><td></td></p>
+<p><td></td></p>
+<p><td><span><strong><span>string.Format</span></strong>(“{0:000.000}”, 12.2)</span></td></p>
+<p><td>012.200</td><br><br><br><br>string.format用来格式化字符串(按指定的规则连接字符串或输出其他变量并返回新的字符串) 。 <strong>string.format(fm,…); </strong>第一个参数用fm表示输出的格式,每个%符号后面是一个格式化表达式,每个格式化表达式按顺序对应后面的参数。 所以用了N个格式化表达式,就必须在后面添加N个参数。<br>下面是一个简单的例子：</p>
+<div>int = <span style="color: #ff0000;">123</span>; str = <span style="color: #800000;">“字符串”</span><br><span style="color: #008000;">—下面的%s对应参数str, %i对应参数int</span> str = <span style="color: #0000ff;">string</span>.<span style="color: #0000ff;">format</span>(<span style="color: #800000;">“这是字符串:’<strong>%s</strong>‘ 这是数字值 <strong>%i</strong>“</span>,<strong>str</strong>,<strong>int</strong>);<br>win.messageBox(str);<br>—%05i表示格式化为至少五位的数字,不足在前面补0 str = <span style="color: #0000ff;">string</span>.<span style="color: #0000ff;">format</span>(<span style="color: #800000;">“<strong>%05i</strong>“</span>,<strong>int</strong>); win.messageBox(str);</div><br><div></div><br><div><br><br>格式化表达式：%[零个或多个标志][最小字段宽度][精度][修改符]格式码<br><br>注意:[]方括号表示可选参数<br><br>1、格式码<br><br>代码 c 参数 数字值(number) 含义 参数被裁剪为8位字节码并作为字符进行打印。<br><br>代码 i,d 参数 数字值(number) 含义 参数作为一个十进制整数打印。如果给出了精度而且值的位数小于精度位数，前面就用0填充。<br><br>代码 u,o,x,X 参数 数字值(number) 含义 参数作为一个无符号数字值打印，u使用十进制，o使用八进制，x或X使用十六进制，两者的区别是x约定使用abcdef，而X约定使用ABCDEF。<br><br>代码 e,E 参数 数字值(number) 含义 参数根据指数形式打印。例如，6.023000e23是使用代码e，6.023000E23是使用代码E。小数点后面的位数由精度字段决定，缺省值是6。<br><br>代码 f 参数 数字值(number) 含义 参数按照的常规浮点格式打印。精度字段决定小数点后面的位数，缺省值是6。<br><br>代码 g,G 参数 数字值(number) 含义 参数以%f或%e（如G则%E）的格式打印，取决于它的值。如果指数大于等于-4但小于精度字段就使用%f格式，否则使用指数格式。<br><br>代码 s 参数 字符串值(string) 含义 打印一个字符串。<br><br>代码 q 参数 (无) 含义 打印一个字符串，并将字符串置于一对引号中，如果字符串中包含引号换行等自动添加转义符。如果要读取一个字符串传为脚本代码。为避免用户恶意注入引号等特殊字符，可以使用%q进行格式化。<br><br>代码 % 参数 (无) 含义 取消%转义打印一个%字符,即用%%表示本来的%。<br><br>2、 标志<br><br>标志 - 含义 值在字段中做对齐，缺省情况下是右对齐。<br><br>标志 0 含义 当数值为右对齐时，缺省情况下是使用空格填充值左边未使用的列。这个标志表示用零填充，它可用于d,i,u,o,x,X,e,E,f,g和G代码。 使用d,i,u,o,x和X代码时，如果给出了精度字段，零标志就被忽略。如果格式代码中出现了负号，零标志也没有效果。<br><br>标志 + 含义 当用于一个格式化某个有符号值代码时，如果值非负，正号标志就会给它加上一个正号。如果该值为负，就像往常一样显示一个负号。在 缺省情况下，正号并不会显示。<br><br>标志 空格 含义 只用于转换有符号值的代码。当值非负时，这个标志把一个空格添加到它开始的位置。注意这个标志和正号标志是相互排斥的，如果两个 同时给出，空格标志便被忽略。<br><br>标志 # 含义 选择某些代码的另一种转换形式:<br><br>用于… #标志… o 保证产生的值以一个零开头 x,X 在非零值前面加0x前缀（%X则为0X） e,E,f 确保结果始终包含一个小数点，即使它后面没有数字 g,G 和上面的e,E和f代码相同。另外，缀尾的0并不从小数中去除<br><br>3、 字段宽度<br><br>字段宽度是一个十进制整数，用于指定将出现在结果中的最小字符数。如果值的字符数少于字段宽度，就对它进行填充以增加长度。<br><br>4、 精度<br><br>精度以一个句点开头，后面跟一个可选的十进制数。如果未给出整数，精度的缺省值为零。<br><br>对于d,i,u,o,x和X类型的转换，精度字段指定将出现在结果中的最小的数字个数并覆盖零标志。如果转换后的值的位数小于宽度，就在它的前面插入零。如果值为零且精度也为零，则转换结果就不会产生数字。<br><br>对于e,E和f类型的转换，精度决定将出现在小数点之后的数字位数。<br><br>对于g和G类型的转换，它指定将出现在结果中的最大有效位数。<br><br>当使用s类型的转换时，精度指定将被转换的最多的字符数。<br><br>如果用于表示字段宽度和/或精度的十进制整数由一个星号代替，那么printf的下一个参数（必须是个整数）就提供宽度和（或）精度。因此， 这些值可以通过计算获得而不必预先指定。<br><br>5、示例<br><br>格式代码 A ABC ABCDEFGH %s A ABC ABCDEFGH %5s ####A ##ABC ABCDEFGH %.5s A ABC ABCDE %5.5s ####A ##ABC ABCDE %-5s A#### ABC## ABCDEFGH<br><br>格式代码 1 -12 12345 123456789 %d 1 -12 12345 123456789 %6d #####1 ###-12 #12345 123456789 %.4d 0001 -0012 12345 123456789 %6.4d ##0001 #-0012 #12345 123456789 %-4d 1#### -12# 12345 123456789 %04d 0001 -012 12345 123456789 %+d +1 -12 +12345 +123456789<br><br>格式代码 1 .01 .00012345 12345.6789 %f 1.000000 0.010000 0.000123 12345.678900 %10.2d ######1.00 #####0.01 ######0.00 ##12345.67 %e 1.000000e+00 1.000000e-02 1.234500e-04 1.234568e+04 %.4e 1.0000e+00 1.0000e-02 1.2345e-04 1.2346e+04 %g 1 0.01 0.00012345 12345.7<br><br>格式代码 6.023e23 %f 60229999999999975882752.000000 %10.2e 60229999999999975882752.00 %e 6.023000e+23 %.4e 6.0230e+23 %g 6.023e+23<br><br>用上面的格式化函数可以轻松实现数字的进制转换<br><br>—数字转换为二进制字符串 str = string.format(“%b”,23 );<br><br>—二进制字符串转换为数字 n = tonumber(str,2)<br><br>—数字转换为八进制字符串 str = string.format(“%o”,23 );<br><br>—八进制字符串转换为数字 n = tonumber(str,8)<br><br>—数字转换为十六进制字符串 str = string.format(“%x”,23 );<br><br>—十六进制字符串转换为数字 n = tonumber(str,16)<br><br>四、格式化时间 模拟精灵v7.10 格式化时间的函数有 string.time;string.ftime;os.data;os.time 等函数。 os.time 是从table生成数字时间值 string.time是从字符串生成数字时间值。 os.data 与string.ftime功能相同从时间值反过来生成字符串或时间。<br><br>这里我们介绍string.time函数、string.ftime函数,下面是使用示例：<br><br>—从字符串创建时间值 t = string.time(“2006/6/6 0:0:0”,”%Y/%m/%d %H:%M:%S”)<br>—从时间值创建字符串 str = string.ftime(“%Y/%m/%d %H:%M:%S”,t )<br><br>格式化语法(在很多编程语言中都适用的语法)<br><br>%a - 当前区域星期几的简写<br><br>%A - 当前区域星期几的全称<br><br>%b - 当前区域月份的简写<br><br>%B - 当前区域月份的全称<br><br>%c - 当前区域首选的日期时间表达<br><br>%C - 世纪值（年份除以 100 后取整，范围从 00 到 99）<br><br>%d - 月份中的第几天，十进制数字（范围从 01 到 31）<br><br>%D - 和 %m/%d/%y 一样 %e - 月份中的第几天，十进制数字，一位的数字前会加上一个空格（范围从 ‘ 1’ 到 ‘31’）<br><br>%g - 和 %G 一样，但是没有世纪 %G - 4 位数的年份，符合 ISO 星期数（参见 %V）。和 %V 的格式和值一样，只除了如果 ISO 星期数属于前一年或者后一年，则使用那一年。<br><br>%h - 和 %b 一样 %H - 24 小时制的十进制小时数（范围从 00 到 23）<br><br>%I - 12 小时制的十进制小时数（范围从 00 到 12）<br><br>%j - 年份中的第几天，十进制数（范围从 001 到 366）<br><br>%m - 十进制月份（范围从 01 到 12）<br><br>%M - 十进制分钟数<br><br>%n - 换行符<br><br>%p - 根据给定的时间值为 <code>am&#39; 或</code>pm’，或者当前区域设置中的相应字符串 %r - 用 a.m. 和 p.m. 符号的时间<br><br>%R - 24 小时符号的时间<br><br>%S - 十进制秒数<br><br>%t - 制表符<br><br>%T - 当前时间，和 %H:%M:%S 一样<br><br>%u - 星期几的十进制数表达 [1,7]，1 表示星期一<br><br>%U - 本年的第几周，从第一周的第一个星期天作为第一天开始<br><br>%V - 本年第几周的 ISO 8601:1988 格式，范围从 01 到 53，第 1 周是本年第一个至少还有 4 天的星期，星期一作为每周的第一天。（用 %G 或者 %g 作为指定时间戳相应周数的年份组成。）<br><br>%W - 本年的第几周数，从第一周的第一个星期一作为第一天开始 %w - 星期中的第几天，星期天为 0<br><br>%x - 当前区域首选的时间表示法，不包括时间 %X - 当前区域首选的时间表示法，不包括日期<br><br>%y - 没有世纪数的十进制年份（范围从 00 到 99）<br><br>%Y - 包括世纪数的十进制年份 %Z - 时区名或缩写 %% - 文字上的 `%’ 字符<br><br></div>
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2013/04/10/c-e8-8e-b7-e5-8f-96-e6-b1-89-e5-ad-97-e4-b8-aa-e6-95-b0/">
+                C#获取汉字个数
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2013-04-10
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/学习笔记/">学习笔记</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>字符串可以包括数字，字母，汉字或者其他的字符。使用Char类型的IsDigit静态方法可以判断字符串中的字符是否为数字，使用Char类型中的IsLetter静态方法可以判断字符串中是否为字母。我们来实现一种方法来实现判断字符串中是否为汉字，通过此方法可以计算字符串中汉字的个数，运行效果如图：<br><a href="http://www.dudu.me/wp-content/uploads/2013/04/20130410113802.jpg" target="_blank" rel="external"><img src="http://www.dudu.me/wp-content/uploads/2013/04/20130410113802-300x121.jpg" alt="20130410113802"></a></p>
+<p>首先根据效果图设置好Form的界面和内容，Box1.Text为输入的字符串，我们对该字符串的处理，来计算汉字的个数，双击Buton控件，编辑其单击事件代码。</p>
+<p>我们看下汉字的Unicode范围，普遍给出了0x4E00到0x9FA5，只要我们接受到的字符的16进制编码在此范围，我们就认为此字符为汉字（label4.Text显示汉字的个数）</p>
+<p>string a=Box1.Text;<br>int K = 0;<br>for (int i = 0; i &lt; a.Length;i++ )<br>{<br>char j=a[i];<br>ushort s = j;<br>if (s &gt;= 0x4E00&amp;&amp;s&lt;=0x9FA5)<br>{<br>K++;<br>}<br>label4.Text = “” + K;</p>
+<p><a href="http://www.dudu.me/c/hanzi.exe" target="_blank" rel="external"><span style="color: #0000ff;"><strong>点击下载</strong></span></a>预览效果</p>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2013/01/17/e9-98-b2-e6-ad-a2-e6-81-b6-e6-84-8f-e6-b3-a8-e5-86-8c-php-e9-aa-8c-e8-af-81-e7-a0-81/">
+                防止恶意注册-PHP验证码
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2013-01-17
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/学习笔记/">学习笔记</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>今天我们来研究下PHP验证码，我们通过简单的数字验证码来实现，首先来写一个生成验证码的代码：</p>
+<p>&lt;?php</p>
+<p>//随机生成一个4位数的数字验证码</p>
+<p>$num=””;     for($i=0;$i&lt;4;$i++){     $num .= rand(0,9);     }</p>
+<p>//4位验证码也可以用rand(1000,9999)直接生成</p>
+<p>//将生成的验证码写入session，备验证页面使用</p>
+<p>Session_start();     $_SESSION[“Checknum”] = $num;</p>
+<p>//创建图片，定义颜色值     Header(“Content-type: image/PNG”);</p>
+<p>srand((double)microtime()*1000000);</p>
+<p>$im = imagecreate(60,20);</p>
+<p>$black = ImageColorAllocate($im, 0,0,0);</p>
+<p>$gray = ImageColorAllocate($im, 200,200,200);</p>
+<p>imagefill($im,0,0,$gray);</p>
+<p>//随机绘制两条虚线，起干扰作用</p>
+<p>$style = array($black, $black, $black, $black, $black, $gray, $gray, $gray, $gray, $gray);</p>
+<p>imagesetstyle($im, $style);</p>
+<p>$y1=rand(0,20);     $y2=rand(0,20);     $y3=rand(0,20);     $y4=rand(0,20);</p>
+<p>imageline($im, 0, $y1, 60, $y3, IMG_COLOR_STYLED);</p>
+<p>imageline($im, 0, $y2, 60, $y4, IMG_COLOR_STYLED)</p>
+<p>//在画布上随机生成大量黑点，起干扰作用;</p>
+<p>for($i=0;$i&lt;80;$i++)     {</p>
+<p>imagesetpixel($im, rand(0,60), rand(0,20), $black);     }</p>
+<p>//将四个数字随机显示在画布上,字符的水平间距和位置都按一定波动范围随机生成</p>
+<p>$strx=rand(3,8);</p>
+<p>for($i=0;$i&lt;4;$i++){</p>
+<p>$strpos=rand(1,6);     imagestring($im,5,$strx,$strpos, substr($num,$i,1), $black);     $strx+=rand(8,12);</p>
+<p>}</p>
+<p>ImagePNG($im);     ImageDestroy($im);</p>
+<p>?&gt;</p>
+<p>在reg.php页面我们写一个表单：（此处省去了其他的HTML代码）</p>
+<p>&lt;tr&gt;</p>
+<p>&lt;td&gt;验证码 :&lt;/td&gt;</p>
+<p>&lt;td&gt;&lt;input type=”text” name=”yzm”style=”width:60px;height:20px;” /&gt;&lt;img src=”code.php” onclick=”javascript:this.src=’code.php?’+Math.random();”&gt;&lt;/img&gt;&lt;/td&gt;</p>
+<p>&lt;/tr&gt;</p>
+<p>&lt;tr&gt;    &lt;td colspan=’2’&gt;&lt;input type=”submit” value=”注册”/&gt;&lt;/td&gt;</p>
+<p>&lt;td&gt;验证码 :&lt;/td&gt;</p>
+<p>&lt;/tr&gt;</p>
+<p>因为我们是用post提交的，所以我们用$_POST来获取（在接受页面做验证码的验证：post.php页面）</p>
+<p>Session_start();</p>
+<p>//back_alert()验证码输入错误的时候，弹出错误信息</p>
+<p>function back_alert($yzm){</p>
+<p>echo “&lt;script type=’text/javascript’&gt;alert(‘$yzm’);history.back();&lt;/script&gt;”;</p>
+<p>}</p>
+<p>//禁止恶意调用（禁止直接在浏览器打开post.php页面）</p>
+<p>if($_POST[“yzm”]==null){</p>
+<p>back_alert(‘你都木有输入验证码，有木有？？？’);  }</p>
+<p>// 禁止恶意注册</p>
+<p>if(!($_POST[“yzm”]==$_SESSION[“Checknum”])){</p>
+<p>back_alert(‘验证码不正确’);</p>
+<p>} echo $_POST[“yzm”];</p>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2013/01/15/php-e4-bc-9a-e8-af-9d-e6-8e-a7-e5-88-b6-cookie-e8-bf-90-e7-94-a8-e5-92-8csession-e4-bc-9a-e8-af-9d-e5-a4-84-e7-90-86/">
+                php会话控制-cookie运用和Session会话处理
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2013-01-14
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/学习笔记/">学习笔记</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>会话简介：HTTP（超文本传输协议）定义了通过万维网（WWW）传输文本、图形、视频和所有<br>其他数据所有的规则。HTTP 是一种无状态的协议，说明每次请求的处理都与之前或之后的<br>请求无关。虽然这种简化实现对于HTTP 的普及做出了卓越的贡献，但对于希望创建复杂的<br>Web 应用程序的开发人员来说，这点有点困扰。为了解决这个问题，出现了一种在客户端<br>机器上存储少量信息（cookie）。<br>由于cookie 大小限制、数量及其他原因，开发人员又提出了一种解决方案：session 会<br>话处理。<br>一．Cookie<br>的应用<br>设置cookie：setcookie()函数可以在客户端生成一个cookie 文件，这个文件可以保存到<br>期时间、名称、值等。<br>创建cookie<br>&lt;?php<br>setcookie(‘name’,’Lee’,time()+(7<em>24</em>60*60));//设置一个过期时间为7天的cookie<br>?&gt;<br>参数1：cookie 名称<br>参数2：cookie 值<br>参数3：cookie 过期时间</p>
+<p>查看cookie</p>
+<p>打开火狐浏览器：工具—页面信息-安全-查看cookie，可以查看到当前的cookie信息<br>读取cookie<br>&lt;?php<br>echo $_COOKIE[‘name’];<br>?&gt;<br>删除cookie<br>&lt;?php<br>setcookie(‘name’,’’);<br>setcookie(‘name’,’Lee’,time()-1);<br>?&gt;<br>使用Cookie 的限制<br>1、必须在HTML 文件的内容输出之前设置；<br>2、不同的浏览器对Cookie 的处理不一致，且有时会出现错误的结果。<br>3、限制是在客户端的。一个浏览器能创建的Cookie 数量最多为30 个，并且每个不能<br>超过4KB，每个WEB 站点能设置的Cookie 总数不能超过20 个。</p>
+<p>二．Session<br>会话处理<br>在使用session 会话处理，必须开始session，使用session_start()开始会话。<br>创建session 并读取session<br>&lt;?php<br>session_start();<br>$_SESSION[‘name’] = ‘Lee’;<br>echo $_SESSION[‘name’];<br>?&gt;<br>判断session 是否存在<br>&lt;?php<br>session_start();<br>$_SESSION[‘name’] = ‘Lee’;<br>if (isset($_SESSION[‘name’])) {<br>echo $_SESSION[‘name’];<br>}<br>?&gt;<br>删除session<br>&lt;?php<br>session_start();<br>$_SESSION[‘name’] = ‘Lee’;<br>unset($_SESSION[‘name’]);<br>echo $_SESSION[‘name’];<br>?&gt;<br>销毁所有session<br>&lt;?php<br>session_start();<br>$_SESSION[‘name’] = ‘Lee’;<br>$_SESSION[‘name2’] = ‘Lee’;<br>session_destroy();<br>echo $_SESSION[‘name’];<br>echo $_SESSION[‘name2’];<br>?&gt;</p>
+<p>&nbsp;</p>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2012/12/20/2013-e5-b9-b4-e5-ba-a6-e5-b7-a5-e8-b5-84-e8-b0-83-e6-95-b4-e6-96-b9-e6-a1-88/">
+                2013年度工资调整方案
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2012-12-20
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/社会生活/">社会生活</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>传说中的世界末日要到来啦,成功渡过所谓的末日后，来瞧瞧明年的工资调整吧！</p>
+<p>&nbsp;</p>
+<p><a href="http://www.dudu.me/gz.html" target="_blank" rel="external">点击查看详情吧！</a></p>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2012/07/10/e7-94-9f-e6-88-90-e7-bc-a9-e7-95-a5-e5-9b-be-e5-92-8c-e6-89-93-e6-b0-b4-e5-8d-b0-e7-9a-84-e4-b8-80-e4-b8-aa-e8-87-aa-e5-ae-9a-e4-b9-89-e5-87-bd-e6-95-b0/">
+                生成缩略图和打水印的一个自定义函数
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2012-07-10
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/学习笔记/">学习笔记</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>[php]<br>function imageInfo($imgPath)<br>{<br>$exts = array(<br>1 =&amp;gt; ‘GIF’,<br>2 =&amp;gt; ‘JPG’,<br>3 =&amp;gt; ‘PNG’,<br>4 =&amp;gt; ‘SWF’,<br>5 =&amp;gt; ‘PSD’,<br>6 =&amp;gt; ‘BMP’,<br>);<br>$info = array();</p>
+<p>if (!file_exists($imgPath)) {<br>return false;<br>}</p>
+<p>$size = getimagesize($imgPath);<br>$info[‘width’] = $size[0];<br>$info[‘height’] = $size[1];<br>$info[‘mime’] = $size[‘mime’];<br>$info[‘size’] = filesize($imgPath);<br>$info[‘ext’] = strtolower($exts[$size[2]]);<br>$info[‘type’] = $info[‘ext’] == ‘jpg’ ? ‘jpeg’ : $info[‘ext’];</p>
+<p>return $info;<br>}</p>
+<p>//thumb(‘dddd.jpg’, 200, 200);</p>
+<p>/**</p>
+<ul>
+<li>生成缩略图或裁切<br>*</li>
+<li>@param string $imgPath 图片地址</li>
+<li>@param int $width 新图片宽度</li>
+<li>@param int $height 新图片高度</li>
+<li>@param int $cutType 裁切类型(0:等比 1：center center裁剪 2:left top裁剪)</li>
+<li>@return string 新图片地址<br>*/<br>function thumb($imgPath, $width = null, $height = null, $cutType = 0)<br>{<br>if (!($info = imageInfo($imgPath))) {<br>return false;<br>}</li>
+</ul>
+<p>if ($width &amp;gt; $info[‘width’] || $height &amp;gt; $info[‘width’]) {<br>return false;<br>}</p>
+<p>switch($cutType) {</p>
+<p>case 1: //center center<br>$startX = $info[‘width’] / 2 - $width / 2;<br>$startY = $info[‘height’] / 2 - $height / 2;<br>$endX = $width;<br>$endY = $height;<br>$newWidth = $width;<br>$newHeight = $height;<br>break;</p>
+<p>case 2: // left top<br>$startX = $startY = 0;<br>$endX = $width;<br>$endY = $height;<br>$newWidth = $width;<br>$newHeight = $height;<br>break;</p>
+<p>default: //等比缩放<br>$scale = min($width / $info[‘width’], $height / $info[‘height’]); // 计算缩放比例<br>$newWidth = (int) ($info[‘width’] <em> $scale);<br>$newHeight = (int) ($info[‘height’] </em> $scale);<br>$startX = $startY = 0;<br>$endX = $info[‘width’];<br>$endY = $info[‘height’];<br>}</p>
+<p>// 载入原图<br>$createFun = ‘imagecreatefrom’ . $info[‘type’];<br>$oldImg = $createFun($imgPath);</p>
+<p>// 新建一个真彩色图像<br>$newimg = imagecreatetruecolor($newWidth, $newHeight);</p>
+<p>// 复制图片<br>ImageCopyResampled($newimg, $oldImg, 0, 0, $startX, $startY, $newWidth, $newHeight, $endX, $endY);</p>
+<p>//bool imagecopyresampled ($dst_image, $src_image, $dst_x, $dst_y, $src_x , $src_y , $dst_w , $dst_h , $src_w , $src_h )</p>
+<p>// 对jpeg图形设置隔行扫描<br>$info[‘type’] == ‘jpeg’ &amp;amp;&amp;amp; imageinterlace($newimg, 1);</p>
+<p>// 生成图片<br>$imageFun = ‘image’ . $info[‘type’];<br>$newName = time() . ‘.’ . $info[‘ext’];</p>
+<p>$imageFun($newimg, $newName);<br>ImageDestroy($newimg);<br>ImageDestroy($oldImg);</p>
+<p>return $newName;<br>}</p>
+<p>waterMark(‘dddd.jpg’, ‘qq.jpg’, 2, 100);</p>
+<p>/**</p>
+<ul>
+<li>图片水印<br>*</li>
+<li>@param string $imgPath 图片地址</li>
+<li>@param string $water 水印图片地址或文字</li>
+<li>@param int $pos 水印位置</li>
+<li>@param int $pct 透明度</li>
+<li>@return string 新图片地址<br>*/<br>function waterMark($imgPath, $water, $pos = 0, $pct = 80)<br>{<br>// 水印图片<br>$info = imageInfo($water);<br>$waterW = $info[‘width’];<br>$waterH = $info[‘height’];<br>$fun = ‘imagecreatefrom’ . $info[‘type’];<br>$waterImg = $fun($water);</li>
+</ul>
+<p>// 原始图片<br>$info = imageInfo($imgPath);<br>$oldW = $info[‘width’];<br>$oldH = $info[‘height’];<br>$fun = ‘imagecreatefrom’ . $info[‘type’];<br>$oldImg = $fun($imgPath);</p>
+<p>// 剪切水印<br>$waterW &amp;gt; $oldW &amp;amp;&amp;amp; $waterW = $oldW;<br>$waterH &amp;gt; $oldH &amp;amp;&amp;amp; $waterH = $oldH;</p>
+<p>// 水印位置<br>switch($pos){<br>case 1://1为顶端居左<br>$posX = 0;<br>$posY = 0;<br>break;<br>case 2://2为顶端居中<br>$posX = ($oldW - $waterW) / 2;<br>$posY = 0;<br>break;<br>case 3://3为顶端居右<br>$posX = $oldW - $waterW;<br>$posY = 0;<br>break;<br>case 4://4为中部居左<br>$posX = 0;<br>$posY = ($oldH - $waterH) / 2;<br>break;<br>case 5://5为中部居中<br>$posX = ($oldW - $waterW) / 2;<br>$posY = ($oldH - $waterH) / 2;<br>break;<br>case 6://6为中部居右<br>$posX = $oldW - $waterW;<br>$posY = ($oldH - $waterH) / 2;<br>break;<br>case 7://7为底端居左<br>$posX = 0;<br>$posY = $oldH - $waterH;<br>break;<br>case 8://8为底端居中<br>$posX = ($oldW - $waterW) / 2;<br>$posY = $oldH - $waterH;<br>break;<br>case 9://9为底端居右<br>$posX = $oldW - $waterW;<br>$posY = $oldH - $waterH;<br>break;<br>default: //随机<br>$posX = rand(0,($oldW - $waterW));<br>$posY = rand(0,($oldH - $waterH));<br>break;<br>}</p>
+<p>// 添加水印<br>imagecopymerge($oldImg, $waterImg, $posX, $posY, 0, 0, $waterW, $waterH, $pct);<br>$fun = ‘image’ . $info[‘type’];<br>$newName = time() . ‘.’ . $info[‘ext’];<br>$fun($oldImg, $newName);<br>imagedestroy($oldImg);<br>imagedestroy($waterImg);</p>
+<p>return $newName;</p>
+<p>}</p>
+<p>[/php]</p>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2012/07/08/php-e7-a7-bb-e5-8a-a8-e6-96-87-e4-bb-b6-e5-a4-b9-e5-92-8c-e6-96-87-e4-bb-b6/">
+                php移动文件夹和文件
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2012-07-07
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/学习笔记/">学习笔记</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <pre><code>php里面木有复制文件夹的函数可以给我们使用，我写了一个，在这分享下：
+</code></pre><p>我的思路是：移动=新建+删除。在移动之前在目标的目录新建一个文件夹，然后在把文件和目录都复制过去，最后在执行删除.</p>
+<p>/**</p>
+<ul>
+<li>@parammoveDir  剪切文件和目录</li>
+<li>@param string $to 目标文件路径</li>
+<li><p>@param string $from 源文件路径<br>*/<br>function moveDir($from,$to){<br>if(!is_dir($from)){//判断$from源文件目录是不是存在<br>return false;<br>}</p>
+<p>$from = rtrim(str_replace(‘\‘,’/‘,$from), ‘/‘);//为了在linux上兼容，我们把/符号全部转换成\因为windows下面2个符号都可以的.<br>$files = scandir($from);//列出源文件目录的文件和文件夹，并且以数组的形式存入 $files。</p>
+</li>
+</ul>
+<p>/*</p>
+<p>$files的输出结果：</p>
+<p><div id="syn_row2">Array ( [0] =&gt; . [1] =&gt; .. [2] =&gt; a [3] =&gt; b [4] =&gt; c [5] =&gt; dir [6] =&gt; dir.php [7] =&gt; dir2 [8] =&gt; dir2.php [9] =&gt; function_file.php [10] =&gt; homework.php )</div></p>
+<p><div>可以看到scandir这个函数会输出2个多余的值： [0] =&gt; . [1] =&gt; ..在这对我们木有用.写一个if干掉他们。</div><br>*/<br> foreach($files as $file){//对 $files数组进行遍历,方便对数组里面的文件夹和文件进行复制和删除.<br>  if(in_array($file, array(‘.’,’..’))){// array(‘.’,’..’）新建了一个只有.和..的数组，并且查找$file里面知否有.和..这2个值<br>   continue;<br>  }<br>  $subFrom = $from.’/‘.$file;//把遍历后的文件夹或者文件名变成一个新的路径<br>     $subTo = $to.’/‘.$file;</p>
+<p>  if(is_dir($subFrom)){<br>   @mkdir($subTo);//判断$subFrom是不是一个目录，如果是目录就在目标的目录下面，新建一个目录<br>   moveDir($subFrom, $subTo);//递归执行新建目录。<br>  }else{//不是目录的话，就直接复制文件.复制完就删除文件.<br>   copy($subFrom, $subTo);<br>   unlink($subFrom);//删除所有文件<br>  }<br>  @rmdir($subFrom);//删除所有的目录<br> }<br> return true;<br>}<br>moveDir(‘C:\Users\Administrator\Desktop\0704’,’e:’);//在这传递你要移动的文件或者目录的地址</p>
+<p>//这是一个PV计数机的小程序，记录打开一个页面的次数，类似cnzz的流量统计里面的PV：<br>echo math(‘readme1.txt’);<br>function math($dir){<br>if(!file_exists($dir)){<br> fopen($dir,’w+’);<br> @fclose($dir);<br>}<br>$a=file_get_contents($dir);<br>$a+=1;<br>file_put_contents($dir,$a);<br>$b=file_get_contents($dir);<br>return ‘&lt;p style=”color:red;”&gt;你是第’.$b.’位访客&lt;p&gt;’;<br>}</p>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2012/07/04/wp-e5-9e-83-e5-9c-be-e8-af-84-e8-ae-ba-e5-a4-84-e7-90-86-e6-96-b9-e6-b3-95/">
+                wp垃圾评论处理方法
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2012-07-04
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/学习笔记/">学习笔记</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <pre><code><span class="keyword">*</span><span class="keyword">*</span>wp垃圾评论<span class="keyword">*</span><span class="keyword">*</span>真不少，最近老是遇到一些老外的发的全英文的留言或者评论，每天都有几百条，开始以为是老外喜欢看自己的博客，后来才发现，每天发的评论都是一样的，应该是发帖工具批量的.
+</code></pre><p><a href="http://www.dudu.me/wp-content/uploads/2012/07/11.png" target="_blank" rel="external"><img src="http://www.dudu.me/wp-content/uploads/2012/07/11.png" alt="" title="11"></a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>到插件中心，搜索下<strong>WP anti spam dali</strong> 这个插件.这个插件默认是允许输入英文的.我们来修改下里面的正则，实现对英文的限制；</p>
+<p><strong>在插件中心找到该插件，下载安装，设置好之后，进入源码编辑：</strong></p>
+<p><strong>找到<strong>wp-anti-spamdali/dali-front.php</strong> 这个文件：</strong></p>
+<p>将$pattern = ‘/[一-龥/u’修改成$pattern = ‘/[一-龥][^a-zA-z]/u’;  这里的[^a-zA-z]就是不匹配英文.写得比较死，所有的英文字母都不可以输入了.</p>
+<p>还可以增加一个提示，对于非老外的一个提示:</p>
+<p>if(!preg_match($pattern, $incoming_comment[‘comment_content’])) {<br>  if($daliOptions[‘delete_or_move’] == ‘delete’)<br>   wp_die(‘评论不能少于2个中文并且不能是英文’);</p>
+<p>我这不是歧视老外，是的确垃圾评论太多了.</p>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2012/06/22/e7-ab-af-e5-8d-88-e8-8a-82-e5-8f-8c-e8-89-b2-e7-90-83-e5-b0-8f-e7-a8-8b-e5-ba-8f/">
+                端午节-双色球小程序
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2012-06-21
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/学习笔记/">学习笔记</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p><em>看看你今天的运气怎么样，来测试下今天有中双色球大奖的运气么，</em></p>
+<p><em>试下吧. 发现了幸运号码是500万，赶紧去彩票店买哟。</em></p>
+<p><a href="http://www.dudu.me/php/ssq.php" target="_blank" rel="external">http://www.dudu.me/php/ssq.php</a><br><em>哈哈，我今天运气不错..<img src="http://img.t.sinajs.cn/t35/style/images/common/face/ext/normal/32/lxhwahaha_org.gif" alt=""></em></p>
+<p><img src="http://ww1.sinaimg.cn/bmiddle/68340a7etw1du69gdm965j.jpg" alt="" title="双色球"></p>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2012/06/16/phpjs-e5-ae-9e-e7-8e-b0-e5-80-92-e8-ae-a1-e6-97-b6-e7-b1-bb-e4-bc-bc-e5-9b-a2-e8-b4-ad-e7-bd-91-e7-9a-84-e5-80-92-e8-ae-a1-e6-97-b6/">
+                php+js实现倒计时-类似团购网的倒计时
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2012-06-16
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/学习笔记/">学习笔记</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>要求：结合js做一个到计时功能(动态倒计时)，从什么时候开始倒计时要能在PHP里面定义。比如某活动在2012年10月1日零点开始，然后开始倒计时 距离活动开始还有：XX天XX小时XX分xx秒.注意计时的时间是以服务器时间为准的，不会因为用户客户端电脑修改了时间而导致活动延期。<br>如果是0天0小时15分20秒类似这样的要显示“15分20秒”</p>
+<p>原理：PHP运行在服务器端的，记时的时间以服务器时间为准，我们就必须把时间放在php里面，然后用js来获取服务器的时间，用计时器来倒计时。值得注意的就是，php里面的时间是以秒来计算的，而js里面以毫秒来计算的。</p>
+<p>&lt;?php</p>
+<p>date_default_timezone_set(“Asia/shanghai”);//设置时区</p>
+<p>$nowtime = time();</p>
+<p>$overtime = “2013-6-17 18:39:00”;//倒计时结束的时间设置</p>
+<p>$endtime = strtotime($overtime);</p>
+<p>?&gt;</p>
+<p>&lt;!DOCTYPE html PUBLIC “-//W3C//DTD XHTML 1.0 Transitional//EN” “<a href="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&amp;gt" target="_blank" rel="external">http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&amp;gt</a>;</p>
+<p>&lt;html xmlns=”<a href="http://www.w3.org/1999/xhtml&quot;&amp;gt" target="_blank" rel="external">http://www.w3.org/1999/xhtml&quot;&amp;gt</a>;</p>
+<p>&lt;style type=”text/css”&gt;</p>
+<p>span{</p>
+<p>border:3px #00CC00 solid;</p>
+<p>}</p>
+<p>&lt;/style&gt;</p>
+<p>&lt;head&gt;</p>
+<p>&lt;title&gt;倒计时&lt;/title&gt;</p>
+<p>&lt;script type=”text/javascript”&gt;</p>
+<p>&lt;!— //</p>
+<p>var endtime=&lt;?php echo $endtime; ?&gt;;</p>
+<p>function get_Time(){</p>
+<p>var sumMS = endtime<em>1000-&lt;?php echo $nowtime;?&gt;</em>1000;</p>
+<p>var D=Math.floor(sumMS/(24<em>3600</em>1000));//因为传递来的PHP的时间是秒，而JS是毫秒，所以要乘以1000</p>
+<p>var H=Math.floor(sumMS/(1000<em>60</em>60))%24;</p>
+<p>//alert(nH);</p>
+<p>var M=Math.floor(sumMS/(1000*60)) % 60;</p>
+<p>var S=Math.floor(sumMS/1000) % 60;</p>
+<p>//alert(nH.toString().length);</p>
+<p>if(sumMS&lt;=0){//判断$overtime时间是否小于当前时间 如小于当前时间，则认为倒计时结束了..</p>
+<p>document.getElementById(“time”).innerHTML=’亲,倒计时结束！’</p>
+<p>}else{//$overtime时间不小于当前时间，倒计时开始</p>
+<p>H=H.toString().length&lt;2 ? “0”+H :H;//把小时H的时间转换成字符型，并且获取长度，小于2的话，在前面加上0</p>
+<p>M=M.toString().length&lt;2 ? “0”+M :M;//同上</p>
+<p>S=S.toString().length&lt;2 ? “0”+S :S;//同上</p>
+<p>if(D==0){//判断天数是否是0天，如果距离结束只有0天，则不显示getD 和getD_1</p>
+<p>document.getElementById(“getD”).innerHTML=’’;</p>
+<p>document.getElementById(“getD_1”).innerHTML=’’;</p>
+<p>}else{//D不为0，则把当前天数赋值给ID为getD的html</p>
+<p>document.getElementById(“getD”).innerHTML=D;</p>
+<p>}</p>
+<p>if(H==0){//同上</p>
+<p>document.getElementById(“getH”).innerHTML=’’;</p>
+<p>document.getElementById(“getH_1”).innerHTML=’’;</p>
+<p>}else{</p>
+<p>document.getElementById(“getH”).innerHTML=H;</p>
+<p>}</p>
+<p>document.getElementById(“getM”).innerHTML=M;</p>
+<p>document.getElementById(“getS”).innerHTML=S;</p>
+<p>}</p>
+<p>endtime—;</p>
+<p>setTimeout(“get_Time()”,1000);</p>
+<p>}</p>
+<p>window.onload=get_Time;</p>
+<p>&lt;/script&gt;</p>
+<p>&lt;/head&gt;</p>
+<p>&lt;body&gt;</p>
+<p>&lt;br/&gt;</p>
+<p>&lt;span style=”font-size:26px” id=”time”&gt;</p>
+<p>距离&lt;?php echo $overtime;?&gt;还有：</p>
+<p>&lt;b id=”getD”&gt;几&lt;/b&gt;&lt;b id=”getD_1”&gt;天&lt;/b&gt;</p>
+<p>&lt;b id=”getH”&gt;几&lt;/b&gt;&lt;b id=”getH_1”&gt;时&lt;/b&gt;</p>
+<p>&lt;b id=”getM”&gt;几&lt;/b&gt;&lt;b id=”getM_1”&gt;分&lt;/b&gt;</p>
+<p>&lt;b id=”getS”&gt;几&lt;/b&gt;&lt;b id=”getD_1”&gt;秒&lt;/b&gt;</p>
+<p>&lt;/span&gt;</p>
+<p>&lt;/body&gt;</p>
+<p>&lt;/html&gt;</p>
+<p>由于木有安装程序高亮插件，看着有点晕晕的.右键另存为下吧..</p>
+<h1 id="点击预览"><a href="http://www.dudu.me/php/d.php" target="_blank" rel="external">点击预览</a></h1><p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+  </div>
+
+  
+  <div class="pagination">
+    <a class="extend prev" rel="prev" href="/">&laquo;</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/3/">&raquo;</a>
+  </div>
+
+
+        </div>
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      <div class="site-overview">
+        <div class="site-author motion-element">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="biny" />
+          <p class="site-author-name">biny</p>
+        </div>
+        <p class="site-description motion-element">yang fangjun’s blog | oc | objective c | bi</p>
+        <div class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">74</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">分类</span>
+              
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">1</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </div>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+      </div>
+
+      
+
+    </div>
+  </div>
+
+
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp; 
+  2015
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">biny</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.content img').each(function () {
+        var $image = $(this);
+        var $imageWrapLink = $image.parent('a');
+
+        if ($imageWrapLink.size() < 1) {
+          $imageWrapLink = $image.wrap('<a href="' + this.getAttribute('src') + '"></a>').parent('a');
+        }
+        $imageWrapLink.addClass('fancybox');
+      });
+    });
+    $('.fancybox').fancybox({
+      helpers: {
+        overlay: {
+          locked: false
+        }
+      }
+    });
+  </script>
+
+
+  <script type="text/javascript">
+  function hasMobileUA () {
+    var nav = window.navigator;
+    var ua = nav.userAgent;
+    var pa = /iPad|iPhone|Android|Opera Mini|BlackBerry|webOS|UCWEB|Blazer|PSP|IEMobile|Symbian/g;
+
+    return pa.test(ua);
+  }
+
+  function isDesktop () {
+    return screen.width > 991 && !hasMobileUA();
+  }
+
+  function isTablet () {
+    return screen.width < 992 && screen.width > 767 && hasMobileUA();
+  }
+
+  function isMobile () {
+    return screen.width < 767 && hasMobileUA();
+  }
+
+  function escapeSelector (selector) {
+    return selector.replace(/[!"$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, "\\$&")
+  }
+</script>
+
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" id="motion.global">
+  $(document).ready(function () {
+    var body = $('body');
+    var isSidebarVisible = false;
+    var sidebarToggle = $('.sidebar-toggle');
+    var sidebarToggleLine1st = $('.sidebar-toggle-line-first')
+    var sidebarToggleLine2nd = $('.sidebar-toggle-line-middle');
+    var sidebarToggleLine3rd = $('.sidebar-toggle-line-last');
+    var sidebar = $('.sidebar');
+
+    var SIDEBAR_WIDTH = '320px';
+    var SIDEBAR_DISPLAY_DURATION = 300;
+
+    var sidebarToogleLineStatusInit = {width: '100%', opacity: 1, left: 0, rotateZ: 0, top: 0};
+
+    var sidebarToggleLine1stStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine1stStatusArrow = {width: '50%', rotateZ: '-45deg', top: '2px'};
+    var sidebarToogleLine1stStatusClose = {width: '100%', rotateZ: '-45deg', top: '5px'};
+
+    var sidebarToggleLine2ndStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine2ndStatusArrow = {width: '90%'};
+    var sidebarToogleLine2ndStatusClose = {opacity: 0};
+
+    var sidebarToggleLine3rdStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine3rdStatusArrow = {width: '50%', rotateZ: '45deg', top: '-2px'};
+    var sidebarToogleLine3rdStatusClose = {width: '100%', rotateZ: '45deg', top: '-5px'};
+
+    LogoAndMenuMotion();
+    sidebatToggleMotion();
+    postsListMotion();
+    backToTopMotion();
+
+
+    $(document)
+      .on('sidebar.isShowing', function () {
+        isDesktop() && body.velocity(
+          {paddingRight: SIDEBAR_WIDTH},
+          SIDEBAR_DISPLAY_DURATION
+        );
+        sidebarContentMotion();
+      })
+      .on('sidebar.isHiding', function () {});
+
+    function LogoAndMenuMotion() {
+      $.Velocity.RunSequence([
+        { e: $('.brand'), p: { opacity: 1 }, o: { duration: 100 } },
+        { e: $('.logo'), p: { opacity: 1, top: 0 }, o: { duration: 50} },
+        
+        { e: $('.logo-line-before i'), p: { translateX: "100%" }, o: { duration: 500, sequenceQueue: false } },
+        { e: $('.logo-line-after i'), p: { translateX: "-100%" }, o: { duration: 500, sequenceQueue: false } },
+        
+        { e: $('.site-title'), p: { opacity: 1, top: 0 }, o: { duration: 200 } }
+      ]);
+      $('.menu-item').velocity('transition.slideDownIn', {display: null});
+    }
+
+
+    function backToTopMotion () {
+      var b2top = $('.back-to-top');
+      b2top.on('click', function () {
+        body.velocity('scroll');
+      });
+    }
+
+    function sidebarShowMotion () {
+
+      sidebarToggleLine1st.velocity(sidebarToogleLine1stStatusClose);
+      sidebarToggleLine2nd.velocity(sidebarToogleLine2ndStatusClose);
+      sidebarToggleLine3rd.velocity(sidebarToogleLine3rdStatusClose);
+
+      sidebar.velocity({width: SIDEBAR_WIDTH}, {
+        display: 'block',
+        duration: SIDEBAR_DISPLAY_DURATION,
+        complete: function () {
+          sidebar.addClass('sidebar-active');
+          sidebar.trigger('sidebar.didShow');
+        }
+      });
+      sidebar.trigger('sidebar.isShowing');
+    }
+
+    function sidebarHideMotion () {
+      isDesktop() && body.velocity({paddingRight: 0});
+      sidebar.velocity('reverse');
+
+      sidebarToggleLine1st.velocity(sidebarToggleLine1stStatusInit);
+      sidebarToggleLine2nd.velocity(sidebarToggleLine2ndStatusInit);
+      sidebarToggleLine3rd.velocity(sidebarToggleLine3rdStatusInit);
+
+      sidebar.removeClass('sidebar-active');
+      sidebar.trigger('sidebar.isHiding');
+    };
+
+    function sidebarContentMotion () {
+      $('.sidebar .motion-element').velocity(
+        'transition.slideRightIn',
+        {stagger: 50, drag: true}
+      );
+    }
+
+    function postsListMotion () {
+      var postMotionOptions = window.postMotionOptions || {stagger: 300, drag: true};
+      $('.post').velocity('transition.slideDownIn', postMotionOptions);
+    }
+
+    function sidebatToggleMotion () {
+      sidebarToggle.on('click', function () {
+        isSidebarVisible ? sidebarHideMotion() : sidebarShowMotion();
+        isSidebarVisible = !isSidebarVisible;
+      });
+
+      sidebarToggle.hover(function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusArrow);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusArrow);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusArrow);
+      }, function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusInit);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusInit);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusInit);
+      });
+    }
+  });
+
+</script>
+
+
+
+
+
+  
+
+  
+
+  
+  
+  
+
+  
+
+
+
+
+  
+</body>
+</html>
