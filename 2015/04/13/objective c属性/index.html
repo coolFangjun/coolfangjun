@@ -137,7 +137,8 @@
       
 
       
-        <h3 id="属性">属性</h3><h3 id="1、Oc属性的注意:">1、Oc属性的注意:</h3><ul>
+        <a id="more"></a>
+<h3 id="属性">属性</h3><h3 id="1、Oc属性的注意:">1、Oc属性的注意:</h3><ul>
 <li>setter、getter里面，不要使用self.age(死循环，递归)</li>
 </ul>
 <figure class="highlight"><figcaption><span>c</span></figcaption><table><tr><td class="code"><pre><span class="line">&#10; //&#35774;&#32622;&#20154;&#30340;&#24180;&#40836;&#10;[person setAge:22];&#10;NSLog(@&#34;%ld&#34;,[person age]);&#10;//&#20351;&#29992;&#28857;&#35821;&#27861;&#10;person.age = -20;&#10;NSInteger age = person.age;&#10;- (void)setAge:(NSInteger)age&#123;&#10;   self.age = age;&#10;&#125;&#10;//&#36825;&#31181;&#26041;&#24335;&#26159;&#38169;&#35823;&#30340;....</span><br></pre></td></tr></table></figure>
