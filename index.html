@@ -114,7 +114,7 @@
           
             
               <a class="post-title-link" href="/2015/04/13/objective c属性/">
-                未命名
+                objective c属性
               </a>
             
           
@@ -126,6 +126,17 @@
           發表於 2015-04-13
         </span>
 
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分類於
+            
+              <a href="/categories/objective-c/">objective c</a>
+
+              
+              
+
+            
+          </span>
         
 
         
@@ -141,7 +152,7 @@
 
       
         
-          <h2 id="属性">属性</h2><h3 id="1、Oc属性的注意:">1、Oc属性的注意:</h3><ul>
+          <h3 id="属性">属性</h3><h3 id="1、Oc属性的注意:">1、Oc属性的注意:</h3><ul>
 <li>setter、getter里面，不要使用self.age(死循环，递归)</li>
 </ul>
 <figure class="highlight"><figcaption><span>c</span></figcaption><table><tr><td class="code"><pre><span class="line">&#10; //&#35774;&#32622;&#20154;&#30340;&#24180;&#40836;&#10;[person setAge:22];&#10;NSLog(@&#34;%ld&#34;,[person age]);&#10;//&#20351;&#29992;&#28857;&#35821;&#27861;&#10;person.age = -20;&#10;NSInteger age = person.age;&#10;- (void)setAge:(NSInteger)age&#123;&#10;   self.age = age;&#10;&#125;&#10;//&#36825;&#31181;&#26041;&#24335;&#26159;&#38169;&#35823;&#30340;....</span><br></pre></td></tr></table></figure>
@@ -155,9 +166,9 @@
 <li>strong(需要setter方法管理内存，在ARC) — weak(直接赋值,一般用来修饰对象)</li>
 <li>nonatomic — actomic</li>
 <li>readonly — readwrite</li>
-<li>copy<figure class="highlight"><figcaption><span>c</span></figcaption><table><tr><td class="code"><pre><span class="line">@property NSInteger age;&#10;@property (retain, nonatomic) NSString *name;&#10;//&#20462;&#25913;setter&#21644;getter&#26041;&#27861;&#30340;&#21517;&#31216;&#10;@property (retain,nonatomic,setter = setDafaultName:,getter = defaultName) NSString * name;</span><br></pre></td></tr></table></figure>
-</li>
+<li>copy</li>
 </ul>
+<figure class="highlight"><figcaption><span>c</span></figcaption><table><tr><td class="code"><pre><span class="line">@property NSInteger age;&#10;@property (retain, nonatomic) NSString *name;&#10;//&#20462;&#25913;setter&#21644;getter&#26041;&#27861;&#30340;&#21517;&#31216;&#10;@property (retain,nonatomic,setter = setDafaultName:,getter = defaultName) NSString * name;</span><br></pre></td></tr></table></figure>
 <p>assgin 和weak的区别:<br>weak 直接赋值，使用weak修饰，释放时，会将对象=nil; 在ARC模型<br>assgin 弱引用，缺省值  非ARC模式</p>
 
         
@@ -165,6 +176,12 @@
     </div>
 
     <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/oc属性/"> #oc属性 </a>
+          
+        </div>
       
 
       
@@ -216,14 +233,14 @@
 
           <div class="site-state-item site-state-categories">
             
-              <span class="site-state-item-count">0</span>
+              <span class="site-state-item-count">1</span>
               <span class="site-state-item-name">分類</span>
               
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">0</span>
+              <span class="site-state-item-count">1</span>
               <span class="site-state-item-name">標籤</span>
               </a>
           </div>
