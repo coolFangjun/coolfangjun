@@ -1,0 +1,936 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.2"/>
+
+
+    <meta name="description" content="yang fangjun’s blog | oc | objective c | bi" />
+
+
+
+	<meta name="keywords" content="oc复习," />
+
+  <title> OC基础知识复习 // 嘟嘟blog </title>
+</head>
+
+<body>
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">嘟嘟blog</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+
+  <ul id="menu" class="menu">
+     
+    
+      
+      <li class="menu-item menu-item-home">
+        <a href="/">
+          <i class="menu-item-icon icon-home"></i> <br />
+          首页
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-archives">
+        <a href="/archives">
+          <i class="menu-item-icon icon-archives"></i> <br />
+          归档
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-tags">
+        <a href="/tags">
+          <i class="menu-item-icon icon-tags"></i> <br />
+          标签
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-about">
+        <a href="/about">
+          <i class="menu-item-icon icon-about"></i> <br />
+          关于
+        </a>
+      </li>
+    
+  </ul>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              OC基础知识复习
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2015-04-16
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/objective-c/">objective c</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <h3 id="1-_面向对象的特点、重写方法（init、description方法的作用）">1. 面向对象的特点、重写方法（init、description方法的作用）</h3><h4 id="答_:_面向对象的特点封装、继承、多态">答 : 面向对象的特点封装、继承、多态</h4><blockquote>
+<p>1、封装:把客观事物封装成抽象的类，并且类可以把自己的数据和方法只让可信的类或者对象操作，对不可信的进行信息隐藏。</p>
+<p>2、继承：它可以使用现有类的所有功能，并在无需重新编写原来的类的情况下对这些功能进行扩展<br>，通过继承创建的新类称为“子类”或“派生类”，被继承的类称为“基类”、“父类”或“超类”。</p>
+<p>3、多态：多态就是某一类事物的多种形态</p>
+</blockquote>
+<h4 id="重写init方法:">重写init方法:</h4><figure class="highlight"><table><tr><td class="code"><pre><span class="line">- (instancetype)init&#123;&#10;&#10;    if (self = [super init]) &#123;&#10;        &#10;        self.name = @&#34;&#24352;&#23665;&#34;;&#10;    &#125;&#10;    return self;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="为什么要重写description方法:">为什么要重写description方法:</h4><blockquote>
+<p> description方法的默认实现是返回类名和对象的内存地址，这样的话，使用NSLog输出OC对象，意义就不是很大，因为我们并不关心对象的内存地址，比较关心的是对象内部的一些成变量的值。因此，会经常重写description方法，覆盖description方法的默认实现比如，重写Student的description方法，返回成员变量_age的值.</p>
+<h4 id="重写description方法:">重写description方法:</h4></blockquote>
+<h3 id="2-_方法的声明与书写（+/-_、方法命名规范）">2. 方法的声明与书写（+/- 、方法命名规范）</h3><figure class="highlight"><table><tr><td class="code"><pre><span class="line">- (NSString *)description&#123;&#10;&#10;    return [NSString stringWithFormat:@&#34;%@&#34;,self.name];&#10;&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="3-_字符串的常用方法（初始化、截取、拼接、获得某个字符），NSNumber与NSValue对基本类型的装包与拆包，NSString，NSNumber，基本类型之间的转换">3. 字符串的常用方法（初始化、截取、拼接、获得某个字符），NSNumber与NSValue对基本类型的装包与拆包，NSString，NSNumber，基本类型之间的转换</h3><h4 id="1、字符串的常用方法（初始化、截取、拼接、获得某个字符）">1、字符串的常用方法（初始化、截取、拼接、获得某个字符）</h4><figure class="highlight"><table><tr><td class="code"><pre><span class="line">//------------&#19981;&#21487;&#21464;&#23383;&#31526;&#20018;(NSString)&#30340;&#21021;&#22987;&#21270;----------------&#10;  NSString * title = @&#34;&#22047;&#22047;blog&#34;;&#10;  //&#23383;&#31526;&#20018;&#26684;&#24335;&#21270;&#10;  NSString * string1 = [NSString stringWithFormat:@&#34;%@&#34;,title];&#10;  //&#23383;&#31526;&#20018;&#36861;&#21152;&#10;  NSString * string2 = [title stringByAppendingString:@&#34;&#27599;&#22825;&#35760;&#19979;&#31508;&#35760;&#34;];&#10;  //&#23383;&#31526;&#20018;&#30340;&#27604;&#36739;&#10;  BOOL b = [title isEqualToString:string1];&#10;  NSString * url = @&#34;http://www.dudu.me&#34;;&#10;  //&#23383;&#31526;&#20018;&#30340;&#26597;&#25214;&#10;  if ([url hasPrefix:@&#34;http&#34;]) &#123;   //&#26597;&#25214;&#20197;http&#24320;&#22836;&#30340;&#23383;&#31526;&#20018;&#10;      NSLog(@&#34;&#21547;&#26377;http&#24320;&#22836;&#30340;&#23383;&#31526;&#20018;&#34;);&#10;  &#125;else&#123;&#10;      NSLog(@&#34;&#26408;&#26377;http&#24320;&#22836;&#30340;&#23383;&#31526;&#20018;&#34;);&#10;  &#125;&#10;   //------------NSstring&#23383;&#31526;&#20018;&#25130;&#21462;----------------------------------&#10;  &#10;  //-substringToIndex: &#20174;&#23383;&#31526;&#20018;&#30340;&#24320;&#22836;&#19968;&#30452;&#25130;&#21462;&#21040;&#25351;&#23450;&#30340;&#20301;&#32622;&#65292;&#20294;&#19981;&#21253;&#25324;&#35813;&#20301;&#32622;&#30340;&#23383;&#31526;&#10;  NSString * string3 =[string2 substringToIndex:8];&#10;  NSLog(@&#34;%@&#34;,string3);//&#22047;&#22047;blog&#27599;&#22825;&#10;  &#10;  //-substringFromIndex: &#20197;&#25351;&#23450;&#20301;&#32622;&#24320;&#22987;&#65288;&#21253;&#25324;&#25351;&#23450;&#20301;&#32622;&#30340;&#23383;&#31526;&#65289;&#65292;&#24182;&#21253;&#25324;&#20043;&#21518;&#30340;&#20840;&#37096;&#23383;&#31526;&#10;  &#10;  NSString * string4 =[string3 substringFromIndex:2];&#10;  NSLog(@&#34;%@&#34;,string4);//blog&#27599;&#22825;&#10;  &#10;  //-substringWithRange: //&#25353;&#29031;&#25152;&#32473;&#20986;&#30340;&#20301;&#32622;&#65292;&#38271;&#24230;&#65292;&#20219;&#24847;&#22320;&#20174;&#23383;&#31526;&#20018;&#20013;&#25130;&#21462;&#23376;&#20018;&#10;  NSString * string5 = [string4 substringWithRange:NSMakeRange(0, 4)];&#10;  NSLog(@&#34;%@&#34;,string5);//blog&#10;  &#10;  //------------&#21487;&#21464;&#23383;&#31526;&#20018;(NSMutableString)&#30340;&#21021;&#22987;&#21270;----------------&#10;  &#10;  NSMutableString * mutableString1 = [NSMutableString string];&#10;  [mutableString1 stringByAppendingString:string1];&#10;  &#10;  NSMutableString * mutableString2 = [NSMutableString stringWithString:string2];&#10;  &#10;  NSMutableString * mutableString3 = [NSMutableString stringWithFormat:@&#34;%@&#34;,@&#34;www.dudu.me&#34;];&#10;  NSLog(@&#34;%@ %@&#34;,mutableString2,mutableString3);&#10;  &#10;  //------------&#21487;&#21464;&#23383;&#31526;&#20018;(NSMutableString)&#25554;&#20837;----------------&#10;  &#10;  [mutableString2 insertString:@&#34;,&#20687;&#34588;&#34562;&#19968;&#26679;&#29983;&#27963;,&#34; atIndex:6];&#10;  NSLog(@&#34;%@&#34;,mutableString2);&#10;  &#10;  //------------&#21487;&#21464;&#23383;&#31526;&#20018;(NSMutableString)&#21024;&#38500;----------------&#10;  &#10;  [mutableString2 deleteCharactersInRange:NSMakeRange(14, 7)];&#10;  NSLog(@&#34;%@&#34;,mutableString2);&#10;  &#10;  //------------&#21487;&#21464;&#23383;&#31526;&#20018;(NSMutableString)&#26597;&#25214;&#21040;&#23383;&#31526;&#20018;&#24182;&#21024;&#38500;----------------&#10;   //&#23383;&#31526;&#20018;&#26597;&#25214;,&#21028;&#26029;&#23383;&#31526;&#20018;&#20013;&#26159;&#21542;&#26377;&#34;&#29983;&#27963;&#34;&#65292;&#25214;&#21040;&#21518;&#21024;&#38500;&#10;  NSRange range = [mutableString2 rangeOfString:@&#34;&#29983;&#27963;&#34;];&#10;  if (range.location != NSNotFound) &#123;&#10;      &#10;      [mutableString2 deleteCharactersInRange:range];&#10;  &#125;&#10;  NSLog(@&#34;%@&#34;,mutableString2);&#10;  &#10;  //&#37325;&#26032;&#35774;&#32622;&#21487;&#21464;(NSMutableString)&#23383;&#31526;&#20018;&#10;  [mutableString2 setString:@&#34;biny,&#20687;&#23567;&#34588;&#34562;&#19968;&#26679;&#29983;&#27963;&#34;];&#10;  NSLog(@&#34;%@&#34;,mutableString2);&#10;  //&#26367;&#25442;&#21487;&#21464;(NSMutableString)&#23383;&#31526;&#20018;&#10;  [mutableString2 replaceCharactersInRange:NSMakeRange(0, 4) withString:@&#34;&#22047;&#22047;&#34;];&#10;  NSLog(@&#34;%@&#34;,mutableString2);</span><br></pre></td></tr></table></figure>
+<h4 id="2、NSNumber与NSValue对基本类型的装包与拆包，NSString，NSNumber，基本类型之间的转换">2、NSNumber与NSValue对基本类型的装包与拆包，NSString，NSNumber，基本类型之间的转换</h4><h5 id="1、NSNumber类型:">1、NSNumber类型:</h5><figure class="highlight"><table><tr><td class="code"><pre><span class="line">//NSNumber&#21021;&#22987;&#21270;&#10;&#9;NSNumber * num1 = [[NSNumber alloc]initWithInt:5];&#10;&#9;NSNumber * num2 = [[NSNumber alloc]initWithFloat:3.14f];&#10;&#9;NSNumber * num3 = [[NSNumber alloc]initWithDouble:2.3];&#10;&#9;NSNumber * num4 = [[NSNumber alloc]initWithChar:&#39;z&#39;];&#10;&#9;//NSNumber&#36716;&#20026;&#22522;&#26412;&#31867;&#22411;&#10;&#9;int a = [num1 intValue];&#10;&#9;float c = [num2 floatValue];&#10;&#9;//&#21028;&#26029;&#20004;&#20010;NSNumber&#26159;&#21542;&#30456;&#31561;&#10;&#9;b = [num1 isEqualToNumber:num2];&#10;&#9;//&#27604;&#36739;2&#20010;NSNumber&#22823;&#23567;&#10;&#9;//compare&#36820;&#22238;&#30340;&#26159;&#26522;&#20030; NSOrderedAscending = -1L, NSOrderedSame, NSOrderedDescending&#10;&#9;if ([num3 compare:num4] == NSOrderedAscending) &#123;&#10;&#9;  NSLog(@&#34;num3&#60;num4&#34;);&#10;&#9;&#125;&#10;&#9;if ([num3 compare:num4] == NSOrderedSame) &#123;&#10;&#9;  NSLog(@&#34;num3==num4&#34;);&#10;&#9;&#125;&#10;&#9;if ([num3 compare:num4] == NSOrderedDescending) &#123;&#10;&#9;  NSLog(@&#34;num3&#62;num4&#34;);&#10;&#9;&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="2、NSValue和NSNumber相似，具体来说前者是后者的父类NSValue可以包装任意一个对象，可以用NSValue将struct存到NSArray和NSDictionary中。">2、NSValue和NSNumber相似，具体来说前者是后者的父类NSValue可以包装任意一个对象，可以用NSValue将struct存到NSArray和NSDictionary中。</h5><figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line">typedef struct person&#123;</span><br><span class="line">   </span><br><span class="line">  <span class="typename">int</span> age;</span><br><span class="line">  <span class="typename">float</span> height;</span><br><span class="line">   </span><br><span class="line">&#125; persons;</span><br><span class="line">persons person;</span><br><span class="line">person.age = <span class="number">20</span>;</span><br><span class="line">person.height = <span class="number">1.67</span>f;</span><br><span class="line"><span class="comment">//将结构体存入NSvalue</span></span><br><span class="line">NSValue * value = [NSValue <span class="string">valueWithBytes:</span>&amp;person <span class="string">objCType:</span><span class="annotation">@encode</span>(persons)];</span><br><span class="line"><span class="comment">//从NSvalue取出结构体</span></span><br><span class="line">persons per;</span><br><span class="line">[value <span class="string">getValue:</span>&amp;per];</span><br></pre></td></tr></table></figure>
+<h3 id="4-_集合（NSArray、NSDictionary、NSSet）区别、常用方法（初始化、取值、删除），多层集合的取值">4. 集合（NSArray、NSDictionary、NSSet）区别、常用方法（初始化、取值、删除），多层集合的取值</h3><h4 id="1、NSArray、NSDictionary、NSSet之间的区别">1、NSArray、NSDictionary、NSSet之间的区别</h4><blockquote>
+<p>NSArray 用于对象有序集合（数组）</p>
+<p>NSSet 用于对象无序集合   (集合)</p>
+<p>NSDictionary用于键值映射（字典）</p>
+<p>以上三种集合类是不可变的（一旦初始化后，就不能改变）</p>
+<p>以下是对应的三种可变集合类(这三种可变集合类是对应上面三种集合类的子类)：</p>
+<p>NSMutableArray</p>
+<p>NSMutableSet</p>
+<p>NSMutableDictionary</p>
+</blockquote>
+<h4 id="2、NSArray常用方法">2、NSArray常用方法</h4><blockquote>
+<p>不可变数组对象:</p>
+<p>[array count] : 得到这个对象数组的长度。</p>
+<p>[array objectAtIndex 0]: 传入数组脚标的id 得到数据对象。</p>
+<p>[arrayWithObjects： …] :向数组对象初始化赋值。这里可以写任意对象的指针,结尾必须使用nil</p>
+</blockquote>
+<p>NSArray 不可变数组 常用方法</p>
+<table>
+<thead>
+<tr>
+<th>+(id)arrayWithObjects:obj1,obj2,…nil</th>
+<th style="text-align:center">创建一个新的数组，obj1,obj2……是他的元素对象，以nil对象结尾</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-(BOOL)containsObject:obj</td>
+<td style="text-align:center">确定数组中是否包含对象obj</td>
+</tr>
+<tr>
+<td>-(NSUInteger)count</td>
+<td style="text-align:center">返回数组的个数</td>
+</tr>
+<tr>
+<td>-(NSUInteger)indexOfObject:obj</td>
+<td style="text-align:center">第一个包含obj元素的索引号</td>
+</tr>
+<tr>
+<td>-(id)objectAtIndex;i</td>
+<td style="text-align:center">返回存储在i位置的元素</td>
+</tr>
+<tr>
+<td>-(NSArray*)sortedArrayUsingSelector:(SEL)selector</td>
+<td style="text-align:center">根据selector 指示的比较方法对数组进行排序</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight objectivec"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 数组的初始化</span></span><br><span class="line">  <span class="comment">// @""字符串   @1  NSNumber  @(1)  NSNumber</span></span><br><span class="line">  <span class="built_in">NSArray</span> *array1 = @[<span class="string">@"1"</span>, <span class="string">@"2"</span>, <span class="string">@"3"</span>];</span><br><span class="line">  <span class="built_in">NSArray</span> *array2 = [[<span class="built_in">NSArray</span> alloc] initWithObjects:<span class="string">@"1"</span>, <span class="string">@"2"</span>, <span class="string">@"3"</span>, <span class="literal">nil</span>];</span><br><span class="line">  <span class="comment">// 通过array1，直接初始化array3</span></span><br><span class="line">  <span class="built_in">NSArray</span> *array3 = [[<span class="built_in">NSArray</span> alloc] initWithArray:array1];</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 便利构造（类方法）</span></span><br><span class="line">  <span class="comment">// 使用空对象作为占位符[NSNull null]</span></span><br><span class="line">  <span class="built_in">NSArray</span> *array4 = [<span class="built_in">NSArray</span> arrayWithObjects:<span class="string">@"1"</span>, [<span class="built_in">NSNull</span> null], <span class="string">@"3"</span>, <span class="literal">nil</span>];</span><br><span class="line">  <span class="built_in">NSArray</span> *array5 = [<span class="built_in">NSArray</span> arrayWithObject:<span class="string">@"1"</span>];</span><br><span class="line">  <span class="built_in">NSArray</span> *array6 = [<span class="built_in">NSArray</span> arrayWithArray:array1];</span><br><span class="line">  <span class="comment">// 获取数组元素个数</span></span><br><span class="line">  <span class="comment">// length 获取字符串长度</span></span><br><span class="line">  <span class="built_in">NSUInteger</span> count1 = [array1 count];</span><br><span class="line">  <span class="built_in">NSUInteger</span> count2 = array1<span class="variable">.count</span>;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 添加数组元素</span></span><br><span class="line">  <span class="built_in">NSArray</span> *array7 = [array1 arrayByAddingObject:<span class="string">@"4"</span>];</span><br><span class="line">  <span class="built_in">NSArray</span> *array8 = [array1 arrayByAddingObjectsFromArray:array3];</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 删除（截取）数组元素：注意越界</span></span><br><span class="line">  <span class="comment">// rangeWithString 截取字符串</span></span><br><span class="line">  <span class="built_in">NSArray</span> *array9 = [array1 subarrayWithRange:<span class="built_in">NSMakeRange</span>(<span class="number">0</span>, <span class="number">1</span>)];</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 查找（访问）</span></span><br><span class="line">  <span class="built_in">NSString</span> *string1 = array1[<span class="number">0</span>];</span><br><span class="line">  <span class="built_in">NSString</span> *string2 = [array1 objectAtIndex:<span class="number">0</span>];</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 比较对象，使用的是isEqual，==比较的是对象地址</span></span><br><span class="line">  <span class="built_in">BOOL</span> isEqual = [string1 isEqual:string2];</span><br><span class="line">  <span class="built_in">BOOL</span> isContain = [array1 containsObject:<span class="string">@"1"</span>];</span><br><span class="line">  <span class="comment">// 通过对象找位置：未找到，返回NSNotFound</span></span><br><span class="line">  <span class="built_in">NSUInteger</span> index = [array1 indexOfObject:<span class="string">@"2"</span>];</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 获取第一与最后一个元素</span></span><br><span class="line">  <span class="built_in">NSString</span> *string3 = [array1 firstObject];</span><br><span class="line">  <span class="built_in">NSString</span> *string4 = [array1 lastObject];</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 排序</span></span><br><span class="line">  <span class="built_in">NSArray</span> *array10 = @[<span class="string">@"3"</span>, <span class="string">@"4"</span>, <span class="string">@"1"</span>, <span class="string">@"9"</span>];</span><br><span class="line">  <span class="built_in">NSArray</span> *array11 = [array10 sortedArrayUsingSelector:<span class="keyword">@selector</span>(compare:)];</span><br><span class="line">  <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>,array11);</span><br></pre></td></tr></table></figure>
+<h4 id="3、NSMutableArray常用方法">3、NSMutableArray常用方法</h4><table>
+<thead>
+<tr>
+<th>array</th>
+<th style="text-align:center">创建一个空的数组</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>+(id)arrayWithCapacity:size</td>
+<td style="text-align:center">创建一个数组，指定容量为size</td>
+</tr>
+<tr>
+<td>-(void)addObject:obj</td>
+<td style="text-align:center">将obj添加到数组的尾部</td>
+</tr>
+<tr>
+<td>-(void)insertObject:obj atIndex:i</td>
+<td style="text-align:center">将obj插入到数组i的位置</td>
+</tr>
+<tr>
+<td>-(void)replaceObject:obj atIndex:i</td>
+<td style="text-align:center">在i的位置用obj替换数组元素</td>
+</tr>
+<tr>
+<td>-(void)removeObject:obj</td>
+<td style="text-align:center">从数组中删除所有obj的对象</td>
+</tr>
+<tr>
+<td>-(void)removeObjectAtIndex:i</td>
+<td style="text-align:center">从数组中删除索引为i的数组元素</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight objectivec"><table><tr><td class="code"><pre><span class="line">	<span class="comment">//从数组中删除所有obj的对象</span></span><br><span class="line">	<span class="built_in">NSMutableArray</span> *array1 = [<span class="built_in">NSMutableArray</span> arrayWithArray:@[<span class="string">@"123"</span>,@<span class="number">12</span>,value,num3]];</span><br><span class="line">   <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>,array1);</span><br><span class="line">   [array1 removeObject:value];</span><br><span class="line">   <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>,array1);</span><br><span class="line">   </span><br><span class="line">    <span class="comment">/*-------------- 删除数组中指定索引处对象----------------*/</span>    </span><br><span class="line">    <span class="comment">//-(void) removeObjectAtIndex: (unsigned) index;    </span></span><br><span class="line">    <span class="comment">//NSMutableArray *array = [NSMutableArray arrayWithObjects:</span></span><br><span class="line">    <span class="string">@"One"</span>,<span class="string">@"Two"</span>,<span class="string">@"Three"</span>,<span class="literal">nil</span>];</span><br><span class="line">    [array removeObjectAtIndex:<span class="number">1</span>];</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"array:%@"</span>,array);</span><br><span class="line"></span><br><span class="line">  <span class="comment">//快速枚举</span></span><br><span class="line">    <span class="comment">//NSMutableArray *array = [NSMutableArray arrayWithObjects:</span></span><br><span class="line">    <span class="string">@"One"</span>,<span class="string">@"Two"</span>,<span class="string">@"Three"</span>,<span class="literal">nil</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="built_in">NSString</span> *string <span class="keyword">in</span> array)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"string:%@"</span>,string);</span><br><span class="line">    &#125;</span><br><span class="line">   <span class="built_in">NSMutableArray</span> *mutableArray1 = [[<span class="built_in">NSMutableArray</span> alloc] init];</span><br><span class="line">   <span class="built_in">NSMutableArray</span> *mutableArray2 = [[<span class="built_in">NSMutableArray</span> alloc] initWithObjects:<span class="string">@"1"</span>, <span class="string">@"2"</span>, <span class="literal">nil</span>];</span><br><span class="line">   <span class="built_in">NSMutableArray</span> *mutableArray3 = [<span class="built_in">NSMutableArray</span> array];</span><br><span class="line">   <span class="built_in">NSMutableArray</span> *mutableArray4 = [<span class="built_in">NSMutableArray</span> arrayWithObjects:<span class="string">@"1"</span>, <span class="string">@"2"</span>, <span class="literal">nil</span>];</span><br><span class="line">   </span><br><span class="line">   <span class="comment">// 新增</span></span><br><span class="line">   [mutableArray1 addObject:<span class="string">@"1"</span>];</span><br><span class="line">   [mutableArray1 addObjectsFromArray:array1];</span><br><span class="line">   <span class="comment">// 插入</span></span><br><span class="line">   [mutableArray1 insertObject:<span class="string">@"5"</span> atIndex:<span class="number">0</span>];</span><br><span class="line">   </span><br><span class="line"><span class="comment">//        NSLog(@"%@", mutableArray1);</span></span><br><span class="line">   </span><br><span class="line">   <span class="comment">// 删除</span></span><br><span class="line">   <span class="comment">// 删除所有@"1"</span></span><br><span class="line">   <span class="comment">//        [mutableArray1 removeObject:@"1"];</span></span><br><span class="line">   <span class="comment">// 按下标删除</span></span><br><span class="line">   [mutableArray1 removeObjectAtIndex:<span class="number">0</span>];</span><br><span class="line">   <span class="comment">// 从数组中删除与另一数组相同的元素</span></span><br><span class="line">   [mutableArray1 removeObjectsInArray:@[<span class="string">@"1"</span>, <span class="string">@"2"</span>]];</span><br><span class="line">   <span class="comment">// 按多个下标删除</span></span><br><span class="line">   <span class="comment">//        [mutableArray1 removeObjectsAtIndexes:&lt;#(NSIndexSet *)#&gt;]</span></span><br><span class="line">   <span class="comment">// 删除最后一个元素</span></span><br><span class="line">   [mutableArray1 removeLastObject];</span><br><span class="line">   </span><br><span class="line">   <span class="comment">// 删除某个范围内的指定对象</span></span><br><span class="line"><span class="comment">//        [mutableArray1 removeObject:@"1" inRange:NSMakeRange(0, 1)];</span></span><br><span class="line">   <span class="comment">// 删除全部元素</span></span><br><span class="line">   [mutableArray1 removeAllObjects];</span><br></pre></td></tr></table></figure>
+<h4 id="4、NSMutableDirectory常用方法">4、NSMutableDirectory常用方法</h4><figure class="highlight objectivec"><table><tr><td class="code"><pre><span class="line"><span class="comment">//字典的初始化</span></span><br><span class="line"><span class="built_in">NSDictionary</span> *dic1 = @&#123;<span class="string">@"key1"</span> : <span class="string">@"value1"</span>,</span><br><span class="line">                          <span class="string">@"key2"</span> : <span class="string">@"value2"</span>,</span><br><span class="line">                          <span class="string">@"key3"</span> : <span class="string">@"value3"</span>,</span><br><span class="line">                          <span class="string">@"key4"</span> : <span class="string">@"value4"</span>&#125;;</span><br><span class="line">   <span class="built_in">NSDictionary</span> *dic2 = [[<span class="built_in">NSDictionary</span> alloc] initWithObjectsAndKeys:<span class="string">@"value1"</span>, <span class="string">@"key1"</span>, <span class="string">@"value2"</span>, <span class="string">@"key2"</span>, <span class="literal">nil</span>];</span><br><span class="line">   <span class="built_in">NSDictionary</span> *dic3 = [[<span class="built_in">NSDictionary</span> alloc] initWithObjects:@[<span class="string">@"value1"</span>, <span class="string">@"value2"</span>] forKeys:@[<span class="string">@"key1"</span>, <span class="string">@"key2"</span>]];</span><br><span class="line">   </span><br><span class="line">   <span class="comment">// 读取</span></span><br><span class="line">   <span class="built_in">NSString</span> *value1 = dic1[<span class="string">@"key1"</span>]; <span class="comment">// array[0]</span></span><br><span class="line">   <span class="comment">// 字典取值objectForKey   valueForKey是键值编码（KVC）</span></span><br><span class="line">   <span class="built_in">NSString</span> *value2 = [dic1 objectForKey:<span class="string">@"key8"</span>];</span><br><span class="line">   <span class="comment">//取得所有的key</span></span><br><span class="line">   <span class="built_in">NSArray</span> *allKeys = [dic1 allKeys];</span><br><span class="line">   <span class="comment">//取得所有的Value</span></span><br><span class="line">   <span class="built_in">NSArray</span> *allValues = [dic1 allValues];</span><br><span class="line"> <span class="keyword">for</span> (<span class="built_in">NSUInteger</span> i = <span class="number">0</span>; i &lt; dic1<span class="variable">.count</span>; i ++) &#123;</span><br><span class="line">     </span><br><span class="line">       <span class="built_in">NSString</span> *key = allKeys[i];</span><br><span class="line">       <span class="built_in">NSLog</span>(<span class="string">@"%@ : %@"</span>, key, dic1[key]);</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   <span class="keyword">for</span> (<span class="built_in">NSString</span> *key <span class="keyword">in</span> dic1) &#123;</span><br><span class="line">       </span><br><span class="line">       <span class="built_in">NSLog</span>(<span class="string">@"%@ : %@"</span>, key, dic1[key]);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="built_in">NSArray</span> *array = @[<span class="string">@"1"</span>, <span class="string">@"2"</span>];</span><br><span class="line">   </span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">id</span> string <span class="keyword">in</span> array) &#123;</span><br><span class="line">       </span><br><span class="line">       <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, string);</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   <span class="comment">// NSMutableDictionary</span></span><br><span class="line">   </span><br><span class="line">   <span class="built_in">NSMutableDictionary</span> *mutableDic1 = [[<span class="built_in">NSMutableDictionary</span> alloc] initWithObjectsAndKeys:<span class="string">@"value1"</span>, <span class="string">@"key1"</span>, <span class="literal">nil</span>];</span><br><span class="line">   <span class="built_in">NSMutableDictionary</span> *mutableDic2 = [<span class="built_in">NSMutableDictionary</span> dictionary];</span><br><span class="line">   </span><br><span class="line">   <span class="comment">// 新增</span></span><br><span class="line">   [mutableDic1 setObject:<span class="string">@"value3"</span> forKey:<span class="string">@"key3"</span>];</span><br><span class="line"><span class="comment">//        [mutableDic1 setValue:&lt;#(id)#&gt; forKey:&lt;#(NSString *)#&gt;] // 键值编码</span></span><br><span class="line">   </span><br><span class="line">   <span class="comment">// 删除</span></span><br><span class="line"><span class="comment">//        [mutableDic1 removeObjectForKey:@"key1"];</span></span><br><span class="line"><span class="comment">//        [mutableDic1 removeAllObjects];</span></span><br><span class="line">   </span><br><span class="line">   <span class="comment">// 修改</span></span><br><span class="line">   [mutableDic1 setObject:<span class="string">@"333"</span> forKey:<span class="string">@"key3"</span>];</span><br><span class="line">   </span><br><span class="line">   <span class="comment">// 查</span></span><br><span class="line">   <span class="built_in">NSString</span> *string = mutableDic1[<span class="string">@"key3"</span>];</span><br></pre></td></tr></table></figure>
+<h3 id="5-_内存管理原则，常见的内存管理问题如何处理（循环引用的处理），内存管理常报的错误">5. 内存管理原则，常见的内存管理问题如何处理（循环引用的处理），内存管理常报的错误</h3><ol>
+<li><p>属性的写法，属性的优势，属性的参数含义，属性重写set方法</p>
+</li>
+<li><p>学到的设计模式，怎么使用</p>
+</li>
+<li><p>什么是类目和延展，用来干什么？他们的区别在哪？都有什么特点？</p>
+</li>
+<li><p>block的定义与内存管理</p>
+</li>
+</ol>
+
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/oc复习/"> #oc复习 </a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/04/13/objective c属性/">objective c属性</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </div>
+  </div>
+
+
+
+    
+      <div class="comments" id="comments">
+        
+      </div>
+    
+  </div>
+
+
+        </div>
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview">
+        <div class="site-author motion-element">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="biny" />
+          <p class="site-author-name">biny</p>
+        </div>
+        <p class="site-description motion-element">yang fangjun’s blog | oc | objective c | bi</p>
+        <div class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            
+              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-name">分类</span>
+              
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </div>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+      </div>
+
+      
+        <div class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-_面向对象的特点、重写方法（init、description方法的作用）"><span class="nav-number">1.</span> <span class="nav-text">1. 面向对象的特点、重写方法（init、description方法的作用）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#答_:_面向对象的特点封装、继承、多态"><span class="nav-number">1.1.</span> <span class="nav-text">答 : 面向对象的特点封装、继承、多态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#重写init方法:"><span class="nav-number">1.2.</span> <span class="nav-text">重写init方法:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么要重写description方法:"><span class="nav-number">1.3.</span> <span class="nav-text">为什么要重写description方法:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#重写description方法:"><span class="nav-number">1.4.</span> <span class="nav-text">重写description方法:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-_方法的声明与书写（+/-_、方法命名规范）"><span class="nav-number">2.</span> <span class="nav-text">2. 方法的声明与书写（+/- 、方法命名规范）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-_字符串的常用方法（初始化、截取、拼接、获得某个字符），NSNumber与NSValue对基本类型的装包与拆包，NSString，NSNumber，基本类型之间的转换"><span class="nav-number">3.</span> <span class="nav-text">3. 字符串的常用方法（初始化、截取、拼接、获得某个字符），NSNumber与NSValue对基本类型的装包与拆包，NSString，NSNumber，基本类型之间的转换</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、字符串的常用方法（初始化、截取、拼接、获得某个字符）"><span class="nav-number">3.1.</span> <span class="nav-text">1、字符串的常用方法（初始化、截取、拼接、获得某个字符）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、NSNumber与NSValue对基本类型的装包与拆包，NSString，NSNumber，基本类型之间的转换"><span class="nav-number">3.2.</span> <span class="nav-text">2、NSNumber与NSValue对基本类型的装包与拆包，NSString，NSNumber，基本类型之间的转换</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、NSNumber类型:"><span class="nav-number">3.2.1.</span> <span class="nav-text">1、NSNumber类型:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2、NSValue和NSNumber相似，具体来说前者是后者的父类NSValue可以包装任意一个对象，可以用NSValue将struct存到NSArray和NSDictionary中。"><span class="nav-number">3.2.2.</span> <span class="nav-text">2、NSValue和NSNumber相似，具体来说前者是后者的父类NSValue可以包装任意一个对象，可以用NSValue将struct存到NSArray和NSDictionary中。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-_集合（NSArray、NSDictionary、NSSet）区别、常用方法（初始化、取值、删除），多层集合的取值"><span class="nav-number">4.</span> <span class="nav-text">4. 集合（NSArray、NSDictionary、NSSet）区别、常用方法（初始化、取值、删除），多层集合的取值</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、NSArray、NSDictionary、NSSet之间的区别"><span class="nav-number">4.1.</span> <span class="nav-text">1、NSArray、NSDictionary、NSSet之间的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、NSArray常用方法"><span class="nav-number">4.2.</span> <span class="nav-text">2、NSArray常用方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、NSMutableArray常用方法"><span class="nav-number">4.3.</span> <span class="nav-text">3、NSMutableArray常用方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、NSMutableDirectory常用方法"><span class="nav-number">4.4.</span> <span class="nav-text">4、NSMutableDirectory常用方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-_内存管理原则，常见的内存管理问题如何处理（循环引用的处理），内存管理常报的错误"><span class="nav-number">5.</span> <span class="nav-text">5. 内存管理原则，常见的内存管理问题如何处理（循环引用的处理），内存管理常报的错误</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </div>
+      
+
+    </div>
+  </div>
+
+
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp; 
+  2015
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">biny</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.content img').each(function () {
+        var $image = $(this);
+        var $imageWrapLink = $image.parent('a');
+
+        if ($imageWrapLink.size() < 1) {
+          $imageWrapLink = $image.wrap('<a href="' + this.getAttribute('src') + '"></a>').parent('a');
+        }
+        $imageWrapLink.addClass('fancybox');
+      });
+    });
+    $('.fancybox').fancybox({
+      helpers: {
+        overlay: {
+          locked: false
+        }
+      }
+    });
+  </script>
+
+
+  <script type="text/javascript">
+  function hasMobileUA () {
+    var nav = window.navigator;
+    var ua = nav.userAgent;
+    var pa = /iPad|iPhone|Android|Opera Mini|BlackBerry|webOS|UCWEB|Blazer|PSP|IEMobile|Symbian/g;
+
+    return pa.test(ua);
+  }
+
+  function isDesktop () {
+    return screen.width > 991 && !hasMobileUA();
+  }
+
+  function isTablet () {
+    return screen.width < 992 && screen.width > 767 && hasMobileUA();
+  }
+
+  function isMobile () {
+    return screen.width < 767 && hasMobileUA();
+  }
+
+  function escapeSelector (selector) {
+    return selector.replace(/[!"$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, "\\$&")
+  }
+</script>
+
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" id="motion.global">
+  $(document).ready(function () {
+    var body = $('body');
+    var isSidebarVisible = false;
+    var sidebarToggle = $('.sidebar-toggle');
+    var sidebarToggleLine1st = $('.sidebar-toggle-line-first')
+    var sidebarToggleLine2nd = $('.sidebar-toggle-line-middle');
+    var sidebarToggleLine3rd = $('.sidebar-toggle-line-last');
+    var sidebar = $('.sidebar');
+
+    var SIDEBAR_WIDTH = '320px';
+    var SIDEBAR_DISPLAY_DURATION = 300;
+
+    var sidebarToogleLineStatusInit = {width: '100%', opacity: 1, left: 0, rotateZ: 0, top: 0};
+
+    var sidebarToggleLine1stStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine1stStatusArrow = {width: '50%', rotateZ: '-45deg', top: '2px'};
+    var sidebarToogleLine1stStatusClose = {width: '100%', rotateZ: '-45deg', top: '5px'};
+
+    var sidebarToggleLine2ndStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine2ndStatusArrow = {width: '90%'};
+    var sidebarToogleLine2ndStatusClose = {opacity: 0};
+
+    var sidebarToggleLine3rdStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine3rdStatusArrow = {width: '50%', rotateZ: '45deg', top: '-2px'};
+    var sidebarToogleLine3rdStatusClose = {width: '100%', rotateZ: '45deg', top: '-5px'};
+
+    LogoAndMenuMotion();
+    sidebatToggleMotion();
+    postsListMotion();
+    backToTopMotion();
+
+
+    $(document)
+      .on('sidebar.isShowing', function () {
+        isDesktop() && body.velocity(
+          {paddingRight: SIDEBAR_WIDTH},
+          SIDEBAR_DISPLAY_DURATION
+        );
+        sidebarContentMotion();
+      })
+      .on('sidebar.isHiding', function () {});
+
+    function LogoAndMenuMotion() {
+      $.Velocity.RunSequence([
+        { e: $('.brand'), p: { opacity: 1 }, o: { duration: 100 } },
+        { e: $('.logo'), p: { opacity: 1, top: 0 }, o: { duration: 50} },
+        
+        { e: $('.logo-line-before i'), p: { translateX: "100%" }, o: { duration: 500, sequenceQueue: false } },
+        { e: $('.logo-line-after i'), p: { translateX: "-100%" }, o: { duration: 500, sequenceQueue: false } },
+        
+        { e: $('.site-title'), p: { opacity: 1, top: 0 }, o: { duration: 200 } }
+      ]);
+      $('.menu-item').velocity('transition.slideDownIn', {display: null});
+    }
+
+
+    function backToTopMotion () {
+      var b2top = $('.back-to-top');
+      b2top.on('click', function () {
+        body.velocity('scroll');
+      });
+    }
+
+    function sidebarShowMotion () {
+
+      sidebarToggleLine1st.velocity(sidebarToogleLine1stStatusClose);
+      sidebarToggleLine2nd.velocity(sidebarToogleLine2ndStatusClose);
+      sidebarToggleLine3rd.velocity(sidebarToogleLine3rdStatusClose);
+
+      sidebar.velocity({width: SIDEBAR_WIDTH}, {
+        display: 'block',
+        duration: SIDEBAR_DISPLAY_DURATION,
+        complete: function () {
+          sidebar.addClass('sidebar-active');
+          sidebar.trigger('sidebar.didShow');
+        }
+      });
+      sidebar.trigger('sidebar.isShowing');
+    }
+
+    function sidebarHideMotion () {
+      isDesktop() && body.velocity({paddingRight: 0});
+      sidebar.velocity('reverse');
+
+      sidebarToggleLine1st.velocity(sidebarToggleLine1stStatusInit);
+      sidebarToggleLine2nd.velocity(sidebarToggleLine2ndStatusInit);
+      sidebarToggleLine3rd.velocity(sidebarToggleLine3rdStatusInit);
+
+      sidebar.removeClass('sidebar-active');
+      sidebar.trigger('sidebar.isHiding');
+    };
+
+    function sidebarContentMotion () {
+      $('.sidebar .motion-element').velocity(
+        'transition.slideRightIn',
+        {stagger: 50, drag: true}
+      );
+    }
+
+    function postsListMotion () {
+      var postMotionOptions = window.postMotionOptions || {stagger: 300, drag: true};
+      $('.post').velocity('transition.slideDownIn', postMotionOptions);
+    }
+
+    function sidebatToggleMotion () {
+      sidebarToggle.on('click', function () {
+        isSidebarVisible ? sidebarHideMotion() : sidebarShowMotion();
+        isSidebarVisible = !isSidebarVisible;
+      });
+
+      sidebarToggle.hover(function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusArrow);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusArrow);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusArrow);
+      }, function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusInit);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusInit);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusInit);
+      });
+    }
+  });
+
+</script>
+
+
+
+
+
+  
+  
+<script type="text/javascript" id="bootstrap.scrollspy.custom">
+  /* ========================================================================
+  * Bootstrap: scrollspy.js v3.3.2
+  * http://getbootstrap.com/javascript/#scrollspy
+  * ========================================================================
+  * Copyright 2011-2015 Twitter, Inc.
+  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+  * ======================================================================== */
+
+  /**
+   * Custom by iissnan
+   *
+   * - Add a `clear.bs.scrollspy` event.
+   * - Esacpe targets selector.
+   */
+
+
+  +function ($) {
+    'use strict';
+
+    // SCROLLSPY CLASS DEFINITION
+    // ==========================
+
+    function ScrollSpy(element, options) {
+      this.$body          = $(document.body)
+      this.$scrollElement = $(element).is(document.body) ? $(window) : $(element)
+      this.options        = $.extend({}, ScrollSpy.DEFAULTS, options)
+      this.selector       = (this.options.target || '') + ' .nav li > a'
+      this.offsets        = []
+      this.targets        = []
+      this.activeTarget   = null
+      this.scrollHeight   = 0
+
+      this.$scrollElement.on('scroll.bs.scrollspy', $.proxy(this.process, this))
+      this.refresh()
+      this.process()
+    }
+
+    ScrollSpy.VERSION  = '3.3.2'
+
+    ScrollSpy.DEFAULTS = {
+      offset: 10
+    }
+
+    ScrollSpy.prototype.getScrollHeight = function () {
+      return this.$scrollElement[0].scrollHeight || Math.max(this.$body[0].scrollHeight, document.documentElement.scrollHeight)
+    }
+
+    ScrollSpy.prototype.refresh = function () {
+      var that          = this
+      var offsetMethod  = 'offset'
+      var offsetBase    = 0
+
+      this.offsets      = []
+      this.targets      = []
+      this.scrollHeight = this.getScrollHeight()
+
+      if (!$.isWindow(this.$scrollElement[0])) {
+        offsetMethod = 'position'
+        offsetBase   = this.$scrollElement.scrollTop()
+      }
+
+      this.$body
+        .find(this.selector)
+        .map(function () {
+          var $el   = $(this)
+          var href  = $el.data('target') || $el.attr('href')
+          var $href = /^#./.test(href) && $(escapeSelector(href)) // Need to escape selector.
+
+          return ($href
+            && $href.length
+            && $href.is(':visible')
+            && [[$href[offsetMethod]().top + offsetBase, href]]) || null
+        })
+        .sort(function (a, b) { return a[0] - b[0] })
+        .each(function () {
+          that.offsets.push(this[0])
+          that.targets.push(this[1])
+        })
+
+
+    }
+
+    ScrollSpy.prototype.process = function () {
+      var scrollTop    = this.$scrollElement.scrollTop() + this.options.offset
+      var scrollHeight = this.getScrollHeight()
+      var maxScroll    = this.options.offset + scrollHeight - this.$scrollElement.height()
+      var offsets      = this.offsets
+      var targets      = this.targets
+      var activeTarget = this.activeTarget
+      var i
+
+      if (this.scrollHeight != scrollHeight) {
+        this.refresh()
+      }
+
+      if (scrollTop >= maxScroll) {
+        return activeTarget != (i = targets[targets.length - 1]) && this.activate(i)
+      }
+
+      if (activeTarget && scrollTop < offsets[0]) {
+        $(this.selector).trigger('clear.bs.scrollspy')  // Add a custom event.
+        this.activeTarget = null
+        return this.clear()
+      }
+
+      for (i = offsets.length; i--;) {
+        activeTarget != targets[i]
+          && scrollTop >= offsets[i]
+          && (!offsets[i + 1] || scrollTop <= offsets[i + 1])
+          && this.activate(targets[i])
+      }
+    }
+
+    ScrollSpy.prototype.activate = function (target) {
+      this.activeTarget = target
+
+      this.clear()
+
+      var selector = this.selector +
+        '[data-target="' + target + '"],' +
+        this.selector + '[href="' + target + '"]'
+
+      var active = $(selector)
+        .parents('li')
+        .addClass('active')
+
+      if (active.parent('.dropdown-menu').length) {
+        active = active
+          .closest('li.dropdown')
+          .addClass('active')
+      }
+
+      active.trigger('activate.bs.scrollspy')
+    }
+
+    ScrollSpy.prototype.clear = function () {
+      $(this.selector)
+        .parentsUntil(this.options.target, '.active')
+        .removeClass('active')
+    }
+
+
+    // SCROLLSPY PLUGIN DEFINITION
+    // ===========================
+
+    function Plugin(option) {
+      return this.each(function () {
+        var $this   = $(this)
+        var data    = $this.data('bs.scrollspy')
+        var options = typeof option == 'object' && option
+
+        if (!data) $this.data('bs.scrollspy', (data = new ScrollSpy(this, options)))
+        if (typeof option == 'string') data[option]()
+      })
+    }
+
+    var old = $.fn.scrollspy
+
+    $.fn.scrollspy             = Plugin
+    $.fn.scrollspy.Constructor = ScrollSpy
+
+
+    // SCROLLSPY NO CONFLICT
+    // =====================
+
+    $.fn.scrollspy.noConflict = function () {
+      $.fn.scrollspy = old
+      return this
+    }
+
+
+    // SCROLLSPY DATA-API
+    // ==================
+
+    $(window).on('load.bs.scrollspy.data-api', function () {
+      $('[data-spy="scroll"]').each(function () {
+        var $spy = $(this)
+        Plugin.call($spy, $spy.data())
+      })
+    })
+
+  }(jQuery);
+</script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var $sidebarInner = $('.sidebar-inner');
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.didShow', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+          var self = this;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      $(indicator).velocity('stop').velocity({
+        opacity: action === 'show' ? 0.4 : 0
+      }, { duration: 100 });
+    }
+
+  });
+</script>
+
+
+  <script type="text/javascript" id="sidebar.nav">
+    $(document).ready(function () {
+      var html = $('html');
+
+      $('.sidebar-nav li').on('click', function () {
+        var item = $(this);
+        var activeTabClassName = 'sidebar-nav-active';
+        var activePanelClassName = 'sidebar-panel-active';
+        if (item.hasClass(activeTabClassName)) {
+          return;
+        }
+
+        var currentTarget = $('.' + activePanelClassName);
+        var target = $('.' + item.data('target'));
+
+        currentTarget.velocity('transition.slideUpOut', 200, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', 200)
+            .addClass(activePanelClassName);
+        });
+
+        item.siblings().removeClass(activeTabClassName);
+        item.addClass(activeTabClassName);
+      });
+
+      $('.post-toc a').on('click', function (e) {
+        e.preventDefault();
+        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        });
+      });
+
+      // Expand sidebar on post detail page by default, when post has a toc.
+      var $tocContent = $('.post-toc-content');
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0 && isDesktop()) {
+        setTimeout(function () {
+          $('.sidebar-toggle').trigger('click');
+        }, 800);
+      }
+    });
+  </script>
+
+
+
+
+  
+
+  
+  
+  
+
+  
+
+
+
+
+  
+</body>
+</html>
