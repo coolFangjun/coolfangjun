@@ -6,7 +6,7 @@
   <title>嘟嘟blog</title>
   <meta name="author" content="biny">
   
-  <meta name="description" content="yang fangjun’s blog | oc | objective c | bi">
+  <meta name="description" content="杨方军的blog | oc | objective c | bi">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -64,8 +64,8 @@
         <h3 id="1-_面向对象的特点、重写方法（init、description方法的作用）">1. 面向对象的特点、重写方法（init、description方法的作用）</h3><h4 id="答_:_面向对象的特点封装、继承、多态">答 : 面向对象的特点封装、继承、多态</h4><p>1、封装:把客观事物封装成抽象的类，并且类可以把自己的数据和方法只让可信的类或者对象操作，对不可信的进行信息隐藏。</p>
 <p>2、继承：它可以使用现有类的所有功能，并在无需重新编写原来的类的情况下对这些功能进行扩展<br>，通过继承创建的新类称为“子类”或“派生类”，被继承的类称为“基类”、“父类”或“超类”。</p>
 <p>3、多态：多态就是某一类事物的多种形态</p>
-<h4 id="重写init方法:">重写init方法:</h4><figure class="highlight"><table><tr><td class="code"><pre><span class="line">- (instancetype)init&#123;&#10;&#10;    if (self = [super init]) &#123;&#10;        &#10;        self.name = @&#34;&#24352;&#23665;&#34;;&#10;    &#125;&#10;    return self;&#10;&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="为什么要重写description方法:">为什么要重写description方法:</h4><h5 id="description方法的默认实现是返回类名和对象的内存地址，这样的话，使用NSLog输出OC对象，意义就不是很大，因为我们并不关心对象的内存地址，比较关心的是对象内部的一些成变量的值。因此，会经常重写description方法，覆盖description方法的默认实现比如，重写Student的description方法，返回成员变量_age的值-">description方法的默认实现是返回类名和对象的内存地址，这样的话，使用NSLog输出OC对象，意义就不是很大，因为我们并不关心对象的内存地址，比较关心的是对象内部的一些成变量的值。因此，会经常重写description方法，覆盖description方法的默认实现比如，重写Student的description方法，返回成员变量_age的值.</h5><h4 id="重写description方法:">重写description方法:</h4><h3 id="2-_方法的声明与书写（+/-_、方法命名规范）">2. 方法的声明与书写（+/- 、方法命名规范）</h3><figure class="highlight"><table><tr><td class="code"><pre><span class="line">- (NSString *)description&#123;&#10;&#10;    return [NSString stringWithFormat:@&#34;%@&#34;,self.name];&#10;&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="重写init方法:">重写init方法:</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (instancetype)init&#123;&#10;&#10;    if (self = [super init]) &#123;&#10;        &#10;        self.name = @&#34;&#24352;&#23665;&#34;;&#10;    &#125;&#10;    return self;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="为什么要重写description方法:">为什么要重写description方法:</h4><h5 id="description方法的默认实现是返回类名和对象的内存地址，这样的话，使用NSLog输出OC对象，意义就不是很大，因为我们并不关心对象的内存地址，比较关心的是对象内部的一些成变量的值。因此，会经常重写description方法，覆盖description方法的默认实现比如，重写Student的description方法，返回成员变量_age的值-">description方法的默认实现是返回类名和对象的内存地址，这样的话，使用NSLog输出OC对象，意义就不是很大，因为我们并不关心对象的内存地址，比较关心的是对象内部的一些成变量的值。因此，会经常重写description方法，覆盖description方法的默认实现比如，重写Student的description方法，返回成员变量_age的值.</h5><h4 id="重写description方法:">重写description方法:</h4><h3 id="2-_方法的声明与书写（+/-_、方法命名规范）">2. 方法的声明与书写（+/- 、方法命名规范）</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (NSString *)description&#123;&#10;&#10;    return [NSString stringWithFormat:@&#34;%@&#34;,self.name];&#10;&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer>
@@ -104,7 +104,7 @@
         <h3 id="属性">属性</h3><h3 id="1、Oc属性的注意:">1、Oc属性的注意:</h3><ul>
 <li>setter、getter里面，不要使用self.age(死循环，递归)</li>
 </ul>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&#10; //&#35774;&#32622;&#20154;&#30340;&#24180;&#40836;&#10;[person setAge:22];&#10;NSLog(@&#34;%ld&#34;,[person age]);&#10;//&#20351;&#29992;&#28857;&#35821;&#27861;&#10;person.age = -20;&#10;NSInteger age = person.age;&#10;- (void)setAge:(NSInteger)age&#123;&#10;   self.age = age;&#10;&#125;&#10;//&#36825;&#31181;&#26041;&#24335;&#26159;&#38169;&#35823;&#30340;....</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#10; //&#35774;&#32622;&#20154;&#30340;&#24180;&#40836;&#10;[person setAge:22];&#10;NSLog(@&#34;%ld&#34;,[person age]);&#10;//&#20351;&#29992;&#28857;&#35821;&#27861;&#10;person.age = -20;&#10;NSInteger age = person.age;&#10;- (void)setAge:(NSInteger)age&#123;&#10;   self.age = age;&#10;&#125;&#10;//&#36825;&#31181;&#26041;&#24335;&#26159;&#38169;&#35823;&#30340;....</span><br></pre></td></tr></table></figure>
 <ul>
 <li>属性的参数</li>
 </ul>
@@ -136,14 +136,14 @@
     <aside id="sidebar" class="alignright">
   <div class="search">
   <form action="//google.com/search" method="get" accept-charset="utf-8">
-    <input type="search" name="q" results="0" placeholder="搜尋">
+    <input type="search" name="q" results="0" placeholder="搜索">
     <input type="hidden" name="q" value="site:www.dudu.me">
   </form>
 </div>
 
   
 <div class="widget tag">
-  <h3 class="title">分類</h3>
+  <h3 class="title">分类</h3>
   <ul class="entry">
   
     <li><a href="/categories/c/">c#</a><small>0</small></li>
@@ -162,7 +162,7 @@
 
   
 <div class="widget tag">
-  <h3 class="title">標籤</h3>
+  <h3 class="title">标签</h3>
   <ul class="entry">
   
     <li><a href="/tags/oc复习/">oc复习</a><small>1</small></li>
