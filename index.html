@@ -51,6 +51,49 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2015-04-17T11:38:42.000Z"><a href="/2015/04/17/KVO模式/">Apr 17 2015</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/04/17/KVO模式/">KVO键值观察</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h3 id="一、kvo含义">一、kvo含义</h3><p>  KVO Key,Value,Observing,即键值观察者。它提供了这样一种机制，当指定对象的属性发生改变时，KVO会自动通知相应的观察者。</p>
+<p>  KVO键值观察模式三个步骤:三个步骤：注册观察者，接收变更通知，移除观察者(移除观察者，注意：如果不移除，程序运行到此会奔溃)</p>
+<p>  工作原理：<br>需要三个步骤来建立一个属性的观察员。理解这三个步骤就可以知道KVO如何设计工作的。 （1）首先，构思一下如下实现KVO是否有必要。比如，一个对象，当另一个对象的特定属性改变的时候，需要被通知到。</p>
+<h3 id="二、KVO模式的实现">二、KVO模式的实现</h3><p>新建二个类，分别为Mum和Baby类。</p>
+<p>对Baby.h中声明一个属性 hungry,Mum类观察其值的变化。</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  Baby.h</span></span><br><span class="line"><span class="comment">//  KVO设计模式</span></span><br><span class="line"><span class="comment">//  Created by 小宸宸Dad on 15/4/17.</span></span><br><span class="line"><span class="comment">//  Copyright (c) 2015年 fjyang. All rights reserved.</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#import <span class="title">&lt;Foundation/Foundation.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">Baby</span> : <span class="title">NSObject</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">assign</span>,<span class="keyword">nonatomic</span>) <span class="built_in">NSInteger</span> hungry;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<p>在Mum文件中引入Baby.h类</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  Mum.h</span></span><br><span class="line"><span class="comment">//  KVO设计模式</span></span><br><span class="line"><span class="comment">//  Created by 小宸宸Dad on 15/4/17.</span></span><br><span class="line"><span class="comment">//  Copyright (c) 2015年 fjyang. All rights reserved.</span></span><br><span class="line"><span class="preprocessor">#import <span class="title">&lt;Foundation/Foundation.h&gt;</span></span></span><br><span class="line"><span class="preprocessor">#import <span class="title">"Baby.h"</span></span></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">Mum</span> : <span class="title">NSObject</span></span></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2015/04/17/KVO模式/#more" class="more-link">Read More</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2015-04-17T09:04:57.000Z"><a href="/2015/04/17/KVC模式/">Apr 17 2015</a></time>
       
       
@@ -227,6 +270,8 @@
   
     <li><a href="/categories/KVC键值编码/">KVC键值编码</a><small>1</small></li>
   
+    <li><a href="/categories/KVO键值观察/">KVO键值观察</a><small>1</small></li>
+  
     <li><a href="/categories/c/">c#</a><small>0</small></li>
   
     <li><a href="/categories/objective-c/">objective c</a><small>2</small></li>
@@ -247,7 +292,7 @@
 <div class="widget tagcloud">
   <h3 class="title">标签云</h3>
   <div class="entry">
-    <a href="/tags/KVC键值编码/" style="font-size: NaNpx;">KVC键值编码</a><a href="/tags/oc复习/" style="font-size: NaNpx;">oc复习</a><a href="/tags/oc属性/" style="font-size: NaNpx;">oc属性</a><a href="/tags/单例模式/" style="font-size: NaNpx;">单例模式</a>
+    <a href="/tags/KVC键值编码/" style="font-size: NaNpx;">KVC键值编码</a><a href="/tags/KVO键值观察/" style="font-size: NaNpx;">KVO键值观察</a><a href="/tags/oc复习/" style="font-size: NaNpx;">oc复习</a><a href="/tags/oc属性/" style="font-size: NaNpx;">oc属性</a><a href="/tags/单例模式/" style="font-size: NaNpx;">单例模式</a>
   </div>
 </div>
 
