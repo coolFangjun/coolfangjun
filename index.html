@@ -51,6 +51,87 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2015-04-17T07:28:16.000Z"><a href="/2015/04/17/单例模式/">Apr 17 2015</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/04/17/单例模式/">单例模式</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h3 id="一、单例模式含义">一、单例模式含义</h3><p>   单例模式是在iOS开发中最常用的一种设计模式，单例模式可以让程序的各个模块共享数据，而不用去手动的去传递，所以单例类是一个我们要去理解的非常重要的模式，单例模式的对象生命周期贯穿于程序整个生命周期，在程序结束时由系统自动释放，不需要手动去释放或者销毁。</p>
+<h3 id="二、单例模式的实现">二、单例模式的实现</h3><p>新建一个shareData类，我们在shareData.h文件中声明:</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  ShareData.h</span></span><br><span class="line"><span class="comment">//  单例设计模式</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by 小宸宸Dad on 15/4/17.</span></span><br><span class="line"><span class="comment">//  Copyright (c) 2015年 fjyang. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#import <span class="title">&lt;Foundation/Foundation.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">ShareData</span> : <span class="title">NSObject</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">strong</span>,<span class="keyword">nonatomic</span>)<span class="built_in">NSString</span> * name;</span><br><span class="line"></span><br><span class="line">+ (<span class="keyword">id</span>)shareData;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<p>在shareData.m中对该类进行实现<br>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2015/04/17/单例模式/#more" class="more-link">Read More</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-04-17T07:25:33.000Z"><a href="/2015/04/17/objective c属性/">Apr 17 2015</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/04/17/objective c属性/">objective c属性</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h3 id="属性">属性</h3><h3 id="1、Oc属性的注意:">1、Oc属性的注意:</h3><ul>
+<li>setter、getter里面，不要使用self.age(死循环，递归)</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#10; //&#35774;&#32622;&#20154;&#30340;&#24180;&#40836;&#10;[person setAge:22];&#10;NSLog(@&#34;%ld&#34;,[person age]);&#10;//&#20351;&#29992;&#28857;&#35821;&#27861;&#10;person.age = -20;&#10;NSInteger age = person.age;&#10;- (void)setAge:(NSInteger)age&#123;&#10;   self.age = age;&#10;&#125;&#10;//&#36825;&#31181;&#26041;&#24335;&#26159;&#38169;&#35823;&#30340;....</span><br></pre></td></tr></table></figure>
+<ul>
+<li>属性的参数</li>
+</ul>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2015/04/17/objective c属性/#more" class="more-link">Read More</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2015-04-17T00:55:07.000Z"><a href="/2015/04/17/oc复习/">Apr 17 2015</a></time>
       
       
@@ -73,48 +154,6 @@
         
           <div class="alignleft">
             <a href="/2015/04/17/oc复习/#more" class="more-link">Read More</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2015-04-13T06:06:58.000Z"><a href="/2015/04/13/objective c属性/">Apr 13 2015</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2015/04/13/objective c属性/">objective c属性</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h3 id="属性">属性</h3><h3 id="1、Oc属性的注意:">1、Oc属性的注意:</h3><ul>
-<li>setter、getter里面，不要使用self.age(死循环，递归)</li>
-</ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#10; //&#35774;&#32622;&#20154;&#30340;&#24180;&#40836;&#10;[person setAge:22];&#10;NSLog(@&#34;%ld&#34;,[person age]);&#10;//&#20351;&#29992;&#28857;&#35821;&#27861;&#10;person.age = -20;&#10;NSInteger age = person.age;&#10;- (void)setAge:(NSInteger)age&#123;&#10;   self.age = age;&#10;&#125;&#10;//&#36825;&#31181;&#26041;&#24335;&#26159;&#38169;&#35823;&#30340;....</span><br></pre></td></tr></table></figure>
-<ul>
-<li>属性的参数</li>
-</ul>
-      
-    </div>
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2015/04/13/objective c属性/#more" class="more-link">Read More</a>
           </div>
         
         
@@ -152,6 +191,8 @@
   
     <li><a href="/categories/优化推广/">优化推广</a><small>0</small></li>
   
+    <li><a href="/categories/单例模式/">单例模式</a><small>1</small></li>
+  
     <li><a href="/categories/学习笔记/">学习笔记</a><small>0</small></li>
   
     <li><a href="/categories/社会生活/">社会生活</a><small>0</small></li>
@@ -164,7 +205,7 @@
 <div class="widget tagcloud">
   <h3 class="title">标签云</h3>
   <div class="entry">
-    <a href="/tags/oc复习/" style="font-size: NaNpx;">oc复习</a><a href="/tags/oc属性/" style="font-size: NaNpx;">oc属性</a>
+    <a href="/tags/oc复习/" style="font-size: NaNpx;">oc复习</a><a href="/tags/oc属性/" style="font-size: NaNpx;">oc属性</a><a href="/tags/单例模式/" style="font-size: NaNpx;">单例模式</a>
   </div>
 </div>
 
