@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>嘟嘟blog</title>
+  <title>KVC键值编码 | 嘟嘟blog</title>
   <meta name="author" content="biny">
   
   <meta name="description" content="杨方军的blog | oc | objective c | bi">
@@ -11,7 +11,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
+  <meta property="og:title" content="KVC键值编码"/>
   <meta property="og:site_name" content="嘟嘟blog"/>
 
   
@@ -44,8 +44,7 @@
 </nav>
 <div class="clearfix"></div></header>
   <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper">
-  <article class="post">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
   
   <div class="post-content">
     <header>
@@ -55,27 +54,54 @@
       
       
   
-    <h1 class="title"><a href="/2015/04/17/KVC模式/">KVC键值编码</a></h1>
+    <h1 class="title">KVC键值编码</h1>
   
 
     </header>
     <div class="entry">
       
+
         <h3 id="一、kvc含义">一、kvc含义</h3><p>   KVC（key value coding）键值编码，这是一种间接修改对象属性值的方法,在KVC中所有的Value都必须是对象。</p>
 <h3 id="二、单例模式的实现">二、单例模式的实现</h3><p>新建一个Person类，我们在Person.h文件中声明:</p>
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Person.h</span></span><br><span class="line"><span class="comment">//  KVC键值编码</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by 小宸宸Dad on 15/4/17.</span></span><br><span class="line"><span class="comment">//  Copyright (c) 2015年 fjyang. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#import <span class="title">&lt;Foundation/Foundation.h&gt;</span></span></span><br><span class="line"><span class="preprocessor">#import <span class="title">"Book.h"</span></span></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">Person</span> : <span class="title">NSObject</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">strong</span>,<span class="keyword">nonatomic</span>) Book *book;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">strong</span>,<span class="keyword">nonatomic</span>) <span class="built_in">NSString</span> *name;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">assign</span>,<span class="keyword">nonatomic</span>) <span class="built_in">NSUInteger</span> age;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
 <p>新建一个Book类，我们在Book.h文件中声明:</p>
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Book.h</span></span><br><span class="line"><span class="comment">//  KVC键值编码</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by 小宸宸Dad on 15/4/17.</span></span><br><span class="line"><span class="comment">//  Copyright (c) 2015年 fjyang. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="preprocessor">#import <span class="title">&lt;Foundation/Foundation.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">Book</span> : <span class="title">NSObject</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">assign</span>,<span class="keyword">nonatomic</span>) <span class="built_in">NSInteger</span> price;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>在main函数使用方法来实现</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">	<span class="comment">//通过键值编码(setValue(id) forKey(NSString *))给Person的对象 person的</span></span><br><span class="line">成员变量name、age和Book类型的book进行赋值</span><br><span class="line"><span class="typename">void</span> setValueWithKey()&#123;</span><br><span class="line">    Person *person = [[Person alloc]init];</span><br><span class="line">    [person <span class="string">setValue:</span>@<span class="string">"张山"</span> <span class="string">forKey:</span>@<span class="string">"name"</span>];</span><br><span class="line">    [person <span class="string">setValue:</span>@<span class="number">21</span> <span class="string">forKey:</span>@<span class="string">"age"</span>];</span><br><span class="line">    [person.book <span class="string">setValue:</span>@<span class="number">20</span> <span class="string">forKey:</span>@<span class="string">"price"</span>];</span><br><span class="line">    NSLog(@<span class="string">"%@ %lu"</span>,person.name,person.age);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//通过字典对其赋值</span></span><br><span class="line"><span class="typename">void</span> setValueWithDictory()&#123;</span><br><span class="line">    Person * person = [[Person alloc]init];</span><br><span class="line">    NSDictionary *dic =@&#123;@<span class="string">"name"</span> : @<span class="string">"张山"</span>,</span><br><span class="line">                         @<span class="string">"age"</span>  : @<span class="number">20</span>&#125;;</span><br><span class="line">    [person <span class="string">setValuesForKeysWithDictionary:</span>dic];</span><br><span class="line">    NSLog(@<span class="string">"%@"</span>,person);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     <footer>
       
         
-          <div class="alignleft">
-            <a href="/2015/04/17/KVC模式/#more" class="more-link">Read More</a>
-          </div>
+  
+  <div class="categories">
+    <a href="/categories/KVC键值编码/">KVC键值编码</a>
+  </div>
+
         
-        
+  
+  <div class="tags">
+    <a href="/tags/KVC键值编码/">KVC键值编码</a>
+  </div>
+
+<!-- Baidu Button BEGIN -->
+<div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
+<a class="bds_qzone"></a>
+<a class="bds_tsina"></a>
+<a class="bds_tqq"></a>
+<a class="bds_renren"></a>
+<a class="bds_t163"></a>
+<span class="bds_more"></span>
+<a class="shareCount"></a>
+</div>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=3326447" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END -->
       
       <div class="clearfix"></div>
     </footer>
@@ -84,134 +110,40 @@
 
 
 
+ <nav id="pagination" >
+    
+    
+    <a href="/2015/04/17/单例模式/" class="alignright next" >下一页</a>
+    
+    <div class="clearfix"></div>
+</nav>
 
-  <article class="post">
+
+
+<section id="comment">
+
+	
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="2015/04/17/KVC模式/" data-title="KVC键值编码" data-url="http://www.dudu.me/2015/04/17/KVC模式/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"biny"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+
   
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2015-04-17T07:28:16.000Z"><a href="/2015/04/17/单例模式/">Apr 17 2015</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2015/04/17/单例模式/">单例模式</a></h1>
-  
+</section>
 
-    </header>
-    <div class="entry">
-      
-        <h3 id="一、单例模式含义">一、单例模式含义</h3><p>   单例模式是在iOS开发中最常用的一种设计模式，单例模式可以让程序的各个模块共享数据，而不用去手动的去传递，所以单例类是一个我们要去理解的非常重要的模式，单例模式的对象生命周期贯穿于程序整个生命周期，在程序结束时由系统自动释放，不需要手动去释放或者销毁。</p>
-<h3 id="二、单例模式的实现">二、单例模式的实现</h3><p>新建一个shareData类，我们在shareData.h文件中声明:</p>
-<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  ShareData.h</span></span><br><span class="line"><span class="comment">//  单例设计模式</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by 小宸宸Dad on 15/4/17.</span></span><br><span class="line"><span class="comment">//  Copyright (c) 2015年 fjyang. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#import <span class="title">&lt;Foundation/Foundation.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">ShareData</span> : <span class="title">NSObject</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">strong</span>,<span class="keyword">nonatomic</span>)<span class="built_in">NSString</span> * name;</span><br><span class="line"></span><br><span class="line">+ (<span class="keyword">id</span>)shareData;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
-<p>在shareData.m中对该类进行实现<br>
-      
-    </div>
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2015/04/17/单例模式/#more" class="more-link">Read More</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2015-04-17T07:25:33.000Z"><a href="/2015/04/17/objective c属性/">Apr 17 2015</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2015/04/17/objective c属性/">objective c属性</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h3 id="属性">属性</h3><h3 id="1、Oc属性的注意:">1、Oc属性的注意:</h3><ul>
-<li>setter、getter里面，不要使用self.age(死循环，递归)</li>
-</ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#10; //&#35774;&#32622;&#20154;&#30340;&#24180;&#40836;&#10;[person setAge:22];&#10;NSLog(@&#34;%ld&#34;,[person age]);&#10;//&#20351;&#29992;&#28857;&#35821;&#27861;&#10;person.age = -20;&#10;NSInteger age = person.age;&#10;- (void)setAge:(NSInteger)age&#123;&#10;   self.age = age;&#10;&#125;&#10;//&#36825;&#31181;&#26041;&#24335;&#26159;&#38169;&#35823;&#30340;....</span><br></pre></td></tr></table></figure>
-<ul>
-<li>属性的参数</li>
-</ul>
-      
-    </div>
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2015/04/17/objective c属性/#more" class="more-link">Read More</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2015-04-17T00:55:07.000Z"><a href="/2015/04/17/oc复习/">Apr 17 2015</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2015/04/17/oc复习/">OC基础知识复习</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h3 id="1-_面向对象的特点、重写方法（init、description方法的作用）">1. 面向对象的特点、重写方法（init、description方法的作用）</h3><h4 id="答_:_面向对象的特点封装、继承、多态">答 : 面向对象的特点封装、继承、多态</h4><p>1、封装:把客观事物封装成抽象的类，并且类可以把自己的数据和方法只让可信的类或者对象操作，对不可信的进行信息隐藏。</p>
-<p>2、继承：它可以使用现有类的所有功能，并在无需重新编写原来的类的情况下对这些功能进行扩展<br>，通过继承创建的新类称为“子类”或“派生类”，被继承的类称为“基类”、“父类”或“超类”。</p>
-<p>3、多态：多态就是某一类事物的多种形态</p>
-<h4 id="重写init方法:">重写init方法:</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (instancetype)init&#123;&#10;&#10;    if (self = [super init]) &#123;&#10;        &#10;        self.name = @&#34;&#24352;&#23665;&#34;;&#10;    &#125;&#10;    return self;&#10;&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="为什么要重写description方法:">为什么要重写description方法:</h4><h5 id="description方法的默认实现是返回类名和对象的内存地址，这样的话，使用NSLog输出OC对象，意义就不是很大，因为我们并不关心对象的内存地址，比较关心的是对象内部的一些成变量的值。因此，会经常重写description方法，覆盖description方法的默认实现比如，重写Student的description方法，返回成员变量_age的值-">description方法的默认实现是返回类名和对象的内存地址，这样的话，使用NSLog输出OC对象，意义就不是很大，因为我们并不关心对象的内存地址，比较关心的是对象内部的一些成变量的值。因此，会经常重写description方法，覆盖description方法的默认实现比如，重写Student的description方法，返回成员变量_age的值.</h5><h4 id="重写description方法:">重写description方法:</h4><h3 id="2-_方法的声明与书写（+/-_、方法命名规范）">2. 方法的声明与书写（+/- 、方法命名规范）</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (NSString *)description&#123;&#10;&#10;    return [NSString stringWithFormat:@&#34;%@&#34;,self.name];&#10;&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2015/04/17/oc复习/#more" class="more-link">Read More</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-<nav id="pagination">
-  
-  
-  <div class="clearfix"></div>
-</nav></div></div>
+</div></div>
     <aside id="sidebar" class="alignright">
   <div class="search">
   <form action="//google.com/search" method="get" accept-charset="utf-8">
