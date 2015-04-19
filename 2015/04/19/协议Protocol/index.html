@@ -1,0 +1,273 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>oc协议Protocol | 嘟嘟blog</title>
+  <meta name="author" content="biny">
+  
+  <meta name="description" content="杨方军的blog | oc | objective c | bi">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="oc协议Protocol"/>
+  <meta property="og:site_name" content="嘟嘟blog"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="嘟嘟blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">嘟嘟blog</a></h1>
+  <h2><a href="/">和小蜜蜂一样,努力奋斗每一天</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-04-19T05:02:54.000Z"><a href="/2015/04/19/协议Protocol/">Apr 19 2015</a></time>
+      
+      
+  
+    <h1 class="title">oc协议Protocol</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+
+        <h3 id="一、协议的含义">一、协议的含义</h3><p>   协议和C#、JAVA等语言的接口类似，在协议里定义的方法，在类中进行实现。</p>
+<h3 id="二、协议的基本用途">二、协议的基本用途</h3><p>1、可以用来声明一大段的方法，但是不能声明成员变量；</p>
+<p>2、 只要类遵守了某个协议，就相当于拥有了这个协议的所有方法的声明；</p>
+<p>3、只要父类遵守了某个协议，子类也遵守；</p>
+<h3 id="三、协议的实现">三、协议的实现</h3><p>@protocol 协议名称 <nsobject></nsobject></p>
+<p>@required<br>//必须实现的方法1<br>//必须实现的方法2</p>
+<p>@optional<br>//选择性实现的方法1<br>//选择性实现的方法2<br>@end</p>
+<p>EX:</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">@protocol</span> <span class="title">MathWithtest</span> &lt;<span class="title">NSObject</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@required</span></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)test;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)demo;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@optional</span></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)add;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<p>我们新建一个Demo类，去遵守这个MathWithtest协议</p>
+<a id="more"></a>
+<p>1、在Demo.h文件中去遵守MathWithtest这个协议</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#import <span class="title">&lt;Foundation/Foundation.h&gt;</span></span></span><br><span class="line"><span class="preprocessor">#import <span class="title">"MathWithtest.h"</span></span></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">Demo</span> : <span class="title">NSObject</span>&lt;<span class="title">MathWithtest</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<p>2、在Demo.m文件中实现MathWithtest协议中的方法</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">	<span class="preprocessor">#import <span class="title">"Demo.h"</span></span></span><br><span class="line">	<span class="class"><span class="keyword">@implementation</span> <span class="title">Demo</span></span></span><br><span class="line">	- (<span class="keyword">void</span>)test&#123;</span><br><span class="line"></span><br><span class="line">	    <span class="built_in">NSLog</span>(<span class="string">@"必须实现的方法1"</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	- (<span class="keyword">void</span>)demo&#123;</span><br><span class="line"></span><br><span class="line">	    <span class="built_in">NSLog</span>(<span class="string">@"必须实现的方法2"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	- (<span class="keyword">void</span>)add&#123;</span><br><span class="line"></span><br><span class="line">	    <span class="built_in">NSLog</span>(<span class="string">@"选择性实现的方法"</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<p>备注:协议中有2个关键字可以控制方法是否要实现（默认是@required），在大多数情况下，用途在于程序员之间的交流</p>
+<pre><code><span class="variable">@required</span>：这个方法必须要实现（若不实现，编译器会发出警告）
+
+<span class="variable">@optional</span>：这个方法不一定要实现
+</code></pre><p>  3、某个对象遵守协议的示例</p>
+<p>  假如有一个NSobject的对象obj，我们要求这个对象去遵守MathWithtest协议</p>
+  <figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NSObject<span class="variable">&lt;MathWithtest&gt;</span> <span class="keyword">*</span>obj = [[Demo alloc]init];</span><br></pre></td></tr></table></figure>
+<p>  Demo类已经实现了对MathWithtest的遵守，所以我们在实例化NSobject对象的时候，只需要实例化一个已经遵守了MathWithtest协议的对象即可；</p>
+<h3 id="四、oc代理设计模式">四、oc代理设计模式</h3><p>1、代理设计模式原理</p>
+<p>张三需要去买一张火车票，但是自己又没时间去买，于是他找了一个人(李四)替他买火车票，张三写了<br>一张纸条，纸条上写着需要李四去干的时候,比如纸条上写着要求李四去询问下火车票的价格，还剩多少张票等等，李四去火车站问到火车票的价格和剩余票数后，告诉张三是否购买，然后完成买票。</p>
+<p>翻译成OC术语，因此我们可以得到以下信息:</p>
+<ul>
+<li>此处的张三就是委托人(委托李四去买火车票)</li>
+<li>李四是代理人(替张三买火车票)</li>
+<li>张三写的纸条就是协议(李四按照张三定的协议去做事情)</li>
+</ul>
+<p>2、OC代理设计模式的实现</p>
+<p>A、新建两个类，一个是Person类，另一个是DelegatelePerson类；</p>
+<p>在Person.h中做以下声明: 在Person中声明一个协议，协议的方法包含ticketCount、ticketPrice方法的声明；声明了一个遵守BuyTrainTicket协议 类型为id类型的属性delegate.</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  Person.h</span></span><br><span class="line"><span class="comment">//  OC代理设计模式</span></span><br><span class="line"><span class="comment">//  Created by 小宸宸Dad on 15/4/19.</span></span><br><span class="line"><span class="comment">//  Copyright (c) 2015年 fjyang. All rights reserved.</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#import <span class="title">&lt;Foundation/Foundation.h&gt;</span></span></span><br><span class="line">	<span class="class"><span class="keyword">@protocol</span> <span class="title">BuyTrainTicket</span> &lt;<span class="title">NSObject</span>&gt;</span></span><br><span class="line">	<span class="comment">//火车票还剩下多少张</span></span><br><span class="line">	- (<span class="built_in">NSUInteger</span>)ticketCount;</span><br><span class="line">	<span class="comment">//火车票的价格</span></span><br><span class="line">	- (<span class="built_in">NSInteger</span>)ticketPrice;</span><br><span class="line">	<span class="keyword">@end</span></span><br><span class="line">	<span class="class"><span class="keyword">@interface</span> <span class="title">Person</span> : <span class="title">NSObject</span></span></span><br><span class="line">	<span class="comment">//买车票的方法</span></span><br><span class="line">	- (<span class="keyword">void</span>)buyTicket;</span><br><span class="line">	 <span class="comment">//重写init方法，在实例化一个Person对象的同时，给对象的delegate属性赋值，并且类型必须为遵守BuyTrainTicket协议的类</span></span><br><span class="line">	- (instancetype)initWithDelegate:(<span class="keyword">id</span>&lt;BuyTrainTicket&gt;)delegate;</span><br><span class="line">	<span class="keyword">@property</span> (<span class="keyword">assign</span>,<span class="keyword">nonatomic</span>) <span class="keyword">id</span>&lt;BuyTrainTicket&gt; delegate;</span><br><span class="line">	<span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<p>在Person.m文件中实现</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  Person.m</span></span><br><span class="line"><span class="comment">//  OC代理设计模式</span></span><br><span class="line"><span class="comment">//  Created by 小宸宸Dad on 15/4/19.</span></span><br><span class="line"><span class="comment">//  Copyright (c) 2015年 fjyang. All rights reserved.</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#import <span class="title">"Person.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">Person</span></span></span><br><span class="line"><span class="comment">//重写init方法，在实例化一个Person对象的同时，给对象的delegate属性赋值，并且类型必须为遵守BuyTrainTicket协议的类型</span></span><br><span class="line">- (instancetype)initWithDelegate:(<span class="keyword">id</span>&lt;BuyTrainTicket&gt;)delegate&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">self</span><span class="variable">.delegate</span> = delegate;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//买票</span></span><br><span class="line">- (<span class="keyword">void</span>)buyTicket&#123;</span><br><span class="line">    <span class="keyword">if</span> (_delegate&amp;&amp; ([_delegate respondsToSelector:<span class="keyword">@selector</span>(ticketCount)])&amp;&amp;([_delegate respondsToSelector:<span class="keyword">@selector</span>(ticketPrice)])) &#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"火车票的价格为:%ld元"</span>,[_delegate ticketPrice]);</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"火车票还剩下:%lu张"</span>,[_delegate ticketCount]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<p>-(BOOL) respondsToSelector: selector 用来判断是否有以某个名字命名的方法(被封装在一个selector的对象里传递)</p>
+<p>B、在DelegatePerson类中遵守BuyTrainTicket协议</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#import <span class="title">&lt;Foundation/Foundation.h&gt;</span></span></span><br><span class="line"><span class="preprocessor">#import <span class="title">"Person.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">DelegatePerson</span> : <span class="title">NSObject</span>&lt;<span class="title">BuyTrainTicket</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<p>C、在DelegatePerson.m中实现协议中的方法</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">	<span class="preprocessor">#import <span class="title">"DelegatePerson.h"</span></span></span><br><span class="line"></span><br><span class="line">	<span class="class"><span class="keyword">@implementation</span> <span class="title">DelegatePerson</span></span></span><br><span class="line"></span><br><span class="line">	- (<span class="built_in">NSUInteger</span>)ticketCount&#123;</span><br><span class="line"></span><br><span class="line">	    <span class="keyword">return</span> <span class="number">10</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	- (<span class="built_in">NSInteger</span>)ticketPrice&#123;</span><br><span class="line">	    <span class="keyword">return</span> <span class="number">67</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<p>D、在Main函数中调用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  main.m</span></span><br><span class="line"><span class="comment">//  OC代理设计模式</span></span><br><span class="line"><span class="comment">//  Created by 小宸宸Dad on 15/4/19.</span></span><br><span class="line"><span class="comment">//  Copyright (c) 2015年 fjyang. All rights reserved.</span></span><br><span class="line"></span><br><span class="line">#<span class="keyword">import</span> &lt;Foundation/Foundation.h&gt;</span><br><span class="line">#<span class="keyword">import</span> <span class="string">"Person.h"</span></span><br><span class="line">#<span class="keyword">import</span> <span class="string">"DelegatePerson.h"</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[])</span> </span>&#123;</span><br><span class="line">    <span class="annotation">@autoreleasepool</span> &#123;</span><br><span class="line">        DelegatePerson * otherPerson = [[DelegatePerson alloc]init];</span><br><span class="line">        Person *person = [[Person alloc] initWithDelegate:otherPerson];</span><br><span class="line">        [person buyTicket];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出以下结果：</p>
+<p>2015-04-19 12:49:02.387 OC代理设计模式[1250:967381] 火车票的价格为:67元</p>
+<p>2015-04-19 12:49:02.388 OC代理设计模式[1250:967381] 火车票还剩下:10张</p>
+<p>Program ended with exit code: 0</p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/objective-c/">objective c</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/oc协议Protocol-oc代理模式，oc观察者模式/">oc协议Protocol,oc代理模式，oc观察者模式</a>
+  </div>
+
+<!-- Baidu Button BEGIN -->
+<div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
+<a class="bds_qzone"></a>
+<a class="bds_tsina"></a>
+<a class="bds_tqq"></a>
+<a class="bds_renren"></a>
+<a class="bds_t163"></a>
+<span class="bds_more"></span>
+<a class="shareCount"></a>
+</div>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=3326447" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END -->
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+ <nav id="pagination" >
+    
+    
+    <a href="/2015/04/17/objective c属性/" class="alignright next" >下一页</a>
+    
+    <div class="clearfix"></div>
+</nav>
+
+
+
+<section id="comment">
+
+	
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="2015/04/19/协议Protocol/" data-title="oc协议Protocol" data-url="http://www.dudu.me/2015/04/19/协议Protocol/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"biny"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+
+  
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:www.dudu.me">
+  </form>
+</div>
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/tags/KVC键值编码/" style="font-size: NaNpx;">KVC键值编码</a><a href="/tags/KVO键值观察/" style="font-size: NaNpx;">KVO键值观察</a><a href="/tags/oc协议Protocol-oc代理模式，oc观察者模式/" style="font-size: NaNpx;">oc协议Protocol,oc代理模式，oc观察者模式</a><a href="/tags/oc基础知识/" style="font-size: NaNpx;">oc基础知识</a><a href="/tags/oc属性/" style="font-size: NaNpx;">oc属性</a><a href="/tags/单例模式/" style="font-size: NaNpx;">单例模式</a>
+  </div>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/c/">c#</a><small>0</small></li>
+  
+    <li><a href="/categories/objective-c/">objective c</a><small>6</small></li>
+  
+    <li><a href="/categories/优化推广/">优化推广</a><small>0</small></li>
+  
+    <li><a href="/categories/学习笔记/">学习笔记</a><small>0</small></li>
+  
+    <li><a href="/categories/社会生活/">社会生活</a><small>0</small></li>
+  
+  </ul>
+</div>
+
+
+  
+
+  <iframe width="100%" height="550" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=2&ptype=1&speed=0&skin=5&isTitle=1&noborder=1&isWeibo=1&isFans=1&uid=2609664461&verifier=e300faf4&dpc=1"></iframe>
+
+  <div class="widget tag">
+<h3 class="title">简介</h3>
+<ul class="entry">
+<li>本体：杨方军</li>
+<li>外文：Biny</li>
+<li>现状：学习IOSing</li>
+<li color=“red”>QQ号 ：81599010</li>
+</ul>
+</div>
+
+  <div class="widget tag">
+<h3 class="title">友情链接</h3>
+<ul class="entry">
+<li><a href="http://sayaka.ninja/" title=“Luula"> Luula </a></li>
+</ul>
+</div>
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2015 biny
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+<div id="totop" style="position:fixed;bottom:150px;right:20px;cursor: pointer;">
+<a title="返回顶部"><img src="/imgs/scrollup.png"/></a>
+</div>
+<script src="/js/totop.js"></script>
+
+</body>
+</html>

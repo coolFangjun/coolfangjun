@@ -51,6 +51,51 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2015-04-19T05:02:54.000Z"><a href="/2015/04/19/协议Protocol/">Apr 19 2015</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/04/19/协议Protocol/">oc协议Protocol</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h3 id="一、协议的含义">一、协议的含义</h3><p>   协议和C#、JAVA等语言的接口类似，在协议里定义的方法，在类中进行实现。</p>
+<h3 id="二、协议的基本用途">二、协议的基本用途</h3><p>1、可以用来声明一大段的方法，但是不能声明成员变量；</p>
+<p>2、 只要类遵守了某个协议，就相当于拥有了这个协议的所有方法的声明；</p>
+<p>3、只要父类遵守了某个协议，子类也遵守；</p>
+<h3 id="三、协议的实现">三、协议的实现</h3><p>@protocol 协议名称 <NSObject></p>
+<p>@required<br>//必须实现的方法1<br>//必须实现的方法2</p>
+<p>@optional<br>//选择性实现的方法1<br>//选择性实现的方法2<br>@end</p>
+<p>EX:</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">@protocol</span> <span class="title">MathWithtest</span> &lt;<span class="title">NSObject</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@required</span></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)test;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)demo;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@optional</span></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)add;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<p>我们新建一个Demo类，去遵守这个MathWithtest协议</p>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2015/04/19/协议Protocol/#more" class="more-link">Read More</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2015-04-17T07:25:33.000Z"><a href="/2015/04/17/objective c属性/">Apr 17 2015</a></time>
       
       
@@ -267,7 +312,7 @@
 <div class="widget tagcloud">
   <h3 class="title">标签云</h3>
   <div class="entry">
-    <a href="/tags/KVC键值编码/" style="font-size: NaNpx;">KVC键值编码</a><a href="/tags/KVO键值观察/" style="font-size: NaNpx;">KVO键值观察</a><a href="/tags/oc基础知识/" style="font-size: NaNpx;">oc基础知识</a><a href="/tags/oc属性/" style="font-size: NaNpx;">oc属性</a><a href="/tags/单例模式/" style="font-size: NaNpx;">单例模式</a>
+    <a href="/tags/KVC键值编码/" style="font-size: NaNpx;">KVC键值编码</a><a href="/tags/KVO键值观察/" style="font-size: NaNpx;">KVO键值观察</a><a href="/tags/oc协议Protocol-oc代理模式，oc观察者模式/" style="font-size: NaNpx;">oc协议Protocol,oc代理模式，oc观察者模式</a><a href="/tags/oc基础知识/" style="font-size: NaNpx;">oc基础知识</a><a href="/tags/oc属性/" style="font-size: NaNpx;">oc属性</a><a href="/tags/单例模式/" style="font-size: NaNpx;">单例模式</a>
   </div>
 </div>
 
@@ -279,7 +324,7 @@
   
     <li><a href="/categories/c/">c#</a><small>0</small></li>
   
-    <li><a href="/categories/objective-c/">objective c</a><small>5</small></li>
+    <li><a href="/categories/objective-c/">objective c</a><small>6</small></li>
   
     <li><a href="/categories/优化推广/">优化推广</a><small>0</small></li>
   
