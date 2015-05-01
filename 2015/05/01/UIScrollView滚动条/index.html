@@ -1,0 +1,293 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>UIScrollView滚动条(一) | 嘟嘟blog</title>
+  <meta name="author" content="biny">
+  
+  <meta name="description" content="杨方军的blog | oc | objective c | bi">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="UIScrollView滚动条(一)"/>
+  <meta property="og:site_name" content="嘟嘟blog"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="嘟嘟blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">嘟嘟blog</a></h1>
+  <h2><a href="/">和小蜜蜂一样,努力奋斗每一天</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-05-01T15:54:29.000Z"><a href="/2015/05/01/UIScrollView滚动条/">May 1 2015</a></time>
+      
+      
+  
+    <h1 class="title">UIScrollView滚动条(一)</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+
+        <p>小结:最近在学习UIScrollView，M了个J老师的视频讲得不错，在此谢谢李老师</p>
+<p><a href="http://www.cnblogs.com/mjios" target="_blank" rel="external">M了个J</a> </p>
+<p>备注:以下内容都是来自李老师的视频，视频中老师是通过storyboard来实现的，我通过纯手工代码实现，增强代码能力。</p>
+<h3 id="一、UIScrollView需要掌握的知识点">一、UIScrollView需要掌握的知识点</h3><p>1、UIScrollView的使用方法</p>
+<p>2、UIScrollView的常见属性</p>
+<p>3、UIScrollView的常用代理方法</p>
+<p>4、UIScrollView的缩放</p>
+<p>5、UIScrollView和UIPageControl的分页</p>
+<p>6、NSTimer的使用</p>
+<h3 id="二、UIScrollView的使用方法">二、UIScrollView的使用方法</h3><p>UIScrollView定义：UIScrollView是一个能够滚动的视图控件，可以用来展示大量的内容，并且可以通过滚动查看所有的内容.</p>
+<p>1、UIScrollView的使用方法</p>
+<p>第一步：UIScrollView的初始化</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">UIScrollView</span> *_scrollImage=[[<span class="built_in">UIScrollView</span> alloc]initWithFrame:<span class="keyword">self</span><span class="variable">.view</span><span class="variable">.frame</span>];</span><br><span class="line">[<span class="keyword">self</span><span class="variable">.view</span> addSubview: _scrollImage];</span><br></pre></td></tr></table></figure>
+<p>第二步:将需要展示的内容添加到UIScrollView中</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">NSString *imageName = [NSString stringWithFormat:@<span class="string">"img_0%d.png"</span>,i+<span class="number">1</span>];</span><br><span class="line">_image = <span class="string">[[UIImageView alloc]initWithImage:[UIImage imageNamed:imageName]]</span>;</span><br><span class="line">_image.frame = CGRectMake(i*_scrollImage.frame.size.width, <span class="number">0</span>, <span class="number">300</span>, _scrollImage.frame.size.height);</span><br><span class="line">[_scrollImage addSubview:_image];</span><br></pre></td></tr></table></figure>
+<p>第三步:设置UIScrollView的contentSize属性，告诉UIScrollView所有内容的尺寸，也就是告诉它滚动的范围（能滚多远，滚到哪里是尽头）</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_scrollImage<span class="variable">.contentSize</span> = <span class="built_in">CGSizeMake</span>(<span class="number">1000</span>, <span class="number">0</span>);<span class="comment">//height为0，表示不能上下滚动，只能水平滚动</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>UIScrollView无法滚动的原因如下:</p>
+<ul>
+<li><p>没有设置contentSize</p>
+</li>
+<li><p>scrollEnabled = NO</p>
+</li>
+<li><p>没有接收到触摸事件:userInteractionEnabled = NO</p>
+</li>
+<li><p>没有取消autolayout功能</p>
+</li>
+</ul>
+<h3 id="二、UIScrollView的常见属性">二、UIScrollView的常见属性</h3><p>@property(nonatomic) CGPoint contentOffset;<br>这个属性用来表示UIScrollView滚动的位置</p>
+<p>@property(nonatomic) CGSize contentSize;<br>这个属性用来表示UIScrollView内容的尺寸，滚动范围（能滚多远）</p>
+<p>@property(nonatomic) UIEdgeInsets contentInset;<br>这个属性能够在UIScrollView的4周增加额外的滚动区域</p>
+<h4 id="1、freme、bounds的关联性">1、freme、bounds的关联性</h4><p><b>注:UIScrollView的属性经常要和freme,bounds打交道，我们来了解下:</b></p>
+<ul>
+<li><p>frame 是UIView中表示此view的一个矩形面积，包括了view在它的superview中的一些几何上的标识。有起始坐标,也就是origin(CGPoint)和这个矩形面积的宽(width)和高(height)</p>
+</li>
+<li><p>bounds 每个view，除了有对应它的superview的相关坐标外，它自己也有对应它自己的几何坐标，所以bounds就是标识它自己坐标关系的一个标识，它有和frame一样的属性，但在<br>数值上会有些不同。</p>
+</li>
+<li><p>center 是一个view的中心，默认是这个view对应superview坐标的中间值。</p>
+</li>
+</ul>
+<p>假如有个view-A ,它是view-B的一个subview,view-A在view-B上的起始坐标是(40,40)(此坐标是view-B上的坐标关系),view-A的高(height)为380,宽(width)为240.<br>所以，view-A的frame值是(40,40,240,380) bounds的值是(0,0,240,380) center的值是(160,230). 所以，frame和bounds是有关联的，修改其中一个的宽或高，另一个也会相应的改变</p>
+<h4 id="2、contentSize的理解">2、contentSize的理解</h4><p>contentSize是UIScrollView的一个常用属性，主要是设置滚动条滚动的范围，它代表scrollView可显示的区域大小.</p>
+<p>contentSize用法:contentSize = (CGFloat width,CGFloat height) 通常使用CGsizeMake(width,height)来给contentSize赋值</p>
+<p>假设有一个scrollView.frame=(0,0,320,480)而它的contentSize设置为(320,960) 表示这个scrollView整个内容大小区域为宽320，高960，需要通过上下滑动(y轴方向)来查看内容.</p>
+<h4 id="3、contentOffSet的理解">3、contentOffSet的理解</h4><p>contentOffSet是当前显示区域顶点相对于frame顶点的偏移量，还是使用scrollView.frame=(0,0,320,480)，contentSize设置为(320,960)，当把当前滚动条滚动到最下面的时候，偏移量就为:960-480 =480,就是Y轴偏移了480<br>注:以上信息来自大神 <a href="http://blog.csdn.net/kylinbl/article/details/7043936" target="_blank" rel="external">KylinBL</a>的博客</p>
+<h4 id="4、contentInSet的理解">4、contentInSet的理解</h4><p>contentInSet我的理解就和CSS中的padding类似，我们先来看下padding呢，根据<a href="http://www.w3school.com.cn/cssref/pr_padding.asp" target="_blank" rel="external">W3School</a>对padding的解释:</p>
+<p>设置 p 元素的 4 个内边距：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">p</span></span><br><span class="line">  <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">padding</span>:<span class="value"><span class="number">2cm</span> <span class="number">4cm</span> <span class="number">3cm</span> <span class="number">4cm</span></span></span>;</span><br><span class="line">  &#125;</span></span><br></pre></td></tr></table></figure>
+<p> padding 简写属性在一个声明中设置所有内边距属性,分别表示当前标签上、右、下、左的内边距</p>
+<p> 我们常用UIEdgeInsetsMake来为contentInset赋值,我们来看看UIEdgeInsetsMake的参数：</p>
+<p> UIEdgeInsetsMake(CGFloat top, CGFloat left, CGFloat bottom, CGFloat right)<br> 分别表示顶部的内边距，左边的内边距，下面的内边距，右边的内边距；例如我们可以这样设置:</p>
+ <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">_scrollImage<span class="variable">.contentInSet</span> = <span class="built_in">UIEdgeInsetMake</span> = (<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="built_in">CGRectGetMaxX</span>(<span class="keyword">self</span><span class="variable">.view</span><span class="variable">.bounds</span>)-_image<span class="variable">.frame</span><span class="variable">.size</span><span class="variable">.width</span>);</span><br><span class="line"><span class="comment">//表示设置当前滚动条的右边内边距为当前view 最大的x坐标(也就是当前view的width)减去当前滚动条内需要显示的图片的宽度(图片不满屏显示)</span></span><br></pre></td></tr></table></figure>
+<h4 id="5、UIScrollView其他属性">5、UIScrollView其他属性</h4><p> //设置UIScrollView是否有弹簧效果</p>
+<p> @property(nonatomic) BOOL bounces; </p>
+<p> //设置UIScrollView是否能滚动</p>
+<p> @property(nonatomic,getter=isScrollEnabled) BOOL scrollEnabled; </p>
+<p>//设置UIScrollView是否需要水平(x轴)显示滚动条</p>
+<p>@property(nonatomic) BOOL showsHorizontalScrollIndicator;<br>//设置UIScrollView是否显示垂直滚动条(Y轴)</p>
+<p>@property(nonatomic) BOOL showsVerticalScrollIndicator;</p>
+<p><img src="http://www.dudu.me/image/scroll.png"></p>
+<p>其他参考阅读:<br><a href="http://blog.sina.com.cn/s/blog_7b9d64af010190h7.html" target="_blank" rel="external">contentInset 和 contentOffset和frame 之间的含义 </a></p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/objective-c/">objective c</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/UIScrollView/">UIScrollView</a>, <a href="/tags/oc滚动条/">oc滚动条</a>
+  </div>
+
+<!-- Baidu Button BEGIN -->
+<div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
+<a class="bds_qzone"></a>
+<a class="bds_tsina"></a>
+<a class="bds_tqq"></a>
+<a class="bds_renren"></a>
+<a class="bds_t163"></a>
+<span class="bds_more"></span>
+<a class="shareCount"></a>
+</div>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=3326447" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END -->
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+ <nav id="pagination" >
+    
+    
+    <a href="/2015/04/26/OC实现计算器/" class="alignright next" >下一页</a>
+    
+    <div class="clearfix"></div>
+</nav>
+
+
+
+<section id="comment">
+
+	
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="2015/05/01/UIScrollView滚动条/" data-title="UIScrollView滚动条(一)" data-url="http://www.dudu.me/2015/05/01/UIScrollView滚动条/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"biny"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+
+  
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:www.dudu.me">
+  </form>
+</div>
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/tags/KVC键值编码/" style="font-size: NaNpx;">KVC键值编码</a><a href="/tags/KVO键值观察/" style="font-size: NaNpx;">KVO键值观察</a><a href="/tags/UIScrollView/" style="font-size: NaNpx;">UIScrollView</a><a href="/tags/instancesRespondToSelector/" style="font-size: NaNpx;">instancesRespondToSelector</a><a href="/tags/isKindOfClass/" style="font-size: NaNpx;">isKindOfClass</a><a href="/tags/isMemberOfClass/" style="font-size: NaNpx;">isMemberOfClass</a><a href="/tags/oc代理模式，oc观察者模式/" style="font-size: NaNpx;">oc代理模式，oc观察者模式</a><a href="/tags/oc协议Protocol/" style="font-size: NaNpx;">oc协议Protocol</a><a href="/tags/oc基础知识/" style="font-size: NaNpx;">oc基础知识</a><a href="/tags/oc属性/" style="font-size: NaNpx;">oc属性</a><a href="/tags/oc滚动条/" style="font-size: NaNpx;">oc滚动条</a><a href="/tags/performSelector/" style="font-size: NaNpx;">performSelector</a><a href="/tags/respondsToSelector的相关使用/" style="font-size: NaNpx;">respondsToSelector的相关使用</a><a href="/tags/单例模式/" style="font-size: NaNpx;">单例模式</a><a href="/tags/计算器/" style="font-size: NaNpx;">计算器</a>
+  </div>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/c/">c#</a><small>0</small></li>
+  
+    <li><a href="/categories/objective-c/">objective c</a><small>9</small></li>
+  
+    <li><a href="/categories/优化推广/">优化推广</a><small>0</small></li>
+  
+    <li><a href="/categories/学习笔记/">学习笔记</a><small>0</small></li>
+  
+    <li><a href="/categories/社会生活/">社会生活</a><small>0</small></li>
+  
+  </ul>
+</div>
+
+
+  
+
+  <iframe width="100%" height="550" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=2&ptype=1&speed=0&skin=5&isTitle=1&noborder=1&isWeibo=1&isFans=1&uid=2609664461&verifier=e300faf4&dpc=1"></iframe>
+
+  <div class="widget tag">
+<h3 class="title">简介</h3>
+<ul class="entry">
+<li>本体：杨方军</li>
+<li>外文：Biny</li>
+<li>现状：学习IOS</li>
+<li color=“red”>QQ号 ：81599010</li>
+</ul>
+</div>
+
+  <div class="widget tag">
+<h3 class="title">友情链接</h3>
+<ul class="entry">
+<li><a href="http://sayaka.ninja/" title=“Luula"> Luula </a></li>
+<li><a href="http://www.brighttj.com/" title=“BRIGHTTJ”> BRIGHTTJ </a></li>
+</ul>
+</div>
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2015 biny
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+<div id="totop" style="position:fixed;bottom:150px;right:20px;cursor: pointer;">
+<a title="返回顶部"><img src="/imgs/scrollup.png"/></a>
+</div>
+<script src="/js/totop.js"></script>
+
+</body>
+</html>
+
+
+
+
