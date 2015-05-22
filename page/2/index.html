@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>单例模式 | 嘟嘟blog</title>
+  <title>第 2 页 | 嘟嘟blog</title>
   <meta name="author" content="biny">
   
   <meta name="description" content="杨方军的blog | oc | objective c | bi">
@@ -46,25 +46,53 @@
 <div class="clearfix"></div></header>
   <div id="content" class="inner">
     <div id="main-col" class="alignleft"><div id="wrapper">
-<h2 class="archive-title tag">单例模式</h2>
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-04-16T16:00:00.000Z"><a href="/2015/04/17/单例模式/">Apr 17 2015</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/04/17/单例模式/">单例模式</a></h1>
+  
 
-
-  <div class="archive">
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2015-04-16T16:00:00.000Z"><a href="/2015/04/17/单例模式/">Apr 17 2015</a></time>
-            
-              <h1 class="title"><a href="/2015/04/17/单例模式/">单例模式</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
+    </header>
+    <div class="entry">
+      
+        <h3 id="一、单例模式含义">一、单例模式含义</h3><p>   单例模式是在iOS开发中最常用的一种设计模式，单例模式可以让程序的各个模块共享数据，而不用去手动的去传递，所以单例类是一个我们要去理解的非常重要的模式，单例模式的对象生命周期贯穿于程序整个生命周期，在程序结束时由系统自动释放，不需要手动去释放或者销毁。</p>
+<h3 id="二、单例模式的实现">二、单例模式的实现</h3><p>新建一个shareData类，我们在shareData.h文件中声明:</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  ShareData.h</span></span><br><span class="line"><span class="comment">//  单例设计模式</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by 小宸宸Dad on 15/4/17.</span></span><br><span class="line"><span class="comment">//  Copyright (c) 2015年 fjyang. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#import <span class="title">&lt;Foundation/Foundation.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">ShareData</span> : <span class="title">NSObject</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">strong</span>,<span class="keyword">nonatomic</span>)<span class="built_in">NSString</span> * name;</span><br><span class="line"></span><br><span class="line">+ (<span class="keyword">id</span>)shareData;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<p>在shareData.m中对该类进行实现<br>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2015/04/17/单例模式/#more" class="more-link">Read More</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
   </div>
-</div></div>
+</article>
+
+
+
+
+
+<nav id="pagination">
+  
+    <a href="/" class="alignleft prev">上一页</a>
+  
+  
+  <div class="clearfix"></div>
+</nav></div></div>
     <aside id="sidebar" class="alignright">
   <div class="search">
   <form action="//google.com/search" method="get" accept-charset="utf-8">

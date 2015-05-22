@@ -52,6 +52,50 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2015-05-07T01:24:05.000Z"><a href="/2015/05/07/IOS沙盒机制/">May 7 2015</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/05/07/IOS沙盒机制/">IOS沙盒机制</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h3 id="一、沙盒目录结构">一、沙盒目录结构</h3><p>默认情况下，每个沙盒含有3个文件夹：Documents, Library 和 tmp。因为应用的沙盒机制，应用只能在几个目录下读写文件<br>Documents：苹果建议将程序中建立的或在程序中浏览到的文件数据保存在该目录下，iTunes备份和恢复的时候会包括此目录<br>Library：存储程序的默认设置或其它状态信息；<br>Library/Caches：存放缓存文件，iTunes不会备份此目录，此目录下文件不会在应用退出删除<br>tmp：提供一个即时创建临时文件的地方。</p>
+<p>iTunes在与iPhone同步时，备份所有的Documents和Library文件。<br>iPhone在重启时，会丢弃所有的tmp文件。</p>
+<h3 id="二、沙盒的使用">二、沙盒的使用</h3><p>1、获取程序的Home目录</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSString</span> *homeDirectory = <span class="built_in">NSHomeDirectory</span>();  </span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"path:%@"</span>, homeDirectory);  </span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<p>2、获取document目录</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSArray</span> *paths = <span class="built_in">NSSearchPathForDirectoriesInDomains</span>(<span class="built_in">NSDocumentDirectory</span>, <span class="built_in">NSUserDomainMask</span>, <span class="literal">YES</span>);</span><br><span class="line"><span class="built_in">NSString</span> *path = [paths objectAtIndex:<span class="number">0</span>];</span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"path:%@"</span>, path);</span><br><span class="line"> <span class="comment">//获取Documents路径  &lt;#NSSearchPathDirectory directory#&gt; 搜索文件夹的类型</span></span><br><span class="line">    <span class="comment">//&lt;#NSSearchPathDomainMask domainMask#&gt;搜索的范围</span></span><br><span class="line">    <span class="comment">//&lt;#BOOL expandTilde#&gt;表示是否要展开这个路径</span></span><br><span class="line">    <span class="built_in">NSString</span> *str = [<span class="built_in">NSSearchPathForDirectoriesInDomains</span>(<span class="built_in">NSDocumentDirectory</span>, <span class="built_in">NSUserDomainMask</span>, <span class="literal">YES</span>)lastObject];</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>,str);</span><br></pre></td></tr></table></figure>
+<p>3、获取Cache目录</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>4、</p>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2015/05/07/IOS沙盒机制/#more" class="more-link">Read More</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2015-05-06T11:54:33.000Z"><a href="/2015/05/06/IOS网络请求NSURLConnection/">May 6 2015</a></time>
       
       
@@ -343,45 +387,6 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2015-04-16T16:00:00.000Z"><a href="/2015/04/17/单例模式/">Apr 17 2015</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2015/04/17/单例模式/">单例模式</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h3 id="一、单例模式含义">一、单例模式含义</h3><p>   单例模式是在iOS开发中最常用的一种设计模式，单例模式可以让程序的各个模块共享数据，而不用去手动的去传递，所以单例类是一个我们要去理解的非常重要的模式，单例模式的对象生命周期贯穿于程序整个生命周期，在程序结束时由系统自动释放，不需要手动去释放或者销毁。</p>
-<h3 id="二、单例模式的实现">二、单例模式的实现</h3><p>新建一个shareData类，我们在shareData.h文件中声明:</p>
-<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  ShareData.h</span></span><br><span class="line"><span class="comment">//  单例设计模式</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by 小宸宸Dad on 15/4/17.</span></span><br><span class="line"><span class="comment">//  Copyright (c) 2015年 fjyang. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#import <span class="title">&lt;Foundation/Foundation.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">ShareData</span> : <span class="title">NSObject</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">strong</span>,<span class="keyword">nonatomic</span>)<span class="built_in">NSString</span> * name;</span><br><span class="line"></span><br><span class="line">+ (<span class="keyword">id</span>)shareData;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
-<p>在shareData.m中对该类进行实现<br>
-      
-    </div>
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2015/04/17/单例模式/#more" class="more-link">Read More</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
         <time datetime="2015-04-16T16:00:00.000Z"><a href="/2015/04/17/oc复习/">Apr 17 2015</a></time>
       
       
@@ -503,6 +508,8 @@
 <nav id="pagination">
   
   
+    <a href="/page/2/" class="alignright next">下一页</a>
+  
   <div class="clearfix"></div>
 </nav></div></div>
     <aside id="sidebar" class="alignright">
@@ -517,7 +524,7 @@
 <div class="widget tagcloud">
   <h3 class="title">标签云</h3>
   <div class="entry">
-    <a href="/tags/KVC键值编码/" style="font-size: NaNpx;">KVC键值编码</a><a href="/tags/KVO键值观察/" style="font-size: NaNpx;">KVO键值观察</a><a href="/tags/UIScrollView/" style="font-size: NaNpx;">UIScrollView</a><a href="/tags/get/" style="font-size: NaNpx;">get</a><a href="/tags/instancesRespondToSelector/" style="font-size: NaNpx;">instancesRespondToSelector</a><a href="/tags/isKindOfClass/" style="font-size: NaNpx;">isKindOfClass</a><a href="/tags/isMemberOfClass/" style="font-size: NaNpx;">isMemberOfClass</a><a href="/tags/oc代理模式，oc观察者模式/" style="font-size: NaNpx;">oc代理模式，oc观察者模式</a><a href="/tags/oc协议Protocol/" style="font-size: NaNpx;">oc协议Protocol</a><a href="/tags/oc基础知识/" style="font-size: NaNpx;">oc基础知识</a><a href="/tags/oc属性/" style="font-size: NaNpx;">oc属性</a><a href="/tags/oc滚动条/" style="font-size: NaNpx;">oc滚动条</a><a href="/tags/performSelector/" style="font-size: NaNpx;">performSelector</a><a href="/tags/post/" style="font-size: NaNpx;">post</a><a href="/tags/respondsToSelector的相关使用/" style="font-size: NaNpx;">respondsToSelector的相关使用</a><a href="/tags/单例模式/" style="font-size: NaNpx;">单例模式</a><a href="/tags/异步，同步/" style="font-size: NaNpx;">异步，同步</a><a href="/tags/计算器/" style="font-size: NaNpx;">计算器</a>
+    <a href="/tags/KVC键值编码/" style="font-size: NaNpx;">KVC键值编码</a><a href="/tags/KVO键值观察/" style="font-size: NaNpx;">KVO键值观察</a><a href="/tags/UIScrollView/" style="font-size: NaNpx;">UIScrollView</a><a href="/tags/get/" style="font-size: NaNpx;">get</a><a href="/tags/instancesRespondToSelector/" style="font-size: NaNpx;">instancesRespondToSelector</a><a href="/tags/ios沙盒/" style="font-size: NaNpx;">ios沙盒</a><a href="/tags/isKindOfClass/" style="font-size: NaNpx;">isKindOfClass</a><a href="/tags/isMemberOfClass/" style="font-size: NaNpx;">isMemberOfClass</a><a href="/tags/oc代理模式，oc观察者模式/" style="font-size: NaNpx;">oc代理模式，oc观察者模式</a><a href="/tags/oc协议Protocol/" style="font-size: NaNpx;">oc协议Protocol</a><a href="/tags/oc基础知识/" style="font-size: NaNpx;">oc基础知识</a><a href="/tags/oc属性/" style="font-size: NaNpx;">oc属性</a><a href="/tags/oc滚动条/" style="font-size: NaNpx;">oc滚动条</a><a href="/tags/performSelector/" style="font-size: NaNpx;">performSelector</a><a href="/tags/post/" style="font-size: NaNpx;">post</a><a href="/tags/respondsToSelector的相关使用/" style="font-size: NaNpx;">respondsToSelector的相关使用</a><a href="/tags/单例模式/" style="font-size: NaNpx;">单例模式</a><a href="/tags/异步，同步/" style="font-size: NaNpx;">异步，同步</a><a href="/tags/数据持久化/" style="font-size: NaNpx;">数据持久化</a><a href="/tags/计算器/" style="font-size: NaNpx;">计算器</a>
   </div>
 </div>
 
@@ -529,7 +536,7 @@
   
     <li><a href="/categories/c/">c#</a><small>0</small></li>
   
-    <li><a href="/categories/objective-c/">objective c</a><small>10</small></li>
+    <li><a href="/categories/objective-c/">objective c</a><small>11</small></li>
   
     <li><a href="/categories/优化推广/">优化推广</a><small>0</small></li>
   
@@ -560,6 +567,7 @@
 <ul class="entry">
 <li><a href="http://sayaka.ninja/" title=“Luula"> Luula </a></li>
 <li><a href="http://www.brighttj.com/" title=“BRIGHTTJ”> BRIGHTTJ </a></li>
+<li><a href="http://m.kuaidi100.com" title=“快递查询”> 快递查询 </a></li>
 </ul>
 </div>
 </aside>
