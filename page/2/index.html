@@ -103,6 +103,46 @@ var _hmt = _hmt || [];
     <header>
       
         <div class="icon"></div>
+        <time datetime="2015-04-16T16:00:00.000Z"><a href="/2015/04/17/oc复习/">Apr 17 2015</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/04/17/oc复习/">OC基础知识复习</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h3 id="1-_面向对象的特点、重写方法（init、description方法的作用）">1. 面向对象的特点、重写方法（init、description方法的作用）</h3><h4 id="答_:_面向对象的特点封装、继承、多态">答 : 面向对象的特点封装、继承、多态</h4><p>1、封装:把客观事物封装成抽象的类，并且类可以把自己的数据和方法只让可信的类或者对象操作，对不可信的进行信息隐藏。</p>
+<p>2、继承：它可以使用现有类的所有功能，并在无需重新编写原来的类的情况下对这些功能进行扩展<br>，通过继承创建的新类称为“子类”或“派生类”，被继承的类称为“基类”、“父类”或“超类”。</p>
+<p>3、多态：多态就是某一类事物的多种形态</p>
+<h4 id="重写init方法:">重写init方法:</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (instancetype)init&#123;&#10;&#10;    if (self = [super init]) &#123;&#10;        &#10;        self.name = @&#34;&#24352;&#23665;&#34;;&#10;    &#125;&#10;    return self;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="为什么要重写description方法:">为什么要重写description方法:</h4><h5 id="description方法的默认实现是返回类名和对象的内存地址，这样的话，使用NSLog输出OC对象，意义就不是很大，因为我们并不关心对象的内存地址，比较关心的是对象内部的一些成变量的值。因此，会经常重写description方法，覆盖description方法的默认实现比如，重写Student的description方法，返回成员变量_age的值-">description方法的默认实现是返回类名和对象的内存地址，这样的话，使用NSLog输出OC对象，意义就不是很大，因为我们并不关心对象的内存地址，比较关心的是对象内部的一些成变量的值。因此，会经常重写description方法，覆盖description方法的默认实现比如，重写Student的description方法，返回成员变量_age的值.</h5><h4 id="重写description方法:">重写description方法:</h4><h3 id="2-_方法的声明与书写（+/-_、方法命名规范）">2. 方法的声明与书写（+/- 、方法命名规范）</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (NSString *)description&#123;&#10;&#10;    return [NSString stringWithFormat:@&#34;%@&#34;,self.name];&#10;&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2015/04/17/oc复习/#more" class="more-link">Read More</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2015-04-16T16:00:00.000Z"><a href="/2015/04/17/单例模式/">Apr 17 2015</a></time>
       
       
@@ -156,7 +196,7 @@ var _hmt = _hmt || [];
 <div class="widget tagcloud">
   <h3 class="title">标签云</h3>
   <div class="entry">
-    <a href="/tags/KVC键值编码/" style="font-size: NaNpx;">KVC键值编码</a><a href="/tags/KVO键值观察/" style="font-size: NaNpx;">KVO键值观察</a><a href="/tags/UIScrollView/" style="font-size: NaNpx;">UIScrollView</a><a href="/tags/get/" style="font-size: NaNpx;">get</a><a href="/tags/instancesRespondToSelector/" style="font-size: NaNpx;">instancesRespondToSelector</a><a href="/tags/ios屏幕适配/" style="font-size: NaNpx;">ios屏幕适配</a><a href="/tags/ios沙盒/" style="font-size: NaNpx;">ios沙盒</a><a href="/tags/isKindOfClass/" style="font-size: NaNpx;">isKindOfClass</a><a href="/tags/isMemberOfClass/" style="font-size: NaNpx;">isMemberOfClass</a><a href="/tags/oc代理模式，oc观察者模式/" style="font-size: NaNpx;">oc代理模式，oc观察者模式</a><a href="/tags/oc协议Protocol/" style="font-size: NaNpx;">oc协议Protocol</a><a href="/tags/oc基础知识/" style="font-size: NaNpx;">oc基础知识</a><a href="/tags/oc属性/" style="font-size: NaNpx;">oc属性</a><a href="/tags/oc滚动条/" style="font-size: NaNpx;">oc滚动条</a><a href="/tags/performSelector/" style="font-size: NaNpx;">performSelector</a><a href="/tags/post/" style="font-size: NaNpx;">post</a><a href="/tags/respondsToSelector的相关使用/" style="font-size: NaNpx;">respondsToSelector的相关使用</a><a href="/tags/单例模式/" style="font-size: NaNpx;">单例模式</a><a href="/tags/异步，同步/" style="font-size: NaNpx;">异步，同步</a><a href="/tags/数据持久化/" style="font-size: NaNpx;">数据持久化</a><a href="/tags/计算器/" style="font-size: NaNpx;">计算器</a>
+    <a href="/tags/KVC键值编码/" style="font-size: NaNpx;">KVC键值编码</a><a href="/tags/KVO键值观察/" style="font-size: NaNpx;">KVO键值观察</a><a href="/tags/UIScrollView/" style="font-size: NaNpx;">UIScrollView</a><a href="/tags/get/" style="font-size: NaNpx;">get</a><a href="/tags/iOS多点触摸/" style="font-size: NaNpx;">iOS多点触摸</a><a href="/tags/instancesRespondToSelector/" style="font-size: NaNpx;">instancesRespondToSelector</a><a href="/tags/ios屏幕适配/" style="font-size: NaNpx;">ios屏幕适配</a><a href="/tags/ios沙盒/" style="font-size: NaNpx;">ios沙盒</a><a href="/tags/isKindOfClass/" style="font-size: NaNpx;">isKindOfClass</a><a href="/tags/isMemberOfClass/" style="font-size: NaNpx;">isMemberOfClass</a><a href="/tags/oc代理模式，oc观察者模式/" style="font-size: NaNpx;">oc代理模式，oc观察者模式</a><a href="/tags/oc协议Protocol/" style="font-size: NaNpx;">oc协议Protocol</a><a href="/tags/oc基础知识/" style="font-size: NaNpx;">oc基础知识</a><a href="/tags/oc属性/" style="font-size: NaNpx;">oc属性</a><a href="/tags/oc滚动条/" style="font-size: NaNpx;">oc滚动条</a><a href="/tags/performSelector/" style="font-size: NaNpx;">performSelector</a><a href="/tags/post/" style="font-size: NaNpx;">post</a><a href="/tags/respondsToSelector的相关使用/" style="font-size: NaNpx;">respondsToSelector的相关使用</a><a href="/tags/单例模式/" style="font-size: NaNpx;">单例模式</a><a href="/tags/异步，同步/" style="font-size: NaNpx;">异步，同步</a><a href="/tags/数据持久化/" style="font-size: NaNpx;">数据持久化</a><a href="/tags/计算器/" style="font-size: NaNpx;">计算器</a>
   </div>
 </div>
 
@@ -168,7 +208,7 @@ var _hmt = _hmt || [];
   
     <li><a href="/categories/c/">c#</a><small>0</small></li>
   
-    <li><a href="/categories/objective-c/">objective c</a><small>12</small></li>
+    <li><a href="/categories/objective-c/">objective c</a><small>13</small></li>
   
     <li><a href="/categories/优化推广/">优化推广</a><small>0</small></li>
   
