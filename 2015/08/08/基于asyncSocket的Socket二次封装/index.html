@@ -1,0 +1,248 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>iOS Socket | 嘟嘟blog</title>
+  <meta name="author" content="biny">
+  
+  <meta name="description" content="杨方军的blog | oc | objective c | bi">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="iOS Socket"/>
+  <meta property="og:site_name" content="嘟嘟blog"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="嘟嘟blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+
+<script type="text/javascript">
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?fcc70080e0328d9a5d58a878cb69f4b5";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">嘟嘟blog</a></h1>
+  <h2><a href="/">和小蜜蜂一样,努力奋斗每一天</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-08-08T05:09:30.000Z"><a href="/2015/08/08/基于asyncSocket的Socket二次封装/">Aug 8 2015</a></time>
+      
+      
+  
+    <h1 class="title">iOS Socket</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+
+        <h5 id="创建环境信息">创建环境信息</h5><p>Mac OS X 10.10.3</p>
+<p>Xcode 6.4</p>
+<p>iOS 8.4</p>
+<h5 id="功能：">功能：</h5><h5 id="1、基于asyncSocket,进行了json和NSData的返回数据的封装，封装了心跳包，便于与服务器进行通信">1、基于asyncSocket,进行了json和NSData的返回数据的封装，封装了心跳包，便于与服务器进行通信</h5><h5 id="2、asyncSocket为非ARC模式，需要手动切换为arc模式(-fno-objc-arc)">2、asyncSocket为非ARC模式，需要手动切换为arc模式(-fno-objc-arc)</h5><h5 id="FJSocket_下载_FJSocket_in_GitHub"><b>FJSocket</b> 下载 <a href="https://github.com/coolFangjun/FJSocket.git" target="_blank" rel="external">FJSocket in GitHub</a></h5><a id="more"></a>
+<h3 id="一、在SocketConnect-h">一、在SocketConnect.h</h3>  <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">  <span class="preprocessor">#import <span class="title">&lt;Foundation/Foundation.h&gt;</span></span></span><br><span class="line"><span class="preprocessor">#import <span class="title">"AsyncSocket.h"</span></span></span><br><span class="line"><span class="preprocessor">#import <span class="title">"AsyncUdpSocket.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> *  1、基于asyncSocket,进行了json和nsdata的返回数据的封装，封装了心跳包，便于与服务器进行通信</span><br><span class="line"> *  2、asyncSocket为非ARC模式，需要手动切换为arc模式(-fno-objc-arc)</span><br><span class="line"> */</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> *  协议方法</span><br><span class="line"> */</span></span><br><span class="line"><span class="class"><span class="keyword">@protocol</span> <span class="title">SocketConnectDelegate</span> &lt;<span class="title">NSObject</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)receiveData:(<span class="keyword">id</span>)object;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">SocketConnect</span> : <span class="title">NSObject</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">enum</span> ReceiveDataType&#123;</span><br><span class="line">    FJJSONRequestSerializer,<span class="comment">//返回json数据</span></span><br><span class="line">    FJHTTPRequestSerializer,<span class="comment">//返回二进制数据</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">enum</span>&#123;</span><br><span class="line">    SocketOfflineByServer,<span class="comment">//服务器掉线</span></span><br><span class="line">    SocketOffLineByUser,<span class="comment">//用户手动断开</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">assign</span>,<span class="keyword">nonatomic</span>)<span class="keyword">id</span>&lt;SocketConnectDelegate&gt;delegate;</span><br><span class="line"></span><br><span class="line"><span class="comment">//socket通信</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">strong</span>,<span class="keyword">nonatomic</span>)<span class="built_in">NSString</span> *hostIpAddress;<span class="comment">//ip地址</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">assign</span>,<span class="keyword">nonatomic</span>)<span class="built_in">NSInteger</span> hostPort;<span class="comment">//端口号</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">strong</span>,<span class="keyword">nonatomic</span>)<span class="built_in">NSDictionary</span> *userInfoDic;<span class="comment">//用户登录的信息</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">assign</span>,<span class="keyword">nonatomic</span>)<span class="built_in">NSInteger</span> heartTimeInterval;<span class="comment">//发送心跳包的时间间隔,默认20秒发送一次</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">assign</span>,<span class="keyword">nonatomic</span>)<span class="built_in">NSInteger</span> withTimeout;<span class="comment">//设置socket超时时间,默认为10秒</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//tcp Socket</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">strong</span>,<span class="keyword">nonatomic</span>)AsyncSocket *tcpSocket;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">assign</span>,<span class="keyword">nonatomic</span>)<span class="keyword">enum</span> ReceiveDataType receiveDataType;<span class="comment">//设置返回接收的数据类型</span></span><br><span class="line"></span><br><span class="line">+ (instancetype)sharedInstance;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> *  登录服务器</span><br><span class="line"> *</span><br><span class="line"> *  @return 登录成功返回yes</span><br><span class="line"> */</span></span><br><span class="line">- (<span class="built_in">BOOL</span>)loginServer;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> *  断开socket</span><br><span class="line"> */</span></span><br><span class="line">- (<span class="keyword">void</span>)cutOffSocket;</span><br></pre></td></tr></table></figure>
+ <!-- more -->
+<h3 id="二、在SocketConnect-m">二、在SocketConnect.m</h3><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#import <span class="title">"SocketConnect.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">SocketConnect</span> ()</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">strong</span>,<span class="keyword">nonatomic</span>)<span class="built_in">NSTimer</span> *timer;<span class="comment">//计时器，用于发送心跳包</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">SocketConnect</span></span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#pragma mark - 懒加载</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">- (AsyncSocket *)tcpSocket&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!_tcpSocket) &#123;</span><br><span class="line">        _tcpSocket = [[AsyncSocket alloc]initWithDelegate:<span class="keyword">self</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> _tcpSocket;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">- (<span class="built_in">NSDictionary</span> *)userInfoDic&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!_userInfoDic) &#123;</span><br><span class="line">        _userInfoDic  = [<span class="built_in">NSDictionary</span> dictionary];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> _userInfoDic;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//懒加载结束</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#pragma mark - 初始化单例对象</span></span><br><span class="line">+ (instancetype)sharedInstance&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">static</span> SocketConnect *socketConnect = <span class="literal">nil</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="built_in">dispatch_once_t</span> oneToken;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">dispatch_once</span>(&amp;oneToken, ^&#123;</span><br><span class="line">        </span><br><span class="line">         socketConnect = [[SocketConnect alloc]init];</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> socketConnect;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#pragma mark - 连接服务器</span></span><br><span class="line">- (<span class="built_in">BOOL</span>)loginServer&#123;</span><br><span class="line">    <span class="built_in">NSError</span> *error = <span class="literal">nil</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="built_in">BOOL</span> success;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="keyword">self</span><span class="variable">.tcpSocket</span><span class="variable">.isConnected</span>) &#123;</span><br><span class="line">        success = [<span class="keyword">self</span><span class="variable">.tcpSocket</span> connectToHost:<span class="keyword">self</span><span class="variable">.hostIpAddress</span> onPort:<span class="keyword">self</span><span class="variable">.hostPort</span> error:&amp;error];</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (success) &#123;</span><br><span class="line">        <span class="built_in">NSData</span> *data = [<span class="built_in">NSJSONSerialization</span> dataWithJSONObject:<span class="keyword">self</span><span class="variable">.userInfoDic</span> options:<span class="built_in">NSJSONWritingPrettyPrinted</span> error:<span class="literal">nil</span>];</span><br><span class="line">        [<span class="keyword">self</span> sendInfo:data];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> success;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#pragma mark - 发送数据到服务器</span></span><br><span class="line">- (<span class="keyword">void</span>)sendInfo:(<span class="built_in">NSData</span> *)data&#123;</span><br><span class="line">    </span><br><span class="line">    [<span class="keyword">self</span><span class="variable">.tcpSocket</span> writeData:data withTimeout:<span class="keyword">self</span><span class="variable">.withTimeout</span> == <span class="number">0</span> ? <span class="number">10</span> : <span class="keyword">self</span><span class="variable">.withTimeout</span> tag:<span class="number">0</span>];</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#pragma mark - 通过socket协议方法，发送心跳包</span></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)onSocket:(AsyncSocket *)sock didConnectToHost:(<span class="built_in">NSString</span> *)host port:(<span class="built_in">UInt16</span>)port&#123;</span><br><span class="line">    [<span class="keyword">self</span><span class="variable">.tcpSocket</span> readDataWithTimeout:-<span class="number">1</span> tag:<span class="number">0</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//设置心跳包默认20秒发送一次</span></span><br><span class="line">    <span class="built_in">NSInteger</span> heartPackTime = <span class="keyword">self</span><span class="variable">.heartTimeInterval</span> == <span class="number">0</span> ? <span class="number">20</span> : <span class="keyword">self</span><span class="variable">.heartTimeInterval</span>;</span><br><span class="line">    <span class="keyword">self</span><span class="variable">.timer</span> = [<span class="built_in">NSTimer</span> scheduledTimerWithTimeInterval:heartPackTime target:<span class="keyword">self</span> selector:<span class="keyword">@selector</span>(longConnectToSocket) userInfo:<span class="literal">nil</span> repeats:<span class="literal">YES</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)onSocket:(AsyncSocket *)sock didReadData:(<span class="built_in">NSData</span> *)data withTag:(<span class="keyword">long</span>)tag&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">self</span><span class="variable">.receiveDataType</span> == FJJSONRequestSerializer ) &#123;</span><br><span class="line"><span class="comment">//        NSString *str = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];</span></span><br><span class="line"><span class="comment">//        NSDictionary *dic = @&#123;@"data" : str&#125;;</span></span><br><span class="line">        <span class="built_in">NSError</span> *error = <span class="literal">nil</span>;</span><br><span class="line">        <span class="built_in">NSDictionary</span> *dic = [<span class="built_in">NSJSONSerialization</span> JSONObjectWithData:data options:<span class="built_in">NSJSONReadingMutableContainers</span>|<span class="built_in">NSJSONReadingMutableLeaves</span>|<span class="built_in">NSJSONReadingAllowFragments</span> error:&amp;error];</span><br><span class="line">        [<span class="keyword">self</span><span class="variable">.delegate</span> receiveData:error ? error<span class="variable">.localizedDescription</span> : dic];</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        [<span class="keyword">self</span><span class="variable">.delegate</span> receiveData:data];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//设置30秒超时</span></span><br><span class="line">    [<span class="keyword">self</span><span class="variable">.tcpSocket</span> readDataWithTimeout:<span class="number">30</span> tag:<span class="number">0</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#pragma mark - 长连接 发送心跳包</span></span><br><span class="line">- (<span class="keyword">void</span>)longConnectToSocket&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">NSString</span> *longStr = [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"%d\n"</span>,i];</span><br><span class="line">    i += <span class="number">20</span>;</span><br><span class="line">    [<span class="keyword">self</span><span class="variable">.tcpSocket</span> writeData:[longStr dataUsingEncoding:<span class="built_in">NSUTF8StringEncoding</span>] withTimeout:<span class="number">2</span> tag:<span class="number">1</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)cutOffSocket&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">self</span><span class="variable">.tcpSocket</span><span class="variable">.userData</span> = SocketOffLineByUser;</span><br><span class="line">    [<span class="keyword">self</span><span class="variable">.timer</span> invalidate];<span class="comment">//关闭心跳包的发送</span></span><br><span class="line">    [<span class="keyword">self</span><span class="variable">.tcpSocket</span> disconnect];<span class="comment">//tcpStock失去连接</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#pragma mark - 断线重连接</span></span><br><span class="line">- (<span class="keyword">void</span>)onSocketDidDisconnect:(AsyncSocket *)sock&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//如果是服务器断线，重连接</span></span><br><span class="line">    <span class="keyword">if</span> (sock<span class="variable">.userData</span> == SocketOfflineByServer ) &#123;</span><br><span class="line">        <span class="comment">//连服务器</span></span><br><span class="line">        [<span class="keyword">self</span> loginServer];</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//用户手动断开</span></span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/objective-c/">objective c</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/FJSocket/">FJSocket</a>, <a href="/tags/iOS-Socket/">iOS Socket</a>
+  </div>
+
+<!-- Baidu Button BEGIN -->
+<div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
+<a class="bds_qzone"></a>
+<a class="bds_tsina"></a>
+<a class="bds_tqq"></a>
+<a class="bds_renren"></a>
+<a class="bds_t163"></a>
+<span class="bds_more"></span>
+<a class="shareCount"></a>
+</div>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=3326447" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END -->
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+ <nav id="pagination" >
+    
+    
+    <a href="/2015/07/04/iOS多点触摸/" class="alignright next" >下一页</a>
+    
+    <div class="clearfix"></div>
+</nav>
+
+
+
+<section id="comment">
+
+	
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="2015/08/08/基于asyncSocket的Socket二次封装/" data-title="iOS Socket" data-url="http://www.dudu.me/2015/08/08/基于asyncSocket的Socket二次封装/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"biny"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+
+  
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:www.dudu.me">
+  </form>
+</div>
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/tags/FJSocket/" style="font-size: NaNpx;">FJSocket</a><a href="/tags/KVC键值编码/" style="font-size: NaNpx;">KVC键值编码</a><a href="/tags/KVO键值观察/" style="font-size: NaNpx;">KVO键值观察</a><a href="/tags/UIScrollView/" style="font-size: NaNpx;">UIScrollView</a><a href="/tags/get/" style="font-size: NaNpx;">get</a><a href="/tags/iOS-Socket/" style="font-size: NaNpx;">iOS Socket</a><a href="/tags/iOS多点触摸/" style="font-size: NaNpx;">iOS多点触摸</a><a href="/tags/instancesRespondToSelector/" style="font-size: NaNpx;">instancesRespondToSelector</a><a href="/tags/ios屏幕适配/" style="font-size: NaNpx;">ios屏幕适配</a><a href="/tags/ios沙盒/" style="font-size: NaNpx;">ios沙盒</a><a href="/tags/isKindOfClass/" style="font-size: NaNpx;">isKindOfClass</a><a href="/tags/isMemberOfClass/" style="font-size: NaNpx;">isMemberOfClass</a><a href="/tags/oc代理模式，oc观察者模式/" style="font-size: NaNpx;">oc代理模式，oc观察者模式</a><a href="/tags/oc协议Protocol/" style="font-size: NaNpx;">oc协议Protocol</a><a href="/tags/oc基础知识/" style="font-size: NaNpx;">oc基础知识</a><a href="/tags/oc属性/" style="font-size: NaNpx;">oc属性</a><a href="/tags/oc滚动条/" style="font-size: NaNpx;">oc滚动条</a><a href="/tags/performSelector/" style="font-size: NaNpx;">performSelector</a><a href="/tags/post/" style="font-size: NaNpx;">post</a><a href="/tags/respondsToSelector的相关使用/" style="font-size: NaNpx;">respondsToSelector的相关使用</a><a href="/tags/单例模式/" style="font-size: NaNpx;">单例模式</a><a href="/tags/异步，同步/" style="font-size: NaNpx;">异步，同步</a><a href="/tags/数据持久化/" style="font-size: NaNpx;">数据持久化</a><a href="/tags/计算器/" style="font-size: NaNpx;">计算器</a>
+  </div>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/c/">c#</a><small>0</small></li>
+  
+    <li><a href="/categories/objective-c/">objective c</a><small>14</small></li>
+  
+    <li><a href="/categories/优化推广/">优化推广</a><small>0</small></li>
+  
+    <li><a href="/categories/学习笔记/">学习笔记</a><small>0</small></li>
+  
+    <li><a href="/categories/社会生活/">社会生活</a><small>0</small></li>
+  
+  </ul>
+</div>
+
+
+  
+
+  <iframe width="100%" height="550" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=2&ptype=1&speed=0&skin=5&isTitle=1&noborder=1&isWeibo=1&isFans=1&uid=2609664461&verifier=e300faf4&dpc=1"></iframe>
+
+  <div class="widget tag">
+<h3 class="title">简介</h3>
+<ul class="entry">
+<li>本体：杨方军</li>
+<li>外文：Biny</li>
+<li>现状：学习IOS</li>
+<li color=“red”>QQ号 ：81599010</li>
+</ul>
+</div>
+
+  <div class="widget tag">
+<h3 class="title">友情链接</h3>
+<ul class="entry">
+<li><a href="http://sayaka.ninja/" title=“Luula"> Luula </a></li>
+<li><a href="http://www.brighttj.com/" title=“BRIGHTTJ”> BRIGHTTJ </a></li>
+</ul>
+</div>
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2015 biny
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+<div id="totop" style="position:fixed;bottom:150px;right:20px;cursor: pointer;">
+<a title="返回顶部"><img src="/imgs/scrollup.png"/></a>
+</div>
+<script src="/js/totop.js"></script>
+
+</body>
+</html>
+
+
+
+
