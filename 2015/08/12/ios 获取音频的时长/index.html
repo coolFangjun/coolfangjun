@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>ios屏幕适配和系统版本适配 | 嘟嘟blog</title>
+  <title>获取音频时长 | 嘟嘟blog</title>
   <meta name="author" content="biny">
   
   <meta name="description" content="杨方军的blog | oc | objective c | bi">
@@ -12,7 +12,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="ios屏幕适配和系统版本适配"/>
+  <meta property="og:title" content="获取音频时长"/>
   <meta property="og:site_name" content="嘟嘟blog"/>
 
   
@@ -62,40 +62,23 @@ var _hmt = _hmt || [];
     <header>
       
         <div class="icon"></div>
-        <time datetime="2015-06-24T14:49:13.000Z"><a href="/2015/06/24/ios屏幕适配和系统版本适配/">Jun 24 2015</a></time>
+        <time datetime="2015-08-12T05:03:22.000Z"><a href="/2015/08/12/ios 获取音频的时长/">Aug 12 2015</a></time>
       
       
   
-    <h1 class="title">ios屏幕适配和系统版本适配</h1>
+    <h1 class="title">获取音频时长</h1>
   
 
     </header>
     <div class="entry">
       
 
-        <h4 id="1、针对系统的适配：">1、针对系统的适配：</h4><p>IOS7以后和之前</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hexcolor">#def</span>ine IOSVersion [[[UIDevice currentDevice] systemVersion] floatValue]</span><br><span class="line"><span class="hexcolor">#def</span>ine IsiOS7Later!(IOSVersion &lt; <span class="number">7.0</span>)</span><br></pre></td></tr></table></figure>
-<p>系统需要适配有以下几个点：</p>
-<ol>
-<li><p>（StatusBar）StatusBarHeight 的高度 ios7以后 StatusBar是悬浮在屏幕上方的 所以ios7之后控件布局需要加上20 而在ios7之前不需要</p>
-</li>
-<li><p>label的文本自适应需要适配</p>
-</li>
-<li><p>（ios8适配）UIAlertController UIAlertAction —ios8 代替了 UIAlertView</p>
-</li>
-<li><p>（ios8适配）ios8新增定位判断，info.plist文件设置两个属性 用到定位需要适配</p>
-</li>
-</ol>
-<a id="more"></a>
-<h4 id="2、屏幕适配（图片系统会自动识别需要几倍图）">2、屏幕适配（图片系统会自动识别需要几倍图）</h4><ol>
-<li><p>要求不高就可以采用等比例放大来实现适配</p>
-</li>
-<li><p>要求很高的话采用自动布局来实现适配是最精准的</p>
-</li>
-</ol>
-<p><img src="http://www.dudu.me/image/屏幕尺寸.png" alt=""></p>
-<h3 id="各机型参数对比">各机型参数对比</h3><p><img src="http://www.dudu.me/image/尺寸对比.png" alt=""></p>
-
+        <h5 id="创建环境信息">创建环境信息</h5><p>Mac OS X 10.10.3</p>
+<p>Xcode 6.4</p>
+<p>iOS 8.4</p>
+<h5 id="功能：">功能：</h5><h5 id="最近在忙公司项目，做到IM功能的时候，在进行发送语音消息的时候，需要获取语音的时长，在此分享记录下方法">最近在忙公司项目，做到IM功能的时候，在进行发送语音消息的时候，需要获取语音的时长，在此分享记录下方法</h5><h3 id="一、在AudioDurationSeconds-h">一、在AudioDurationSeconds.h</h3>  <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//</span></span><br><span class="line"><span class="comment">//  AudioDurationSeconds.h</span></span><br><span class="line"><span class="comment">//  嘟嘟blog</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by 小宸宸Dad on 15/8/12.</span></span><br><span class="line"><span class="comment">//  Copyright (c) 2015年 嘟嘟blog. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line">#<span class="keyword">import</span> &lt;Foundation/Foundation.h&gt;</span><br><span class="line"></span><br><span class="line"><span class="annotation">@interface</span> <span class="string">AudioDurationSeconds :</span> NSObject</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="javadoc">/**</span><br><span class="line"> *  获取语音的时长</span><br><span class="line"> *</span><br><span class="line"> * <span class="javadoctag"> @param</span> url 需要获取的语音的url地址</span><br><span class="line"> *</span><br><span class="line"> * <span class="javadoctag"> @return</span> 语音的时长</span><br><span class="line"> */</span></span><br><span class="line">+ (<span class="typename">float</span>)<span class="string">getSeconds:</span>(NSURL *)url;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="annotation">@end</span></span><br></pre></td></tr></table></figure>
+ <a id="more"></a>
+<h3 id="二、在AudioDurationSeconds-m">二、在AudioDurationSeconds.m</h3><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  AudioDurationSeconds.m</span></span><br><span class="line"><span class="comment">//  嘟嘟blog</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by 小宸宸Dad on 15/8/12.</span></span><br><span class="line"><span class="comment">//  Copyright (c) 2015年 嘟嘟blog. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#import <span class="title">"AudioDurationSeconds.h"</span></span></span><br><span class="line"><span class="preprocessor">#import <span class="title">&lt;AVFoundation/AVFoundation.h&gt;</span></span></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">AudioDurationSeconds</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">+ (<span class="keyword">float</span>)getSeconds:(<span class="built_in">NSURL</span> *)url&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">AVURLAsset</span> *audioAsset = [<span class="built_in">AVURLAsset</span> URLAssetWithURL:url options:<span class="literal">nil</span>];</span><br><span class="line">    CMTime audioDuration = audioAsset<span class="variable">.duration</span>;</span><br><span class="line">    <span class="keyword">float</span> audioDurationSeconds = CMTimeGetSeconds(audioDuration);</span><br><span class="line">    <span class="keyword">return</span> audioDurationSeconds;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
       
     </div>
     <footer>
@@ -109,7 +92,7 @@ var _hmt = _hmt || [];
         
   
   <div class="tags">
-    <a href="/tags/ios屏幕适配/">ios屏幕适配</a>
+    <a href="/tags/iOS-音频时长/">iOS 音频时长</a>
   </div>
 
 <!-- Baidu Button BEGIN -->
@@ -138,10 +121,8 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
 
  <nav id="pagination" >
     
-    <a href="/2015/07/04/iOS多点触摸/" class="alignleft prev" >上一页</a>
     
-    
-    <a href="/2015/05/07/IOS沙盒机制/" class="alignright next" >下一页</a>
+    <a href="/2015/08/08/基于asyncSocket的Socket二次封装/" class="alignright next" >下一页</a>
     
     <div class="clearfix"></div>
 </nav>
@@ -152,7 +133,7 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
 
 	
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="2015/06/24/ios屏幕适配和系统版本适配/" data-title="ios屏幕适配和系统版本适配" data-url="http://www.dudu.me/2015/06/24/ios屏幕适配和系统版本适配/"></div>
+	<div class="ds-thread" data-thread-key="2015/08/12/ios 获取音频的时长/" data-title="获取音频时长" data-url="http://www.dudu.me/2015/08/12/ios 获取音频的时长/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
